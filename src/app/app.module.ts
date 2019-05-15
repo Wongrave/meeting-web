@@ -3,11 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-
-
-
 import { NavbarComponent } from './navbar/navbar.component';
-import { HttpClient } from '@angular/common/http';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +13,8 @@ import { HttpClient } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    //UsersModule,
-    HttpClient
+    UsersModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

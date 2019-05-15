@@ -9,10 +9,4 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'meeting-web';
 
-  users = [];
-
-  constructor(private http: HttpClient){
-
-    
-  }
 }
