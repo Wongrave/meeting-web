@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsersModule } from './users/users.module';
+import { PropositionsModule } from './data-environment/propositions/propositions.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +14,11 @@ import { UsersModule } from './users/users.module';
   ],
   imports: [
     BrowserModule,
-    UsersModule
-
+    UsersModule,
+    PropositionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

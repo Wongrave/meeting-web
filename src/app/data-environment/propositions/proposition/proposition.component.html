@@ -6,6 +6,41 @@
         <div class="page-content-inner">
             <div class="row">
                 <div class="col-md-12">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Familia</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let proposition of propositions">
+                        <th scope="row"> {{ proposition.a01_codigo }} </th>
+                        <td> {{ proposition.a01_descricao }} </td>
+                        <td> {{ proposition.a01_data.dayOfMonth }}/{{ proposition.a01_data.month }}/{{ proposition.a01_data.year }}</td>
+                        <td> {{ proposition.a01_familia }} </td>
+                      </tr>
+                      
+                    </tbody>
+
+
+
+
+
+                  </table>
+
+
+
+
+
+
+
+
+
+
+                  
                     <div class="portlet light">
                         <div class="portlet-body">
                           <div class="form-row">

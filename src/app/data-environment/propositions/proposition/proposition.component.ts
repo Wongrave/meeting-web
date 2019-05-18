@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'pd-proposition',
@@ -11,7 +12,7 @@ export class PropositionComponent {
     constructor(private http: HttpClient){
 
         http
-            .get<Object[]>("http://localhost:8080/meeting-web/listaUsuarios")
+            .get<Object[]>("http://localhost:8080/meeting-web/listaProposicoes")
             .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
     }
 }
