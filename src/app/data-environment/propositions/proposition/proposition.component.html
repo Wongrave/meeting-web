@@ -7,21 +7,40 @@
             <div class="row">
                 <div class="col-md-12">
                   <table class="table">
-                    <thead>
+                    <thead class="thead-dark">
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Data</th>
                         <th scope="col">Familia</th>
+                        <th scope="col">&nbsp;</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr *ngFor="let proposition of propositions">
-                        <th scope="row"> {{ proposition.a01_codigo }} </th>
-                        <td> {{ proposition.a01_descricao }} </td>
-                        <td> {{ proposition.a01_data.dayOfMonth }}/{{ proposition.a01_data.month }}/{{ proposition.a01_data.year }}</td>
-                        <td> {{ proposition.a01_familia }} </td>
-                      </tr>
+                    <tbody *ngFor="let proposition of propositions">
+                        
+                        <tr>
+                            <th scope="row"> {{ proposition.a01_codigo }} </th>
+                            <td> {{ proposition.a01_descricao }} </td>
+                            <td> {{ proposition.a01_data.dayOfMonth }}/{{ proposition.a01_data.month }}/{{ proposition.a01_data.year }}</td>
+                            <td> {{ proposition.a01_familia }} </td>
+                            <td> <button type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-target="#propositionData" aria-expanded="false" aria-controls="propositionData"> + </button></td>
+                            
+                          </tr>
+  
+                          <tr>
+                            <td colspan="5" class="collapse col-12" id="propositionData">
+  
+                              <div class="collapse col-12" id="propositionData">
+                                <div class="input-group col-12">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">Descrição</span>
+                                  </div>
+                                  <textarea class="form-control" aria-label="With textarea"></textarea>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                      
                       
                     </tbody>
 

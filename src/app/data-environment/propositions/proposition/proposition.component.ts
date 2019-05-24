@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { PropositionService } from './proposition.service';
+import { Proposition } from './proposition';
 
 @Component({
     selector: 'pd-proposition',
     templateUrl: 'proposition.component.html'
 })
-export class PropositionComponent { 
+export class PropositionComponent implements OnInit { 
 
-    propositions: Object[] = [];
+    propositions: Proposition[] = [];
 
-    constructor(private http: HttpClient){
+    constructor(private propositionService: PropositionService) { }
 
-        http
-            .get<Object[]>("http://localhost:8080/meeting-web/listaProposicoes")
+    ngOnInit(): void {
+        this.propositionService
+            .listFromUser(84)
             .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
     }
 }
