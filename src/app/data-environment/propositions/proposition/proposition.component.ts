@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PropositionService } from './proposition.service';
 import { Proposition } from './proposition';
 

@@ -9,6 +9,6 @@ export interface Proposition {
 	a14_ginr:number;
 	a01_resumo:string;
 	a01_demo:number;
-	a01_data;
+	a01_data:Date;
 	a01_familia:string;
 }
