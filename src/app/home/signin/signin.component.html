@@ -15,29 +15,29 @@
   </head>
 
 
-  <body class="body">
+  <body>
 
     <!-- barra de navegação -->
     <nav class="navbar navbar-fixed-top navbar-dark">
-      <div class="container">
+        <div class="container">
         <!-- page-header -->
-        <div class="navbar-header">
-          <a href="index.html" class="navbar-brand">
-            Meeting
-          </a>
-        </div>
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand">
+                    Meeting
+                </a>
+            </div>
 
         <!-- navbar opções -->
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="proposicao.html">
-                Proposição
-              </a>
-            </li>
-          </ul>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="proposicao.html">
+                            Proposição
+                        </a>
+                    </li>
+                </ul>
 
-        </div>
+            </div>
 
       </div>
     </nav>
@@ -48,17 +48,49 @@
         <div class="col-lg-3 col-md-2 col-sm-1">
         </div>
         <fieldset class="col-lg-6 col-md-8 col-sm-10 col-xs-12 loginbox">
-          <legend>Bem vindo!</legend>
+            <legend>Welcome to Meeting web!</legend>
 
-          <form>
-            <div class="form-group">
-              <label for="usuario">Usuário</label>
-              <input type="text" name="usuario" class="form-control" id="usuario" required>
-              <label for="senha">Senha</label>
-              <input type="password" name="senha" class="form-control" id="senha" required>
-              <button type="submit" class="btn btn-light btn-block">Entrar</button>
-            </div>
-          </form>
+            <form [formGroup]="loginForm"> 
+                <div class="form-group">
+                  <!-- <label for="usuario">Usuário</label> -->
+                  
+                    <input 
+                        type="text" 
+                        name="usuario" 
+                        class="form-control" 
+                        id="usuario" 
+                        placeholder="username"
+                        formControlName="userName">
+
+                    <small
+                        *ngIf="loginForm.get('userName').errors"
+                        class="text-danger d-block mt-2">
+                        User name is required!
+                    </small> 
+
+                </div>
+                  <!-- <label for="senha">Senha</label> -->
+                <div class="form-group">
+
+                    <input 
+                        type="password" 
+                        name="senha" 
+                        class="form-control" 
+                        id="senha" 
+                        placeholder="password"
+                        formControlName="password">
+
+                    <small
+                        *ngIf="loginForm.get('userName').errors"
+                        class="text-danger d-block mt-2">
+                        Password is required!
+                    </small> 
+
+                    <button 
+                        type="submit" 
+                        class="btn btn-light btn-block">Sign in</button>
+                </div>
+            </form>
 
         </fieldset>
         <div class="col-lg-3 col-md-2 col-sm-1">
