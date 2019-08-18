@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { PropositionsModule } from './data-environment/propositions/propositions.module';
 import { PropositionFormComponent } from './data-environment/propositions/proposition-form/proposition-form.component';
 import { AppRoutingModule } from './app.routing.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app.routing.module';
     AppRoutingModule,
     BrowserModule,
     UsersModule,
-    PropositionsModule
+    PropositionsModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

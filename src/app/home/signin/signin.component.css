@@ -1,0 +1,46 @@
+.body {
+    /*background: url(../imagens/robo.PNG) no-repeat,*/
+    background: rgba(214, 255, 255,0.6);
+    color: #555;
+  }
+  
+  legend {
+    background: transparent;
+    border-radius: 10px;
+    padding-top: 60px;
+    text-align: center;
+    color: rgb(240, 230, 230);
+    font-weight: 500;
+  }
+  
+  .loginbox{
+    background: rgba(2, 112, 112, 0.8);
+    border-radius: 3px 15px;
+    padding: 10px;
+    padding-top: 0px;
+  
+  }
+  
+  fieldset{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 255, 255, 0.6);
+    outline: 0 none;
+  }
+  
+  label{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: 500;
+    color: rgb(240, 230, 230);
+  }
+  
+  .btn {
+    margin-top: 20px;
+  
+  }
