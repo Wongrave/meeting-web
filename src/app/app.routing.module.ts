@@ -8,9 +8,9 @@ import { SigninComponent } from './home/signin/signin.component';
 
 const routes: Routes = [
     { path: '', component: SigninComponent },
-    { path: 'user/84', component: PropositionListComponent }, 
+    { path: 'user/:userName', component: UserComponent }, 
     { path: 'proposition/add', component: PropositionComponent },
-    { path: 'users/84', component: UserComponent }, 
+    { path: 'users/84', component: PropositionListComponent }, 
     
     
 ];

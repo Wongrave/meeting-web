@@ -22,7 +22,7 @@
         <div class="container">
         <!-- page-header -->
             <div class="navbar-header">
-                <a href="index.html" class="navbar-brand">
+                <a href="index.html" class="navbar-brand text-dark">
                     Meeting
                 </a>
             </div>
@@ -50,11 +50,11 @@
         <fieldset class="col-lg-6 col-md-8 col-sm-10 col-xs-12 loginbox">
             <legend>Welcome to Meeting web!</legend>
 
-            <form [formGroup]="loginForm"> 
+            <form [formGroup]="loginForm" (submit)="login()"> 
                 <div class="form-group">
                   <!-- <label for="usuario">Usuário</label> -->
                   
-                    <input 
+                    <input #userNameInput
                         type="text" 
                         name="usuario" 
                         class="form-control" 
@@ -63,7 +63,7 @@
                         formControlName="userName">
 
                     <small
-                        *ngIf="loginForm.get('userName').errors"
+                        *ngIf="loginForm.get('userName').errors?.required"
                         class="text-danger d-block mt-2">
                         User name is required!
                     </small> 
@@ -81,12 +81,13 @@
                         formControlName="password">
 
                     <small
-                        *ngIf="loginForm.get('userName').errors"
+                        *ngIf="loginForm.get('password').errors?.required"
                         class="text-danger d-block mt-2">
                         Password is required!
                     </small> 
 
                     <button 
+                        [disabled]="loginForm.invalid"
                         type="submit" 
                         class="btn btn-light btn-block">Sign in</button>
                 </div>
