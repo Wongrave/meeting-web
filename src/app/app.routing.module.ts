@@ -5,12 +5,14 @@ import { PropositionFormComponent } from './data-environment/propositions/propos
 import { PropositionListComponent } from './data-environment/propositions/proposition-list/proposition-list.component';
 import { PropositionComponent } from './data-environment/propositions/proposition/proposition.component';
 import { SigninComponent } from './home/signin/signin.component';
+import { ResultComponent } from './analysis-environment/results/result/result.component';
 
 const routes: Routes = [
     { path: '', component: SigninComponent },
     { path: 'user/:userName', component: UserComponent }, 
     { path: 'proposition/add', component: PropositionComponent },
     { path: 'users/84', component: PropositionListComponent }, 
+    { path: 'result', component: ResultComponent },
     
     
 ];
