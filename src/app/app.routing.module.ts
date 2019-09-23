@@ -11,6 +11,7 @@ const routes: Routes = [
     { path: '', component: SigninComponent },
     { path: 'user/:userName', component: UserComponent }, 
     { path: 'proposition/add', component: PropositionComponent },
+    { path: 'propositions/fromUser/:username', component: PropositionListComponent },
     { path: 'users/84', component: PropositionListComponent }, 
     { path: 'result', component: ResultComponent },
     

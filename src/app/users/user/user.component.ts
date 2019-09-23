@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/core/auth/auth.service';
     selector: "pd-user",
     templateUrl: "user.component.html"
 })
+
+
 export class UserComponent implements OnInit{
 
     users: Object[] = [];

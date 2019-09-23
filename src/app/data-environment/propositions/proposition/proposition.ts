@@ -1,14 +1,13 @@
 export interface Proposition {
 
-    a01_codigo:number;
-	a02_codigo:number;
-	a20_codigo:number;
-	a01_descricao:string;
-	a14_descricao:string;
-	a14_gcer:number;
-	a14_ginr:number;
-	a01_resumo:string;
-	a01_demo:number;
-	a01_data:Date;
-	a01_familia:string;
+    id:number;
+	userId:number;
+	organizationId:number;
+	description:string;
+	analysisDescription:string;
+	analysisConfidence:number;
+	analysisContradiction:number;
+	summary:string;
+	date:Date;
+	collection:string;
 }

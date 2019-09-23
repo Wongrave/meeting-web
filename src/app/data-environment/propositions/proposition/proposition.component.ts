@@ -15,7 +15,7 @@ export class PropositionComponent implements OnInit {
 
     ngOnInit(): void {
         this.propositionService
-            .listFromUser(84)
+            .listFromUser('')
             .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
     }
 }

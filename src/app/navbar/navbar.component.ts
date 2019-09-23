@@ -8,8 +8,9 @@ import { Component } from '@angular/core';
 
 export class NavbarComponent {
 
+    userName='tomiatti';
     name='Meeting';
-
+    hrefPropositionFromUser='propositions/fromUser/'+this.userName;
 
 
 

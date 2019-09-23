@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
                     this.userNameInput.nativeElement.focus();
                 },
 
-                () => this.router.navigate(['user', userName])
+                () => this.router.navigate(['propositions/fromUser', userName])
             );
     }
 

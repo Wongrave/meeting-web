@@ -1,3 +1,40 @@
-<p>
-  proposition-list works!
-</p>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="display:none;">Proposition Id</th>
+        <th>Description</th>
+        <th>Summary</th>
+        <th>Date</th>
+        <th>Collection</th>
+        <th> &nbsp; </th>
+      </tr>
+    </thead>
+    <tr *ngFor="let proposition of propositions">
+      <td style="display:none;">{{ proposition.id }}</td>
+      <td>{{ proposition.description }}</td>
+      <td>{{ proposition.summary }}</td>
+      <td>{{ proposition.date | date: 'EEEE MMMM dd, yyyy' }}</td>
+      <td>{{ proposition.collection }}</td>
+      <td><a href=""> <h3>></h3> </a></td>
+    </tr>
+
+    <form [formGroup]="newPropositionForm" (submit)="newProposition()"> 
+    <tr>
+       
+          <td style="display:none;"></td>
+          <td><input #newDescription type="text" name="newDescription" id="newDescription" formControlName="newDescription" ></td>
+          
+          <td><input #newSummary type="text" name="newSummary" id="newSummary" formControlName="newSummary"></td>
+          
+          <td><input #newDate type="date" name="newDate" id="newDate" formControlName="newDate"></td>
+          <td><input #newCollection type="text" name="newCollection" id="newCollection" formControlName="newCollection"></td>
+          <td><button [disabled]="newPropositionForm.invalid" class="btn" type="submit"> <h3>+</h3> </button></td>
+
+       
+
+
+      </tr>
+    </form>
+  </table>
+</div>
