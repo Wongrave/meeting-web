@@ -6,6 +6,9 @@ import { Proposition } from '../proposition/proposition';
 import { PropositionService } from '../proposition/proposition.service';
 import { formatDate } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/app/core/user/user.service';
+import { User } from 'src/app/core/user/user';
+import { stringify } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'app-proposition-list',
@@ -23,20 +26,22 @@ export class PropositionListComponent implements OnInit {
 
   newPropositionForm: FormGroup;
 
+  username: string;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
     private auth: AuthService,
     private propositionService: PropositionService,
-    private formBuilder: FormBuilder){ }
+    private formBuilder: FormBuilder,
+    private userService: UserService ){ }
 
 
   selectProposition(id: number){
 
     this.propositionService.selectProposition(id)
       .subscribe(
-        () => this.router.navigate(['result']),
+        () => this.router.navigate(['home']),
 
                 err => {
                     console.log('erro na escolha')
@@ -64,9 +69,17 @@ export class PropositionListComponent implements OnInit {
       newDate: ['', Validators.required],
       newCollection: ['', Validators.required]
     });
+    
+    if(!!this.auth.username) {
+      this.username = this.auth.username;
+    } else {
+      this.userService.getUser().subscribe(user => this.username = user.username, err => console.log(err.message));
+    }
+
+    this.userService.getUser().subscribe()
 
     this.propositionService
-      .listFromUser(this.auth.username)
+      .listFromUser(this.username)
       .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
 
   }

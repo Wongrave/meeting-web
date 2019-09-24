@@ -6,6 +6,7 @@ import { PropositionListComponent } from './data-environment/propositions/propos
 import { PropositionComponent } from './data-environment/propositions/proposition/proposition.component';
 import { SigninComponent } from './home/signin/signin.component';
 import { ResultComponent } from './analysis-environment/results/result/result.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     { path: '', component: SigninComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'propositions/fromUser/:username', component: PropositionListComponent },
     { path: 'users/84', component: PropositionListComponent }, 
     { path: 'result', component: ResultComponent },
+    { path: 'home', component: HomeComponent },
     
     
 ];

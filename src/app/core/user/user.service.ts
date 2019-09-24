@@ -27,4 +27,8 @@ export class UserService {
     getUser() {
         return this.userSubject.asObservable();
     }
+
+    disconnect() {
+        this.tokenService.removeToken();
+    }
 }
