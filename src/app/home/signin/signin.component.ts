@@ -36,16 +36,15 @@ export class SigninComponent implements OnInit {
         this.authService
             .authenticate(userName, password)
             .subscribe( 
-                user => this.user = user,
-                
+                () => this.router.navigate(['propositions/fromUser', userName]),
+
                 err => {
                     console.log('login invalido')
                     this.loginForm.reset();
                     alert('invalid username or password');
                     this.userNameInput.nativeElement.focus();
-                },
+                }
 
-                () => this.router.navigate(['propositions/fromUser', userName])
             );
     }
 

@@ -15,7 +15,7 @@
         <ul class="navbar-nav mr-auto mt-12 mt-lg-12">
           <li class="nav-item active">
             <a class="nav-link" [href]="hrefPropositionFromUser">
-              Proposição<span class="sr-only"> (atual)</span>
+              Proposition<span class="sr-only"> (atual)</span>
             </a>
           </li>
           <li class="nav-item">
@@ -32,20 +32,20 @@
               Outro
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Trocar Proposição</a>
+              <a class="dropdown-item" (click)="changeProposition()">Trocar Proposição</a>
               <a class="dropdown-item" href="#">Gerenciar</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Alguma outra coisa</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Desconectar</a>
+            <a class="nav-link disabled" href="#" >Desconectar</a>
           </li>
         </ul>
 
       </div>
       <span class="navbar-text">
-        NOME DA PROPOSIÇÃO
+        {{ proposition?.description }}
       </span>
 
     </div>

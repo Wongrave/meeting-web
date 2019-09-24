@@ -16,7 +16,7 @@
       <td>{{ proposition.summary }}</td>
       <td>{{ proposition.date | date: 'EEEE MMMM dd, yyyy' }}</td>
       <td>{{ proposition.collection }}</td>
-      <td><a href=""> <h3>></h3> </a></td>
+      <td><button (click)="selectProposition(proposition.id)"> <h3>></h3> </button></td>
     </tr>
 
     <form [formGroup]="newPropositionForm" (submit)="newProposition()"> 

@@ -28,7 +28,7 @@ export class UserComponent implements OnInit{
         
 
         this.http
-            .get<Object[]>("http://localhost:8080/users/" + this.auth.userName)
+            .get<Object[]>("http://localhost:8080/users/" + this.auth.username)
             .subscribe(user => this.user = user, err => console.log(err.message));
     }
 

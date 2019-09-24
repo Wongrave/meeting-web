@@ -32,6 +32,22 @@ export class PropositionListComponent implements OnInit {
     private formBuilder: FormBuilder){ }
 
 
+  selectProposition(id: number){
+
+    this.propositionService.selectProposition(id)
+      .subscribe(
+        () => this.router.navigate(['result']),
+
+                err => {
+                    console.log('erro na escolha')
+                    
+                }
+
+      )
+    console.log(id);
+
+  }
+
 
   newProposition() {
     
@@ -50,7 +66,7 @@ export class PropositionListComponent implements OnInit {
     });
 
     this.propositionService
-      .listFromUser(this.auth.userName)
+      .listFromUser(this.auth.username)
       .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
 
   }

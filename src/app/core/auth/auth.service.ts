@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { UserService } from '../user/user.service';
 
 const API_URL = 'http://localhost:8080';
 
@@ -9,14 +11,43 @@ const API_URL = 'http://localhost:8080';
 
 export class AuthService {
 
-  userName: string;
+  username: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private userService: UserService) { }
 
-  authenticate(userName: string, password: string) {
+  authenticate(username: string, password: string) {
 
-    this.userName =  userName;
-    return this.http.post(API_URL+'/users/login', { userName, password })
+    this.username =  username;
+    return this.http
+      .post(
+        API_URL+'/auth', 
+        { username, password }, 
+        { observe: 'body', 
+        responseType: 'text' }
+      )
+      .pipe(
+
+        // map((response) => ({
+        //   data: response.body, 
+        //   status: response.status})
+        // tap(res => {
+        // const authToken = res.headers.get('x-access-token');
+        // console.log(authToken)
+        //}
+
+        map(res => {
+          const authToken = res;
+
+          this.userService.setToken(authToken);
+          console.log(authToken.toString())
+         
+          
+        }
+      )
+    );
+      
 
   }
 }
