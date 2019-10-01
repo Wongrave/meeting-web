@@ -1,9 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { template } from '@angular/core/src/render3';
 
 @Component({
     template: ''
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit {
+
+    ngOnInit(): void {
+        
+    }
     
 }

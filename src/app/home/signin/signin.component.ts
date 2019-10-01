@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
         this.authService
             .authenticate(userName, password)
             .subscribe( 
-                () => this.router.navigate(['propositions/fromUser', userName]),
+                () => this.router.navigate(['organizations/fromUser', userName]),
 
                 err => {
                     console.log('login invalido')

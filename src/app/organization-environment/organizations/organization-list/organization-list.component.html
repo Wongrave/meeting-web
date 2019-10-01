@@ -1,0 +1,33 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="display:none;">Organization Id</th>
+        <th>Description</th>
+        <th>Summary</th>
+        <th> &nbsp; </th>
+      </tr>
+    </thead>
+    <tr *ngFor="let organization of organizations">
+      <td style="display:none;">{{ organization.id }}</td>
+      <td>{{ organization.description }}</td>
+      <td>{{ organization.summary }}</td>
+
+      <td><button (click)="selectOrganization(organization.id)"> <h3>></h3> </button></td>
+    </tr>
+    <tr>
+ 
+          <td style="display:none;"></td>
+          <td><input type="text" name="newDescription" id="newDescription" [value]="newDescription"></td>
+          
+          <td><input type="text" name="newSummary" id="newSummary" [value]="newSummary"></td>
+
+          <td><button class="btn btn-light" (click)="newOrganization()"> <h3>+</h3> </button></td>
+
+
+      </tr>
+    
+    
+   
+  </table>
+</div>

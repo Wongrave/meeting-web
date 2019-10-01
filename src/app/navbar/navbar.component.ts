@@ -5,6 +5,8 @@ import { Proposition } from '../data-environment/propositions/proposition/propos
 import { Router } from '@angular/router';
 import { UserService } from '../core/user/user.service';
 import { TokenService } from '../core/token/token.service';
+import { OrganizationService } from '../organization-environment/organizations/organization/organization.service';
+import { TouchSequence } from 'selenium-webdriver';
 
 
 @Component({
@@ -14,21 +16,28 @@ import { TokenService } from '../core/token/token.service';
 
 export class NavbarComponent {
 
-    username='tomiatti';
-    name='Meeting';
-    hrefPropositionFromUser='propositions/fromUser/'+this.username;
-
-    proposition$: Observable<Proposition>;
-    proposition: Proposition;
-
     constructor( 
         private propositionService: PropositionService, 
         private router: Router,
         private userService: UserService,
+        private organizationService: OrganizationService,
         private tokenService: TokenService) { 
         this.proposition$ = propositionService.getProposition();
         this.proposition$.subscribe(proposition => this.proposition = proposition);
+        this.username = this.userService.getUsername();
+        this.hrefPropositionFromUser = 'propositions/fromUser/'+this.username;
+        this.hrefPropositionWorkspace = 'workspace/fromProposition/'+this.proposition.id;
     }
+
+    username: string;
+    name='Meeting';
+    hrefPropositionFromUser: string;
+    hrefPropositionWorkspace: string;
+0
+    proposition$: Observable<Proposition>;
+    proposition: Proposition;
+
+    
 
     changeProposition(){
         this.propositionService.removeProposition();
@@ -43,6 +52,7 @@ export class NavbarComponent {
 
     disconnect(){
         this.propositionService.removeProposition();
+        this.organizationService.removeOrganization();
         this.tokenService.removeToken();
         this.router.navigate(['/'])
     }

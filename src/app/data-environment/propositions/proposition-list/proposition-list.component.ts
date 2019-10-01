@@ -57,26 +57,24 @@ export class PropositionListComponent implements OnInit {
   newProposition() {
     
     this.propositionService
-      .newProposition(1, 1, this.newDescription, this.newSummary, this.newDate, this.newCollection);
+      .newProposition(this.newDescription, this.newSummary, this.newDate, this.newCollection);
 
   }
 
   ngOnInit() {
 
-    this.newPropositionForm = this.formBuilder.group({
-      newDescription: ['', Validators.required],
-      newSummary: ['', Validators.required],
-      newDate: ['', Validators.required],
-      newCollection: ['', Validators.required]
-    });
+    // this.newPropositionForm = this.formBuilder.group({
+    //   newDescription: ['', Validators.required],
+    //   newSummary: ['', Validators.required],
+    //   newDate: ['', Validators.required],
+    //   newCollection: ['', Validators.required]
+    // });
     
-    if(!!this.auth.username) {
-      this.username = this.auth.username;
-    } else {
-      this.userService.getUser().subscribe(user => this.username = user.username, err => console.log(err.message));
-    }
 
-    this.userService.getUser().subscribe()
+    this.username = this.userService.getUsername();
+    
+
+    console.log(this.username)
 
     this.propositionService
       .listFromUser(this.username)

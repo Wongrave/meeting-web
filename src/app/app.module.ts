@@ -10,6 +10,7 @@ import { PropositionFormComponent } from './data-environment/propositions/propos
 import { AppRoutingModule } from './app.routing.module';
 import { HomeModule } from './home/home.module';
 import { ResultsModule } from './analysis-environment/results/results.module';
+import { OrganizationsModule } from './organization-environment/organizations/organizations.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ResultsModule } from './analysis-environment/results/results.module';
     BrowserModule,
     UsersModule,
     PropositionsModule,
+    OrganizationsModule,
     ResultsModule,
     HomeModule
   ],
