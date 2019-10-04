@@ -13,7 +13,7 @@
       <td>{{ organization.description }}</td>
       <td>{{ organization.summary }}</td>
 
-      <td><button (click)="selectOrganization(organization.id)"> <h3>></h3> </button></td>
+      <td><button (click)="selectOrganization(organization.id)" class="btn btn-outline-dark rounded-circle pt-1 pb-0"> <h3> &nbsp;></h3> </button></td>
     </tr>
     <tr>
  
@@ -22,7 +22,7 @@
           
           <td><input type="text" name="newSummary" id="newSummary" [value]="newSummary"></td>
 
-          <td><button class="btn btn-light" (click)="newOrganization()"> <h3>+</h3> </button></td>
+          <td><a (click)="newOrganization()"> <h3>&nbsp;+&nbsp;</h3> </a></td>
 
 
       </tr>

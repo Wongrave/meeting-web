@@ -25,8 +25,11 @@ export class NavbarComponent {
         this.proposition$ = propositionService.getProposition();
         this.proposition$.subscribe(proposition => this.proposition = proposition);
         this.username = this.userService.getUsername();
+
         this.hrefPropositionFromUser = 'propositions/fromUser/'+this.username;
-        this.hrefPropositionWorkspace = 'workspace/fromProposition/'+this.proposition.id;
+        
+
+        
     }
 
     username: string;

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { HomeModule } from './home/home.module';
 import { ResultsModule } from './analysis-environment/results/results.module';
 import { OrganizationsModule } from './organization-environment/organizations/organizations.module';
+import { WorkspaceModule } from './data-environment/workspace/workspace.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { OrganizationsModule } from './organization-environment/organizations/or
     UsersModule,
     PropositionsModule,
     OrganizationsModule,
+    WorkspaceModule,
     ResultsModule,
     HomeModule
   ],

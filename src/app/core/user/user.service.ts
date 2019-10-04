@@ -31,11 +31,15 @@ export class UserService {
 
     getUsername(){
         
-        this.getUser().subscribe(
-            user => this.username = user.username, err => console.log(err.message)
-        );
+        if(this.tokenService.hasToken()){
 
-        return this.username;
+            this.getUser().subscribe(
+                user => this.username = user.username, err => console.log(err.message)
+            );
+        
+            return this.username;
+        }
+        return ""
     }
 
     disconnect() {

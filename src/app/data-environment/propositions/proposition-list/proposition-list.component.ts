@@ -43,10 +43,10 @@ export class PropositionListComponent implements OnInit {
       .subscribe(
         () => this.router.navigate(['home']),
 
-                err => {
-                    console.log('erro na escolha')
-                    
-                }
+        err => {
+            console.log('erro na escolha')
+            
+        }
 
       )
     console.log(id);
@@ -79,6 +79,18 @@ export class PropositionListComponent implements OnInit {
     this.propositionService
       .listFromUser(this.username)
       .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
+
+    // let proposition: Proposition;
+    
+
+    this.propositions.forEach(
+      proposition => {
+        if(proposition.summary.length>10){
+          proposition.summary = "..."
+        }
+      }
+
+    )
 
   }
 
