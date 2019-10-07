@@ -14,6 +14,7 @@ import { OrganizationsModule } from './organization-environment/organizations/or
 import { WorkspaceModule } from './data-environment/workspace/workspace.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ExpertModule } from './expert-environment/expert.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     OrganizationsModule,
     WorkspaceModule,
     ResultsModule,
+    ExpertModule,
     HomeModule
   ],
   providers: [],

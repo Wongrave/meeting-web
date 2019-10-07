@@ -15,7 +15,7 @@ export class OrganizationComponent implements OnInit {
 
     ngOnInit(): void {
         this.organizationService
-            .listFromUser('')
+            .listFromUser(0)
             .subscribe(organizations => this.organizations = organizations, err => console.log(err.message));
     }
 }

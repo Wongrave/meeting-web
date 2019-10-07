@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Evidence degrees</h1>
+    <table class="table table-light table-striped">
+        <thead class="thead-dark">
+            <tr class="row">
+                <th scope="col" class="col-2">Tag</th>
+                <th scope="col" class="col-4 col-md-6">Factor</th>
+                <!-- <th scope="col" class="hidden-xs hidden-sm d-none d-lg-table-cell">Attractiveness</th>
+                <th scope="col" class="hidden-xs hidden-sm d-none d-lg-table-cell">Disharmony</th> -->
+                <th scope="col" class="col-3 col-md-2">Attractiveness</th>
+                <th scope="col" class="col-3 col-md-2">Disharmony</th>
+            </tr>
+        </thead>
+
+        <tr *ngFor="let factor of factors" class="row">
+            <th scope="row" class="col-2">  {{factor.tag}} </th>
+            <td class="col-4 col-md-6"> {{factor.description}} </td>
+            <!-- <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td>
+            <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td> -->
+            <td class="col-3 col-md-2">
+                <label for="customRange3"></label>
+                <input type="range" class="custom-range" min="0" max="10" step="0.05" id="customRange3">
+            </td>
+            <td class="col-3 col-md-2">
+                <label for="customRange3"></label>
+                <input type="range" class="custom-range" min="0" max="10" step="0.05" id="customRange3">
+            </td>
+        </tr>
+
+    </table>
+</div>

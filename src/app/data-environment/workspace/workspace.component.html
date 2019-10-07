@@ -6,21 +6,30 @@
     <br />
     <span *ngFor="let factor of factors">
         <div class="row mt-3">
-            <div class="col-2 h2">{{factor.tag}}</div>
-            <div class="col-9">
+            <div class="col-12 col-md-2 h2">{{factor.tag}}</div>
+            <div class="col-12 col-md-7">
                 {{factor.description}}<br />
                 <span class="text-muted">{{factor.summary}}</span>
             </div>
-            <div class="col-1"><button class="btn btn-info" data-toggle="collapse" attr.data-target="#sections{{factor.id}}" [disabled]="factor.sections.length == 0"> V </button></div>
+            <div class="col-6 col-md-2 mt-2"><a data-toggle="collapse" attr.data-target="#newSection{{factor.id}}"> New Section + </a> </div>
+            <div class="col-6 col-md-1 mt-2"><button class="btn btn-info" data-toggle="collapse" attr.data-target="#sections{{factor.id}}" [disabled]="factor.sections.length == 0"> V </button></div>
             
         </div>
         <div class="row collapse" id="sections{{factor.id}}">
-            <div class="card col-3" *ngFor="let section of factor.sections">
+            <div class="card col-12 col-md-3 mt-2" *ngFor="let section of factor.sections">
                 <div class="card-body">
                     <h4 class="card-title">{{section.tag}}</h4>
                     <p class="card-text">{{section.description}}</p>
                     <p class="text-muted">{{section.summary}}</p>
                 </div>
+            </div>
+            
+        </div>
+        <div class="card col-12 col-md-3 collapse mt-2" id="newSection{{factor.id}}">
+            <div class="card-body">
+                <p class="card-text"><input type="text" placeholder="Tag"></p>
+                <p class="card-text"><input type="text" placeholder="Description"></p>
+                <p class="text-muted"><input type="text" placeholder="Summary"></p>
             </div>
         </div>
         

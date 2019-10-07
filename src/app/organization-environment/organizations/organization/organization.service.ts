@@ -14,7 +14,7 @@ export class OrganizationService {
 
     constructor(private http: HttpClient) { }
 
-    listFromUser(user: string) {
+    listFromUser(user: number) {
 
         return this.http
             .get<Organization[]>(API + '/fromUser/' + user);

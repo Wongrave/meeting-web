@@ -13,13 +13,16 @@
       <!-- navbar opções -->
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav mr-auto mt-12 mt-lg-12">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" [routerLink]="['propositions/fromUser/', username]">
               Proposition<span class="sr-only"> (atual)</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['dashboard']">Workspace</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['evidences/fromUser/', username]">Evaluate</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Analisar</a>

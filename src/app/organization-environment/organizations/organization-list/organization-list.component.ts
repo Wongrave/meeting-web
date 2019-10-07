@@ -24,6 +24,7 @@ export class OrganizationListComponent implements OnInit {
   newOrganizationForm: FormGroup;
 
   username: string;
+  userId: number;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -68,15 +69,13 @@ export class OrganizationListComponent implements OnInit {
     // });
     
     if(!!this.auth.username) {
-      this.username = this.auth.username;
+      this.userId = this.userService.getUserId();
     } else {
-      this.userService.getUser().subscribe(user => this.username = user.username, err => console.log(err.message));
+      this.userService.getUser().subscribe(user => this.userId = user.sub, err => console.log(err.message));
     }
 
-    this.userService.getUser().subscribe()
-
     this.organizationService
-      .listFromUser(this.username)
+      .listFromUser(this.userId)
       .subscribe(organizations => this.organizations = organizations, err => console.log(err.message));
 
   }

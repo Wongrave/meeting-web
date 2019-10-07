@@ -27,6 +27,7 @@ export class PropositionListComponent implements OnInit {
   newPropositionForm: FormGroup;
 
   username: string;
+  userId: number;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -72,12 +73,12 @@ export class PropositionListComponent implements OnInit {
     
 
     this.username = this.userService.getUsername();
-    
+    this.userId = this.userService.getUserId();
 
     console.log(this.username)
 
     this.propositionService
-      .listFromUser(this.username)
+      .listFromUser(this.userId)
       .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
 
     // let proposition: Proposition;

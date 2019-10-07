@@ -14,7 +14,7 @@ export class PropositionService {
 
     constructor(private http: HttpClient) { }
 
-    listFromUser(user: string) {
+    listFromUser(user: number) {
 
         return this.http
             .get<Proposition[]>(API + '/fromUser/' + user);

@@ -1,33 +1,33 @@
 <div class="container">
   <table class="table">
     <thead>
-      <tr>
-        <th style="display:none;">Proposition Id</th>
-        <th>Description</th>
-        <th>Summary</th>
-        <th class="d-none d-lg-table-cell">Date</th>
-        <th class="d-none d-lg-table-cell">Collection</th>
-        <th> &nbsp; </th>
+      <tr class="row">
+        <th style="display:none;" class="col-0">Proposition Id</th>
+        <th class="col-5 col-md-3">Description</th>
+        <th class="col-5 col-md-3">Summary</th>
+        <th class="d-none d-lg-table-cell col-0 col-md-2">Date</th>
+        <th class="d-none d-lg-table-cell col-0 col-md-2">Collection</th>
+        <th class="col-2"> &nbsp; </th>
       </tr>
     </thead>
-    <tr *ngFor="let proposition of propositions">
-      <td style="display:none;">{{ proposition.id }}</td>
-      <td>{{ proposition.description }}</td>
-      <td>{{ proposition.summary }}</td>
-      <td class="d-none d-lg-table-cell">{{ proposition.date | date: 'EEEE MMMM dd, yyyy' }}</td>
-      <td class="d-none d-lg-table-cell">{{ proposition.collection }}</td>
-      <td><button (click)="selectProposition(proposition.id)" class="btn btn-outline-dark rounded-circle pt-1 pb-0"> <h3> &nbsp;></h3> </button></td>
+    <tr *ngFor="let proposition of propositions" class="row">
+      <td style="display:none;" class="col-0">{{ proposition.id }}</td>
+      <td class="col-5 col-md-3">{{ proposition.description }}</td>
+      <td class="col-5 col-md-3">{{ proposition.summary }}</td>
+      <td class="d-none d-lg-table-cell col-0 col-md-2">{{ proposition.date | date: 'EEEE MMMM dd, yyyy' }}</td>
+      <td class="d-none d-lg-table-cell col-0 col-md-2">{{ proposition.collection }}</td>
+      <td class="col-2"><button (click)="selectProposition(proposition.id)" class="btn btn-outline-dark rounded-circle pt-1 pb-0"> <h3> &nbsp;></h3> </button></td>
     </tr>
-    <tr>
+    <tr class="row">
  
-          <td style="display:none;"></td>
-          <td><input type="text" name="newDescription" id="newDescription" [value]="newDescription"></td>
+          <td style="display:none;" class="col-0"></td>
+          <td class="col-5 col-md-3"><input type="text" name="newDescription" id="newDescription" [value]="newDescription"></td>
           
-          <td><input type="text" name="newSummary" id="newSummary" [value]="newSummary"></td>
+          <td class="col-5 col-md-3"><input type="text" name="newSummary" id="newSummary" [value]="newSummary"></td>
           
-          <td class="d-none d-lg-table-cell"><input type="date" name="newDate" id="newDate" [value]="newDate"></td>
-          <td class="d-none d-lg-table-cell"><input type="text" name="newCollection" id="newCollection" [value]="newCollection"></td>
-          <td><a (click)="newProposition()"> <h3>+</h3> </a></td>
+          <td class="d-none d-lg-table-cell col-0 col-md-2"><input type="date" name="newDate" id="newDate" [value]="newDate"></td>
+          <td class="d-none d-lg-table-cell col-0 col-md-2"><input type="text" name="newCollection" id="newCollection" [value]="newCollection"></td>
+          <td class="col-2"><a (click)="newProposition()"> <h3>+</h3> </a></td>
 
 
       </tr>
