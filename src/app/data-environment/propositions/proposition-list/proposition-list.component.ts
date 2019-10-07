@@ -83,15 +83,6 @@ export class PropositionListComponent implements OnInit {
     // let proposition: Proposition;
     
 
-    this.propositions.forEach(
-      proposition => {
-        if(proposition.summary.length>10){
-          proposition.summary = "..."
-        }
-      }
-
-    )
-
   }
 
 }

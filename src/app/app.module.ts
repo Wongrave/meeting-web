@@ -12,6 +12,8 @@ import { HomeModule } from './home/home.module';
 import { ResultsModule } from './analysis-environment/results/results.module';
 import { OrganizationsModule } from './organization-environment/organizations/organizations.module';
 import { WorkspaceModule } from './data-environment/workspace/workspace.module';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

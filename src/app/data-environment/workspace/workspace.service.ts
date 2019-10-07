@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { Factor } from './factor/factor';
 
 const APIFACTOR = 'http://localhost:8080/factors'
 const APISECTION = 'http://localhost:8080/sections'
@@ -13,8 +14,9 @@ export class WorkspaceService {
 
     constructor(private http: HttpClient) { }
 
-    listFromProposition(user: string) {
-
+    listFromProposition(proposition: number) {
+        return this.http
+            .get<Factor[]>(APIFACTOR + '/fromProposition/' + proposition.toString());
     }
 
 }

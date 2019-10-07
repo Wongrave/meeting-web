@@ -26,7 +26,7 @@ export class NavbarComponent {
         this.proposition$.subscribe(proposition => this.proposition = proposition);
         this.username = this.userService.getUsername();
 
-        this.hrefPropositionFromUser = 'propositions/fromUser/'+this.username;
+        
         
 
         

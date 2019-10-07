@@ -8,16 +8,19 @@ import { SigninComponent } from './home/signin/signin.component';
 import { ResultComponent } from './analysis-environment/results/result/result.component';
 import { HomeComponent } from './home/home.component';
 import { OrganizationListComponent } from './organization-environment/organizations/organization-list/organization-list.component';
+import { WorkspaceComponent } from './data-environment/workspace/workspace.component';
 
 const routes: Routes = [
     { path: '', component: SigninComponent },
     { path: 'user/:userName', component: UserComponent }, 
     { path: 'proposition/add', component: PropositionComponent },
     { path: 'propositions/fromUser/:username', component: PropositionListComponent },
+    { path: 'propositions/fromUser/', component: PropositionListComponent },
     { path: 'organizations/fromUser/:username', component: OrganizationListComponent },
     { path: 'users/84', component: PropositionListComponent }, 
     { path: 'result', component: ResultComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'dashboard', component: WorkspaceComponent },
     
     
 ];
