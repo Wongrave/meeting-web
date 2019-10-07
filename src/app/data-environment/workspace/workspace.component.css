@@ -1,0 +1,5 @@
+.hr-primary{
+    border-bottom: -webkit-linear-gradient(left, rgba(66,133,244,.8), rgba(66, 133, 244,.6), rgba(0,0,0,0));
+    border-bottom-width: 3px;
+    border-bottom-color: red;
+  }
