@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/core/auth/auth.service';
@@ -22,6 +22,8 @@ export class ExpertComponent implements OnInit {
     username: string;
     proposition: Proposition;
     factors: Factor[] = []
+    gce = Math.round(Math.random() * 100);
+    gin = Math.round(Math.random() * 100);
 
 
   constructor(private route: ActivatedRoute,
@@ -31,6 +33,10 @@ export class ExpertComponent implements OnInit {
     private propositionService: PropositionService,
     private userService: UserService ){ }
 
+
+  
+
+  
 
   ngOnInit() {
 
@@ -42,6 +48,9 @@ export class ExpertComponent implements OnInit {
     this.expertService.listFromProposition(this.proposition.id).subscribe(
       factors => this.factors = factors
     )
+
+   
+
 
 
 

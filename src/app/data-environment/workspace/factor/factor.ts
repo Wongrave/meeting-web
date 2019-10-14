@@ -8,5 +8,5 @@ export interface Factor {
     summary : string;
     selected : boolean;
     proposition : Proposition;
-    sections : Section[]
+    sections : Section[];
 }
