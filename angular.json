@@ -30,7 +30,10 @@
               
               "./node_modules/popper.js/dist/umd/popper.js",
               "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/p5/lib/p5.min.js",   
+              "./node_modules/p5/lib/addons/p5.sound.js",   
+              "./node_modules/p5/lib/addons/p5.dom.min.js" 
             ],
             "es5BrowserSupport": true
           },
