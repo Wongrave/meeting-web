@@ -4,7 +4,7 @@ import { Proposition } from './proposition';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-const API = 'http://localhost:8080/propositions'
+const API = 'http://177.70.27.122:8080/propositions'
 const PROPKEY = 'propositionId'
 
 @Injectable({ providedIn: 'root' })
