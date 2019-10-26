@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { UsersModule } from '../users.module';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { User } from 'src/app/core/user/user';
 
 @Component({
     selector: "pd-user",
@@ -12,9 +13,9 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 
 export class UserComponent implements OnInit{
 
-    users: Object[] = [];
+    users: User[] = [];
 
-    user: Object;
+    user: User;
 
     constructor(
         private route: ActivatedRoute,
@@ -28,8 +29,8 @@ export class UserComponent implements OnInit{
         
 
         this.http
-            .get<Object[]>("http://localhost:8080/users/" + this.auth.username)
-            .subscribe(user => this.user = user, err => console.log(err.message));
+            .get<User[]>("http://localhost:8080/users/" + this.auth.username)
+            .subscribe(user => this.users = user, err => console.log(err.message));
     }
 
 }

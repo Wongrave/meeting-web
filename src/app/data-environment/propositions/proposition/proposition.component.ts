@@ -10,6 +10,7 @@ import { Proposition } from './proposition';
 export class PropositionComponent implements OnInit { 
 
     propositions: Proposition[] = [];
+    proposition: Proposition
 
     constructor(private propositionService: PropositionService) { }
 
