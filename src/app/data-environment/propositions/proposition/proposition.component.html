@@ -19,10 +19,10 @@
                     <tbody *ngFor="let proposition of propositions"></tbody>
                         
                         <tr>
-                            <th scope="row"> {{ proposition.a01_codigo }} </th>
-                            <td> {{ proposition.a01_descricao }} </td>
-                            <td> {{ proposition.a01_data.dayOfMonth }}/{{ proposition.a01_data.month }}/{{ proposition.a01_data.year }}</td>
-                            <td> {{ proposition.a01_familia }} </td>
+                            <th scope="row"> {{ proposition.id }} </th>
+                            <td> {{ proposition.description }} </td>
+                            <td> {{ proposition.date }} </td>
+                            <td> {{ proposition.collection }} </td>
                             <td> <button type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-target="#propositionData" aria-expanded="false" aria-controls="propositionData"> + </button></td>
                             
                           </tr>
