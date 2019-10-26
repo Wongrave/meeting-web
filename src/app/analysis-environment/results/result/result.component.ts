@@ -62,7 +62,7 @@ export class ResultComponent implements OnInit {
 
             p.fill(0, 110, 110);
             p.noStroke();
-            p.ellipse(p.windowWidth/2, p.windowHeight/2-(aux/4), aux-20, aux-20);
+            p.ellipse(p.windowWidth/2, aux-(aux/4), aux-20, aux-20);
 
             let value = p.map(counter, -100, 100, -90, 269);
 
@@ -78,9 +78,9 @@ export class ResultComponent implements OnInit {
                 p.fill(200-color,100+color/3,80+color);
                 p.stroke(200-color,100+color/3,80+color);
             }
-            p.arc(p.windowWidth/2, p.windowHeight/2-(aux/4), aux, aux, -90, value, p.PIE);
+            p.arc(p.windowWidth/2, aux-(aux/4), aux, aux, -90, value, p.PIE);
 
-            p.radius = aux-(aux/3);
+            p.radius = aux-(aux/3)-25;
 
             let sizeOfText = p.round(p.map(counter, -100, gcer, 30, 70));
 
@@ -89,7 +89,14 @@ export class ResultComponent implements OnInit {
             p.noStroke();
             p.textFont("Georgia");
             p.textSize(sizeOfText);
-            p.text(p.round(counter), ((p.windowWidth/2) + p.radius * p.cos(value))-25, (p.windowHeight/2-aux2) + p.radius * p.sin(value));
+
+            // if(p.windowWidth<p.windowHeight){
+                 p.text(p.round(counter), ((p.windowWidth/2) + p.radius * p.cos(value))-25, aux-aux2 + p.radius * p.sin(value));
+                
+            //  } else {
+            //     p.text(p.round(counter), ((p.windowWidth/2) + p.radius * p.cos(value))-25, (p.windowHeight/2-aux2) + p.radius * p.sin(value));
+            //  }
+            
         };
       }
 }
