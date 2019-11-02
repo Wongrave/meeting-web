@@ -42,7 +42,7 @@ export class WorkspaceComponent implements OnInit {
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
-    }
+    } 
 
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
