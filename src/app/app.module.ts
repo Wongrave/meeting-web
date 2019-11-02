@@ -15,6 +15,7 @@ import { WorkspaceModule } from './data-environment/workspace/workspace.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ExpertModule } from './expert-environment/expert.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ExpertModule } from './expert-environment/expert.module';
     WorkspaceModule,
     ResultsModule,
     ExpertModule,
-    HomeModule
+    HomeModule,
+    AngularFontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

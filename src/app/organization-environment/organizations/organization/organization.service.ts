@@ -4,7 +4,7 @@ import { Organization } from './organization';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-const API = 'http://177.70.27.122:8080/organizations'
+const API = 'http://localhost:8080/organizations'
 const PROPKEY = 'organizationId'
 
 @Injectable({ providedIn: 'root' })

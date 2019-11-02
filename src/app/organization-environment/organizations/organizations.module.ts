@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { OrganizationComponent } from './organization/organization.component';
 import { OrganizationListComponent } from './organization-list/organization-list.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
     declarations: [ 
@@ -14,7 +15,8 @@ import { OrganizationListComponent } from './organization-list/organization-list
       HttpClientModule,
       CommonModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      AngularFontAwesomeModule,
     ],
     exports: [
         OrganizationComponent

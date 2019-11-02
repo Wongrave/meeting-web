@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Factor } from './factor/factor';
 
-const APIFACTOR = 'http://177.70.27.122:8080/factors'
-const APISECTION = 'http://177.70.27.122:8080/sections'
+const APIFACTOR = 'http://localhost:8080/factors'
+const APISECTION = 'http://localhost:8080/sections'
 
 @Injectable({ providedIn: 'root' })
 export class WorkspaceService {

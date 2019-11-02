@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PropositionComponent } from './proposition/proposition.component';
 import { PropositionListComponent } from './proposition-list/proposition-list.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
     declarations: [ 
@@ -14,7 +15,8 @@ import { PropositionListComponent } from './proposition-list/proposition-list.co
       HttpClientModule,
       CommonModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      AngularFontAwesomeModule,
     ],
     exports: [
         PropositionComponent

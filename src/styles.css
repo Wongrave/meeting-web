@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+.btn-select {
+    width: 40px;
+    height: 40px;
+}
+
+.btn-primary{
+    background-color: teal;
+    border-color: teal;
+}
+
+.btn-outline-primary{
+    color: teal;
+    border-color: teal;
+}
+
+.btn-outline-primary:hover{
+    background-color: teal;
+    border-color: teal;
+}
+
