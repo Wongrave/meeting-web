@@ -5,10 +5,12 @@ import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 const API = 'http://localhost:8080/organizations'
-const PROPKEY = 'organizationId'
+const ORGKEY = 'organizationId'
 
 @Injectable({ providedIn: 'root' })
 export class OrganizationService {
+
+    organizationId: number
 
     private organizationSubject = new BehaviorSubject<Organization>(null);
 
@@ -42,13 +44,13 @@ export class OrganizationService {
 
     setOrganization(organization){
         
-        window.localStorage.setItem(PROPKEY, organization);
+        window.localStorage.setItem(ORGKEY, organization);
     }
 
     decodify(){
-        const organization = window.localStorage.getItem(PROPKEY);
-        const prop = JSON.parse(organization) as Organization;
-        this.organizationSubject.next(prop);
+        const organization = window.localStorage.getItem(ORGKEY);
+        const org = JSON.parse(organization) as Organization;
+        this.organizationSubject.next(org);
     }
 
     getOrganization() {
@@ -56,8 +58,15 @@ export class OrganizationService {
         return this.organizationSubject.asObservable();
     }
 
+    getOrganizationId() {
+        const organization = window.localStorage.getItem(ORGKEY)
+        const org = JSON.parse(organization) as Organization
+        return org.id
+        
+    }
+
     removeOrganization() {
-        window.localStorage.removeItem(PROPKEY);
+        window.localStorage.removeItem(ORGKEY);
     }
 
     newOrganization( description: string, summary: string, active: true){

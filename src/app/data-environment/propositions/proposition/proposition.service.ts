@@ -60,9 +60,9 @@ export class PropositionService {
         window.localStorage.removeItem(PROPKEY);
     }
 
-    newProposition( description: string, summary: string, date: Date, collection: string){
-        
-        return this.http.post(API+'/new', { description, summary, date, collection }).subscribe();
+    newProposition( userId: number, organizationId: number, description: string, summary: string, date: Date, collection: string){
+        console.log(organizationId + ' eh o id')
+        return this.http.post(API+'/new', { userId, organizationId, description, summary, date, collection }).subscribe();
 
     }
 

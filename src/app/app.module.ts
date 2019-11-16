@@ -16,11 +16,13 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ExpertModule } from './expert-environment/expert.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { RefreshComponent } from './refresh/refresh.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    RefreshComponent,
     PropositionFormComponent
   ],
   imports: [

@@ -6,7 +6,6 @@ import { formatDate } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { User } from 'src/app/core/user/user';
-import { stringify } from '@angular/core/src/render3/util';
 import { PropositionService } from '../data-environment/propositions/proposition/proposition.service';
 import { Proposition } from '../data-environment/propositions/proposition/proposition';
 import { Factor } from '../data-environment/workspace/factor/factor';

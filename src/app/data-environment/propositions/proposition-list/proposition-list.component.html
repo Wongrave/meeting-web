@@ -21,13 +21,13 @@
     <tr class="row">
  
           <td style="display:none;" class="col-0"></td>
-          <td class="col-5 col-md-3"><input type="text" name="newDescription" id="newDescription" [value]="newDescription"></td>
+          <td class="col-5 col-md-3"><input type="text" name="newDescription" id="newDescription" [(value)]="newDescription" #description></td>
           
-          <td class="col-5 col-md-3"><input type="text" name="newSummary" id="newSummary" [value]="newSummary"></td>
+          <td class="col-5 col-md-3"><input type="text" name="summary" id="summary" [(value)]="newSummary" #summary></td>
           
-          <td class="d-none d-lg-table-cell col-0 col-md-2"><input type="date" name="newDate" id="newDate" [value]="newDate"></td>
-          <td class="d-none d-lg-table-cell col-0 col-md-2"><input type="text" name="newCollection" id="newCollection" [value]="newCollection"></td>
-          <td class="col-2"><a (click)="newProposition()"> <h3>+</h3> </a></td>
+          <td class="d-none d-lg-table-cell col-0 col-md-2"><input type="date" name="newDate" id="newDate" [(value)]="newDate" #date></td>
+          <td class="d-none d-lg-table-cell col-0 col-md-2"><input type="text" name="newCollection" id="newCollection" [(value)]="newCollection" #collection></td>
+          <td class="col-2"><button (click)="newProposition(description.value, summary.value, date.value, collection.value)" class="btn btn-outline-primary btn-select"> <fa name="plus"></fa> </button></td>
 
 
       </tr>

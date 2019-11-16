@@ -12,7 +12,7 @@ export class SigninComponent implements OnInit {
 
     user: Object;
     loginForm: FormGroup;
-    @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
+    @ViewChild('userNameInput', {static: false}) userNameInput: ElementRef<HTMLInputElement>;
 
     constructor(
         private formBuilder: FormBuilder,

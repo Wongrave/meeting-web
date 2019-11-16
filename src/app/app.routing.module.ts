@@ -11,6 +11,7 @@ import { OrganizationListComponent } from './organization-environment/organizati
 import { WorkspaceComponent } from './data-environment/workspace/workspace.component';
 import { AuthGuard } from './core/auth/auth.guard';
 import { ExpertComponent } from './expert-environment/expert.component';
+import { RefreshComponent } from './refresh/refresh.component';
 
 const routes: Routes = [
     { 
@@ -57,6 +58,10 @@ const routes: Routes = [
     { 
         path: 'evidences/fromUser/:username', 
         component: ExpertComponent 
+    },
+    { 
+        path: 'refresh', 
+        component: RefreshComponent 
     },
     
 ];
