@@ -60,7 +60,7 @@ export class PropositionListComponent implements OnInit {
 
   newProposition(description: string, summary: string, date: Date, collection: string) {
   
-
+    
     this.propositionService
       .newProposition(this.userId, this.organizationId, description, summary, date, collection);
 

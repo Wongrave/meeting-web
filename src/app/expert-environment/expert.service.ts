@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Factor } from '../data-environment/workspace/factor/factor';
 
-const APIFACTOR = 'http://localhost:8080/factors'
+const APIFACTOR = 'http://177.70.27.122:8080/factors'
 
 @Injectable({ providedIn: 'root' })
 export class ExpertService {
