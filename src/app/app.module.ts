@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExpertModule } from './expert-environment/expert.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RefreshComponent } from './refresh/refresh.component';
+import { ManagementModule } from './organization-environment/management/management.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RefreshComponent } from './refresh/refresh.component';
     UsersModule,
     PropositionsModule,
     OrganizationsModule,
+    ManagementModule,
     WorkspaceModule,
     ResultsModule,
     ExpertModule,

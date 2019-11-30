@@ -8,24 +8,15 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Organization } from '../organizations/organization/organization';
 
 @Component({
-  styleUrls: ['./workspace.component.css'],
-  selector: 'pd-workspace',
-  templateUrl: './workspace.component.html'
+  selector: 'pd-management',
+  templateUrl: './management.component.html'
 })
-export class WorkspaceComponent implements OnInit {
+export class ManagementComponent implements OnInit {
 
   organization: Organization;
   username: string;
-  factors: Factor[] = []
 
-  constructor(private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient,
-    private auth: AuthService,
-    private formBuilder: FormBuilder,
-    private userService: UserService,
-    private propositionService: PropositionService,
-    private workspaceService: WorkspaceService,
+  constructor(
     private modalService: NgbModal ){ }
     
     closeResult: string;
@@ -49,14 +40,7 @@ export class WorkspaceComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.username = this.userService.getUsername();
-    this.propositionService.getProposition().subscribe(
-      proposition => this.proposition = proposition
-    )
-
-    this.workspaceService.listFromProposition(this.proposition.id).subscribe(
-      factors => this.factors = factors
-    )
+    
 
 
 
