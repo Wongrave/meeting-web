@@ -25,10 +25,6 @@ export class NavbarComponent {
         this.proposition$ = propositionService.getProposition();
         this.proposition$.subscribe(proposition => this.proposition = proposition);
         this.username = this.userService.getUsername();
-
-        
-        
-
         
     }
 
