@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { Organization } from '../organization/organization';
 import { OrganizationService } from '../organization/organization.service';
-import { formatDate } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { User } from 'src/app/core/user/user';
@@ -26,6 +26,7 @@ export class OrganizationListComponent implements OnInit {
   userId: number;
 
   constructor(private route: ActivatedRoute,
+    private location: Location,
     private router: Router,
     private http: HttpClient,
     private auth: AuthService,
@@ -51,10 +52,15 @@ export class OrganizationListComponent implements OnInit {
   }
 
 
-  newOrganization() {
+  newOrganization(description: string, summary: string) {
     
     this.organizationService
-      .newOrganization(this.newDescription, this.newSummary, true);
+      .newOrganization(description, summary, true);
+
+    this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+	    console.log(decodeURI(this.location.path()))
+	    this.router.navigate([decodeURI(this.location.path())])
+    })
 
   }
 
