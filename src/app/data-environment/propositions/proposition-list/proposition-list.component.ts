@@ -30,7 +30,8 @@ export class PropositionListComponent implements OnInit {
   userId: number;
   organizationId: number;
 
-  constructor(private route: ActivatedRoute,
+  constructor (
+    private route: ActivatedRoute,
     private router: Router,
     private location: Location,
     private http: HttpClient,
@@ -38,7 +39,8 @@ export class PropositionListComponent implements OnInit {
     private propositionService: PropositionService,
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private organizationService: OrganizationService ){ }
+    private organizationService: OrganizationService 
+    ) { }
 
 
   selectProposition(id: number){
@@ -83,7 +85,7 @@ export class PropositionListComponent implements OnInit {
 
     this.username = this.userService.getUsername();
     this.userId = this.userService.getUserId();
-    console.log(this.organizationService.getOrganizationId() + ' antes')
+    console.log(this.organizationService.getOrganizationId() + '  before')
     this.organizationId = this.organizationService.getOrganizationId()
 
 

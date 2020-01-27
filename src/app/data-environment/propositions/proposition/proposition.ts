@@ -10,4 +10,5 @@ export interface Proposition {
 	summary:string;
 	date:Date;
 	collection:string;
+	
 }

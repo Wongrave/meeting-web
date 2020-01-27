@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { BusinessUnit } from './business-unit/business-unit';
 
-const APIFACTOR = 'http://localhost:8080/factors'
-const APISECTION = 'http://localhost:8080/sections'
+const APIBUSINESSUNIT = 'http://177.70.27.122:8080/businessunits'
+const APISECTION = 'http://177.70.27.122:8080/sections'
 
 @Injectable({ providedIn: 'root' })
 export class ManagementService {
@@ -16,7 +16,7 @@ export class ManagementService {
 
     listFromProposition(proposition: number) {
         return this.http
-            .get<BusinessUnit[]>(APIFACTOR + '/fromProposition/' + proposition.toString());
+            .get<BusinessUnit[]>(APIBUSINESSUNIT + '/fromOrganization/' + proposition.toString());
     }
 
 }
