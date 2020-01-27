@@ -16,8 +16,9 @@
       <td class="col-2"><button (click)="selectOrganization(organization.id)" class="btn btn-outline-primary btn-select"> <fa name="caret-right"></fa> </button></td>
     </tr>
     <tr class="row">
- 
+
           <td style="display:none;"></td>
+
           <td class="col-5"><input type="text" name="newDescription" id="newDescription" [value]="newDescription" #description></td>
           
           <td class="col-5"><input type="text" name="newSummary" id="newSummary" [value]="newSummary" #summary></td>
@@ -25,9 +26,10 @@
 	  <td class="col-2"><button (click)="newOrganization(description.value, summary.value)" class="btn btn-outline-primary btn-select"> <fa name="plus"></fa></button></td>
 
 
+
       </tr>
-    
-    
-   
+
+
+
   </table>
 </div>

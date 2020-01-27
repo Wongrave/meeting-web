@@ -29,6 +29,7 @@ export class OrganizationListComponent implements OnInit {
     private location: Location,
     private router: Router,
     private http: HttpClient,
+    private location: Location,
     private auth: AuthService,
     private organizationService: OrganizationService,
     private formBuilder: FormBuilder,
@@ -36,7 +37,7 @@ export class OrganizationListComponent implements OnInit {
 
 
   selectOrganization(id: number){
-    
+
     this.userService.getUser().subscribe(user => this.username = user.username, err => console.log(err.message))
 
     this.organizationService.selectOrganization(id)
@@ -44,7 +45,7 @@ export class OrganizationListComponent implements OnInit {
         () => this.router.navigate(['propositions/fromUser', this.username]),
 
         err => {
-            console.log('erro na escolha')                    
+            console.log('erro na escolha')
         }
       )
     console.log(id);
@@ -53,7 +54,7 @@ export class OrganizationListComponent implements OnInit {
 
 
   newOrganization(description: string, summary: string) {
-    
+
     this.organizationService
       .newOrganization(description, summary, true);
 
@@ -61,6 +62,7 @@ export class OrganizationListComponent implements OnInit {
 	    console.log(decodeURI(this.location.path()))
 	    this.router.navigate([decodeURI(this.location.path())])
     })
+
 
   }
 
@@ -72,7 +74,7 @@ export class OrganizationListComponent implements OnInit {
     //   newDate: ['', Validators.required],
     //   newCollection: ['', Validators.required]
     // });
-    
+
     if(!!this.auth.username) {
       this.userId = this.userService.getUserId();
     } else {
