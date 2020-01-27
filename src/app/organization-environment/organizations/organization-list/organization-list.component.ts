@@ -11,7 +11,7 @@ import { User } from 'src/app/core/user/user';
 
 @Component({
   selector: 'app-organization-list',
-  templateUrl: './organization-list.component.html'
+  templateUrl: './organization-list.component.html',
 })
 export class OrganizationListComponent implements OnInit {
 
@@ -24,9 +24,11 @@ export class OrganizationListComponent implements OnInit {
 
   username: string;
   userId: number;
+  organizationId: number;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private http: HttpClient,
     private location: Location,
     private auth: AuthService,
@@ -55,12 +57,18 @@ export class OrganizationListComponent implements OnInit {
   newOrganization(description: string, summary: string) {
 
     this.organizationService
+      .newOrganization(description, summary, true);
+
+
+    this.organizationService
       .newOrganization(description, summary, true, );
+
 
       this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
         console.log(decodeURI(this.location.path()))
         this.router.navigate([decodeURI(this.location.path())])
-     })
+    })
+
 
   }
 
