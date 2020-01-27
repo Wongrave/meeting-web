@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { Organization } from '../organization/organization';
 import { OrganizationService } from '../organization/organization.service';
-import { formatDate } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { User } from 'src/app/core/user/user';
 
 @Component({
   selector: 'app-organization-list',
-  templateUrl: './organization-list.component.html'
+  templateUrl: './organization-list.component.html',
 })
 export class OrganizationListComponent implements OnInit {
 
@@ -24,9 +24,11 @@ export class OrganizationListComponent implements OnInit {
 
   username: string;
   userId: number;
+  organizationId: number;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private http: HttpClient,
     private auth: AuthService,
     private organizationService: OrganizationService,
@@ -51,10 +53,15 @@ export class OrganizationListComponent implements OnInit {
   }
 
 
-  newOrganization() {
+  newOrganization(description: string, summary: string) {
     
     this.organizationService
-      .newOrganization(this.newDescription, this.newSummary, true);
+      .newOrganization(description, summary, true);
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+    })
 
   }
 
@@ -66,7 +73,9 @@ export class OrganizationListComponent implements OnInit {
     //   newDate: ['', Validators.required],
     //   newCollection: ['', Validators.required]
     // });
-    
+
+
+
     if(!!this.auth.username) {
       this.userId = this.userService.getUserId();
     } else {
