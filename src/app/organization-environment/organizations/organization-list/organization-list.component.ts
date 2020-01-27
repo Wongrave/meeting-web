@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { Organization } from '../organization/organization';
 import { OrganizationService } from '../organization/organization.service';
-import { formatDate } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { User } from 'src/app/core/user/user';
@@ -28,6 +28,7 @@ export class OrganizationListComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
+    private location: Location,
     private auth: AuthService,
     private organizationService: OrganizationService,
     private formBuilder: FormBuilder,
@@ -35,7 +36,7 @@ export class OrganizationListComponent implements OnInit {
 
 
   selectOrganization(id: number){
-    
+
     this.userService.getUser().subscribe(user => this.username = user.username, err => console.log(err.message))
 
     this.organizationService.selectOrganization(id)
@@ -43,7 +44,7 @@ export class OrganizationListComponent implements OnInit {
         () => this.router.navigate(['propositions/fromUser', this.username]),
 
         err => {
-            console.log('erro na escolha')                    
+            console.log('erro na escolha')
         }
       )
     console.log(id);
@@ -51,10 +52,15 @@ export class OrganizationListComponent implements OnInit {
   }
 
 
-  newOrganization() {
-    
+  newOrganization(description: string, summary: string) {
+
     this.organizationService
-      .newOrganization(this.newDescription, this.newSummary, true);
+      .newOrganization(description, summary, true, );
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+     })
 
   }
 
@@ -66,7 +72,7 @@ export class OrganizationListComponent implements OnInit {
     //   newDate: ['', Validators.required],
     //   newCollection: ['', Validators.required]
     // });
-    
+
     if(!!this.auth.username) {
       this.userId = this.userService.getUserId();
     } else {
