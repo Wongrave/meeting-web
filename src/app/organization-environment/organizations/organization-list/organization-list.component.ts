@@ -26,15 +26,13 @@ export class OrganizationListComponent implements OnInit {
   userId: number;
   organizationId: number;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
-    private location: Location,
-    private http: HttpClient,
     private location: Location,
     private auth: AuthService,
     private organizationService: OrganizationService,
-    private formBuilder: FormBuilder,
-    private userService: UserService ){ }
+    private userService: UserService 
+    ){ }
 
 
   selectOrganization(id: number){
