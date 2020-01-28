@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Factor } from './factor/factor';
+import { Proposition } from '../propositions/proposition/proposition';
 
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
 const APISECTION = 'http://177.70.27.122:8080/sections'
@@ -17,6 +18,11 @@ export class WorkspaceService {
     listFromProposition(proposition: number) {
         return this.http
             .get<Factor[]>(APIFACTOR + '/fromProposition/' + proposition.toString());
+    }
+
+    newFactor( tag: string, description: string, summary: string, selected: boolean, proposition: Proposition){
+        return this.http.post(APIFACTOR+'/new', { tag, description, summary, selected, proposition }).subscribe();
+
     }
 
 }
