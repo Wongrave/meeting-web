@@ -11,6 +11,7 @@ import { PropositionService } from '../propositions/proposition/proposition.serv
 import { Factor } from './factor/factor';
 import { WorkspaceService } from './workspace.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Section } from './section/section'
 
 @Component({
   styleUrls: ['./workspace.component.css'],
@@ -24,6 +25,10 @@ export class WorkspaceComponent implements OnInit {
   newFactorDescription = "";
   newFactorSummary = "";
   newFactorSelected = false;
+  newSectionTag = "";
+  newSectionDescription = "";
+  newSectionSummary = "";
+  newSectionSelected = false;
   username: string;
   factors: Factor[] = []
 
@@ -73,11 +78,17 @@ export class WorkspaceComponent implements OnInit {
         });
 
     }
-    newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor){
-      this.workspaceService.newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor)
+
+
+    newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor ) {
+      this.workspaceService
+        .newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor);
+
       this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
         console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])});
+        this.router.navigate([decodeURI(this.location.path())])
+      });
+
     }
 
   ngOnInit(): void {
@@ -89,9 +100,6 @@ export class WorkspaceComponent implements OnInit {
     this.workspaceService.listFromProposition(this.proposition.id).subscribe(
       factors => this.factors = factors
     )
-
-    
-
 
   }
 
