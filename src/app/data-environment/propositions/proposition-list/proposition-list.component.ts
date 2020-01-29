@@ -47,7 +47,7 @@ export class PropositionListComponent implements OnInit {
 
     this.propositionService.selectProposition(id)
       .subscribe(
-        () => this.router.navigate(['home']),
+        () => this.router.navigate(['dashboard']),
 
         err => {
             console.log('erro na escolha')
