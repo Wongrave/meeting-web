@@ -9,27 +9,27 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-                <label for="description">Nome</label>
-                <input id="description" class="form-control" name="description">
+                <label for="newFactorDescription">Nome</label>
+                <input id="newFactorDescription" class="form-control" name="newFactorDescription" [(value)]="newFactorDescription" #factorDescription>
                 <hr />
-                <label for="tag">Sigla</label>
-                <input id="tag" class="form-control" name="tag">
+                <label for="newFactorTag">Sigla</label>
+                <input id="newFactorTag" class="form-control" name="newFactorTag" [(value)]="newFactorTag" #factorTag>
                 <hr />
-                <label for="summary">Resumo</label>
-                <textarea class="form-control" id="summary" rows="3" name="summary"></textarea>
+                <label for="newFactorSummary">Resumo</label>
+                <textarea class="form-control" id="newFactorSummary" rows="3" name="newFactorSummary" [(value)]="newFactorSummary" #factorSummary></textarea>
                 <hr />
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" value="" id="selected">
-                  <label class="form-check-label" for="selected">
+                  <input class="form-check-input" type="checkbox" value="" id="newFactorSelected" [(checked)]="newFactorSelected" #factorSelected>
+                  <label class="form-check-label" for="newFactorSelected">
                     Replicar Seção
                   </label>
                 </div>
-              
+
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Adicionar</button>
+          <button type="button" class="btn btn-outline-primary" (click)="newFactor(factorTag.value, factorDescription.value, factorSummary.value, factorSelected.checked)">Adicionar</button>
         </div>
       </ng-template>
     <button class="btn btn-info mt-2 float-right" (click)="open(content)"> Novo Criterio </button>
@@ -46,17 +46,17 @@
             </div>
             <div class="col-6 col-md-2 mt-2"><a data-toggle="collapse" attr.data-target="#newSection{{factor.id}}"> Nova Seção </a> </div>
             <div class="col-6 col-md-1 mt-2"><button class="btn btn-info" data-toggle="collapse" attr.data-target="#sections{{factor.id}}" [disabled]="factor.sections.length == 0"> V </button></div>
-            
+
         </div>
         <div class="row collapse" id="sections{{factor.id}}">
             <div class="card col-12 col-md-3 mt-2" *ngFor="let section of factor.sections">
                 <div class="card-body">
                     <h4 class="card-title">{{section.tag}}</h4>
-                    <p class="card-text">{{section.description}}</p> 
+                    <p class="card-text">{{section.description}}</p>
                     <p class="text-muted">{{section.summary}}</p>
                 </div>
             </div>
-            
+
         </div>
         <div class="card col-12 col-md-3 collapse mt-2" id="newSection{{factor.id}}">
             <div class="card-body">
@@ -65,9 +65,9 @@
                 <p class="text-muted"><input type="text" placeholder="Summary"></p>
             </div>
         </div>
-        
+
         <div><hr /></div>
     </span>
-    
-    
+
+
 </div>
