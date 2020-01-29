@@ -91,6 +91,18 @@ export class WorkspaceComponent implements OnInit {
 
     }
 
+    newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor ) {
+
+      this.workspaceService
+        .newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor);
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      });
+
+    }
+
   ngOnInit(): void {
     this.username = this.userService.getUsername();
     this.propositionService.getProposition().subscribe(
