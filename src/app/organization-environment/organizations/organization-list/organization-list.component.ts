@@ -57,11 +57,6 @@ export class OrganizationListComponent implements OnInit {
     this.organizationService
       .newOrganization(description, summary, true);
 
-
-    this.organizationService
-      .newOrganization(description, summary, true, );
-
-
       this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
         console.log(decodeURI(this.location.path()))
         this.router.navigate([decodeURI(this.location.path())])

@@ -32,12 +32,14 @@ export class WorkspaceComponent implements OnInit {
   username: string;
   factors: Factor[] = []
 
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private location: Location,
+
     private userService: UserService,
     private propositionService: PropositionService,
     private workspaceService: WorkspaceService,
