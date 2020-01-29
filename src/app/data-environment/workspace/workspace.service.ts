@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Factor } from './factor/factor';
 import { Proposition } from '../propositions/proposition/proposition';
+import { Section } from './section/section';
 
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
 const APISECTION = 'http://177.70.27.122:8080/sections'
@@ -23,6 +24,10 @@ export class WorkspaceService {
     newFactor( tag: string, description: string, summary: string, selected: boolean, proposition: Proposition){
         return this.http.post(APIFACTOR+'/new', { tag, description, summary, selected, proposition }).subscribe();
 
+    }
+
+    newSection(tag: string, description: string, summary: string , selected: boolean, factor: Factor) {
+      return this.http.post(APISECTION+'/new',{ tag, description, summary, selected, factor }).subscribe();
     }
 
 }
