@@ -33,6 +33,8 @@ export class WorkspaceComponent implements OnInit {
   factors: Factor[] = []
 
 
+
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
@@ -54,6 +56,11 @@ export class WorkspaceComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
+
+    visible = false;
+  toggle() {
+   this.visible = !this.visible;
+  }
 
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
