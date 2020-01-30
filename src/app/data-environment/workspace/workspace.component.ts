@@ -81,10 +81,11 @@ export class WorkspaceComponent implements OnInit {
 
   }
 
-  async deleteFactor(id: number) {
+    async deleteFactor(id: number) {
 
-    await this.workspaceService
-      .deleteFactor(id)
+      await this.workspaceService
+        .deleteFactor(id)
+
 
     this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
       console.log(decodeURI(this.location.path()))
@@ -104,11 +105,24 @@ export class WorkspaceComponent implements OnInit {
     });
 
   }
+  
+    async deleteSection(id: number) {
 
-  visible = false;
-  toggle() {
-    this.visible = !this.visible;
-  }
+      await this.workspaceService
+              .deleteSection(id)
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      });
+
+    }
+
+    visible = false;
+    toggle() {
+      this.visible = !this.visible;
+    }
+
 
   ngOnInit(): void {
     this.username = this.userService.getUsername();
