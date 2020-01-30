@@ -22,20 +22,21 @@ export class WorkspaceService {
             .get<Factor[]>(APIFACTOR + '/fromProposition/' + proposition.toString());
     }
 
-    newFactor( tag: string, description: string, summary: string, selected: boolean, proposition: Proposition ){
-        return this.http.post(APIFACTOR+'/new', { tag, description, summary, selected, proposition }).subscribe();
+    newFactor(tag: string, description: string, summary: string, selected: boolean, proposition: Proposition) {
+        return this.http.post(APIFACTOR + '/new', { tag, description, summary, selected, proposition }).subscribe();
     }
 
-    newSection( tag: string, description: string, summary: string, selected: boolean, factor: Factor ) {
-        return this.http.post(APISECTION+'/new', { tag, description, summary, selected, factor }).subscribe();
+    newSection(tag: string, description: string, summary: string, selected: boolean, factor: Factor) {
+        return this.http.post(APISECTION + '/new', { tag, description, summary, selected, factor }).subscribe();
     }
 
 
     deleteFactor(id: number) {
-      this.http.post(APIFACTOR+'/delete/'+id, {}).subscribe();
+        return this.http.post(APIFACTOR + '/delete/' + id, {}).toPromise();
+
     }
 
     deleteSection(id: number) {
-      this.http.post(APISECTION+'/delete/'+id, {}).subscribe();
+        this.http.post(APISECTION + '/delete/' + id, {}).subscribe();
     }
 }

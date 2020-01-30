@@ -45,70 +45,70 @@ export class WorkspaceComponent implements OnInit {
     private userService: UserService,
     private propositionService: PropositionService,
     private workspaceService: WorkspaceService,
-    private modalService: NgbModal ){ }
+    private modalService: NgbModal) { }
 
-    closeResult: string;
+  closeResult: string;
 
-    open(content) {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
     }
+  }
 
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
-    }
+  newFactor(newFactorTag: string, newFactorDescription: string, newFactorSummary: string, newFactorSelected: boolean) {
 
-    newFactor(newFactorTag: string, newFactorDescription: string, newFactorSummary: string, newFactorSelected: boolean) {
+    this.workspaceService
+      .newFactor(newFactorTag, newFactorDescription, newFactorSummary, newFactorSelected, this.proposition);
 
-      this.workspaceService
-        .newFactor(newFactorTag, newFactorDescription, newFactorSummary, newFactorSelected, this.proposition);
+    this.modalService.dismissAll();
 
-        this.modalService.dismissAll();
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+      console.log(decodeURI(this.location.path()))
+      this.router.navigate([decodeURI(this.location.path())])
+    });
 
-        this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-          console.log(decodeURI(this.location.path()))
-          this.router.navigate([decodeURI(this.location.path())])
-        });
+  }
 
-    }
+  async deleteFactor(id: number) {
 
-    deleteFactor(id: number) {
+    await this.workspaceService
+      .deleteFactor(id)
 
-      this.workspaceService
-        .deleteFactor(id)
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+      console.log(decodeURI(this.location.path()))
+      this.router.navigate([decodeURI(this.location.path())])
+    });
 
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-      });
+  }
 
-    }
+  newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor) {
 
-    newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor ) {
+    this.workspaceService
+      .newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor);
 
-      this.workspaceService
-        .newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor);
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+      console.log(decodeURI(this.location.path()))
+      this.router.navigate([decodeURI(this.location.path())])
+    });
 
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-      });
+  }
 
-    }
-
-    visible = false;
-    toggle() {
-      this.visible = !this.visible;
-    }
+  visible = false;
+  toggle() {
+    this.visible = !this.visible;
+  }
 
   ngOnInit(): void {
     this.username = this.userService.getUsername();
