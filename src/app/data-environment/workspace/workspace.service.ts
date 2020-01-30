@@ -29,6 +29,7 @@ export class WorkspaceService {
         return this.http.post(APISECTION+'/new', { tag, description, summary, selected, factor }).subscribe();
     }
 
+
     deleteFactor(id: number) {
       return this.http.post(APIFACTOR+'/delete/'+id,{})
     }
