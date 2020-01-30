@@ -70,8 +70,19 @@
           <p class="card-text">{{section.description}}</p>
           <p class="text-muted">{{section.summary}}</p>
         </div>
-      </div>
-
+        <div class="row collapse" id="sections{{factor.id}}">
+            <div class="card col-12 col-md-3 mt-2" *ngFor="let section of factor.sections">
+                <div class="card-body">
+                    <div class="float-right">
+                      <button class="btn btn-outline-danger" (click)="deleteSection(section.id)">
+                        <fa name="times"></fa>
+                      </button>
+                    </div>
+                    <h4 class="card-title">{{section.tag}}</h4>
+                    <p class="card-text">{{section.description}}</p>
+                    <p class="text-muted">{{section.summary}}</p>
+                </div>
+            </div>
     </div>
     <div class="card col-12 col-md-3 collapse mt-2" id="newSection{{factor.id}}">
       <div class="card-body">

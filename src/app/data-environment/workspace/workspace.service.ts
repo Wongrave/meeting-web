@@ -32,11 +32,11 @@ export class WorkspaceService {
 
 
     deleteFactor(id: number) {
-        return this.http.post(APIFACTOR + '/delete/' + id, {}).toPromise();
-
+      return this.http.post(APIFACTOR+'/delete/'+id, {}).toPromise();
     }
 
     deleteSection(id: number) {
-        this.http.post(APISECTION + '/delete/' + id, {}).subscribe();
+      return this.http.post(APISECTION+'/delete/'+id, {}).toPromise();
+
     }
 }
