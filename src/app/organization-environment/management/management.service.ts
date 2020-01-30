@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BusinessUnit } from './business-unit/business-unit';
 
 const APIBUSINESSUNIT = 'http://177.70.27.122:8080/businessunits'
-const APISECTION = 'http://177.70.27.122:8080/sections'
+const APIDEPARTMENT = 'http://177.70.27.122:8080/departments'
 
 @Injectable({ providedIn: 'root' })
 export class ManagementService {
@@ -14,7 +14,7 @@ export class ManagementService {
 
     constructor(private http: HttpClient) { }
 
-    listFromProposition(proposition: number) {
+    listFromOrganization(proposition: number) {
         return this.http
             .get<BusinessUnit[]>(APIBUSINESSUNIT + '/fromOrganization/' + proposition.toString());
     }
