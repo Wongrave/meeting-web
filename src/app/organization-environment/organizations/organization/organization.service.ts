@@ -26,28 +26,28 @@ export class OrganizationService {
     selectOrganization(id: number) {
 
         return this.http
-            .get(API + '/' + id, 
-            { observe: 'body', responseType: 'text'} )
+            .get(API + '/' + id,
+                { observe: 'body', responseType: 'text' })
             .pipe(map(
                 res => {
                     const org = res;
                     this.setOrganization(org.toString());
                 }
             ))
-            
+
 
     }
 
-    hasOrganization(){
+    hasOrganization() {
         return !!this.getOrganization();
     }
 
-    setOrganization(organization){
-        
+    setOrganization(organization) {
+
         window.localStorage.setItem(ORGKEY, organization);
     }
 
-    decodify(){
+    decodify() {
         const organization = window.localStorage.getItem(ORGKEY);
         const org = JSON.parse(organization) as Organization;
         this.organizationSubject.next(org);
@@ -62,16 +62,16 @@ export class OrganizationService {
         const organization = window.localStorage.getItem(ORGKEY)
         const org = JSON.parse(organization) as Organization
         return org.id
-        
+
     }
 
     removeOrganization() {
         window.localStorage.removeItem(ORGKEY);
     }
 
-    newOrganization( description: string, summary: string, active: true){
-        
-        return this.http.post(API+'/new', { description, summary, active }).subscribe();
+    newOrganization(description: string, summary: string, active: true) {
+
+        return this.http.post(API + '/new', { description, summary, active }).subscribe();
 
     }
 
