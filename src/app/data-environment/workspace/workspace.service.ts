@@ -30,10 +30,10 @@ export class WorkspaceService {
     }
 
     deleteFactor(id: number) {
-      return this.http.post(APIFACTOR+'/delete/'+id,{})
+      return this.http.post(APIFACTOR+'/delete/'+id, {}).toPromise();
     }
 
     deleteSection(id: number) {
-      return this.http.post(APISECTION+'/delete/'+id,{})
+      return this.http.post(APISECTION+'/delete/'+id, {}).toPromise();
     }
 }

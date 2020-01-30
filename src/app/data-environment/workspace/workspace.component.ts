@@ -81,9 +81,9 @@ export class WorkspaceComponent implements OnInit {
 
     }
 
-    deleteFactor(id: number) {
+    async deleteFactor(id: number) {
 
-      this.workspaceService
+      await this.workspaceService
         .deleteFactor(id)
 
       this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
@@ -97,6 +97,18 @@ export class WorkspaceComponent implements OnInit {
 
       this.workspaceService
         .newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor);
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      });
+
+    }
+
+    async deleteSection(id: number) {
+
+      await this.workspaceService
+              .deleteSection(id)
 
       this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
         console.log(decodeURI(this.location.path()))
