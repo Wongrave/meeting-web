@@ -28,4 +28,12 @@ export class WorkspaceService {
     newSection( tag: string, description: string, summary: string, selected: boolean, factor: Factor ) {
         return this.http.post(APISECTION+'/new', { tag, description, summary, selected, factor }).subscribe();
     }
+
+    deleteFactor( id: number) {
+        return this.http.post(APIFACTOR+'/delete/'+id, {})
+    }
+
+    deleteSection( id: number) {
+        return this.http.post(APISECTION+'/delete/'+id, {})
+    }
 }
