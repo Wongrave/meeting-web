@@ -57,11 +57,6 @@ export class WorkspaceComponent implements OnInit {
       });
     }
 
-    visible = false;
-  toggle() {
-   this.visible = !this.visible;
-  }
-
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
@@ -83,6 +78,18 @@ export class WorkspaceComponent implements OnInit {
           console.log(decodeURI(this.location.path()))
           this.router.navigate([decodeURI(this.location.path())])
         });
+
+    }
+
+    deleteFactor(id: number) {
+
+      this.workspaceService
+        .deleteFactor(id)
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      });
 
     }
 
