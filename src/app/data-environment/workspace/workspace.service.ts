@@ -9,6 +9,7 @@ import { Section } from './section/section';
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
 const APISECTION = 'http://177.70.27.122:8080/sections'
 
+
 @Injectable({ providedIn: 'root' })
 export class WorkspaceService {
 
@@ -31,10 +32,10 @@ export class WorkspaceService {
 
 
     deleteFactor(id: number) {
-      return this.http.post(APIFACTOR+'/delete/'+id,{})
+      this.http.post(APIFACTOR+'/delete/'+id, {}).subscribe();
     }
 
     deleteSection(id: number) {
-      return this.http.post(APISECTION+'/delete/'+id,{})
+      this.http.post(APISECTION+'/delete/'+id, {}).subscribe();
     }
 }
