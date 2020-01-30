@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceComponent } from './workspace.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome'
 
 @NgModule({
-    declarations: [ 
+    declarations: [
         WorkspaceComponent
     ],
     imports: [
@@ -15,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       FormsModule,
       ReactiveFormsModule,
       NgbModule,
+      AngularFontAwesomeModule,
     ],
     exports: [
         WorkspaceComponent

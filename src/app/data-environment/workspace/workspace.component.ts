@@ -91,6 +91,11 @@ export class WorkspaceComponent implements OnInit {
 
     }
 
+    visible = false;
+    toggle() {
+      this.visible = !this.visible;
+    }
+
   ngOnInit(): void {
     this.username = this.userService.getUsername();
     this.propositionService.getProposition().subscribe(
