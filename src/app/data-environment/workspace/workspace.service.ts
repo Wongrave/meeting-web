@@ -9,6 +9,7 @@ import { Section } from './section/section';
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
 const APISECTION = 'http://177.70.27.122:8080/sections'
 
+
 @Injectable({ providedIn: 'root' })
 export class WorkspaceService {
 
@@ -28,6 +29,7 @@ export class WorkspaceService {
     newSection( tag: string, description: string, summary: string, selected: boolean, factor: Factor ) {
         return this.http.post(APISECTION+'/new', { tag, description, summary, selected, factor }).subscribe();
     }
+
 
     deleteFactor(id: number) {
       return this.http.post(APIFACTOR+'/delete/'+id, {}).toPromise();
