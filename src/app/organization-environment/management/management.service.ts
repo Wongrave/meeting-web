@@ -14,9 +14,9 @@ export class ManagementService {
 
     constructor(private http: HttpClient) { }
 
-    listFromOrganization(proposition: number) {
+    listFromOrganization(organization: number) {
         return this.http
-            .get<BusinessUnit[]>(APIBUSINESSUNIT + '/fromOrganization/' + proposition.toString());
+            .get<BusinessUnit[]>(APIBUSINESSUNIT + '/fromOrganization/' + organization.toString());
     }
 
 }
