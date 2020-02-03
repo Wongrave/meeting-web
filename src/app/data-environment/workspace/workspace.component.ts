@@ -41,7 +41,6 @@ export class WorkspaceComponent implements OnInit {
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private location: Location,
-
     private userService: UserService,
     private propositionService: PropositionService,
     private workspaceService: WorkspaceService,
@@ -67,9 +66,9 @@ export class WorkspaceComponent implements OnInit {
     }
   }
 
-  newFactor(newFactorTag: string, newFactorDescription: string, newFactorSummary: string, newFactorSelected: boolean) {
+  async newFactor(newFactorTag: string, newFactorDescription: string, newFactorSummary: string, newFactorSelected: boolean) {
 
-    this.workspaceService
+    await this.workspaceService
       .newFactor(newFactorTag, newFactorDescription, newFactorSummary, newFactorSelected, this.proposition);
 
     this.modalService.dismissAll();
@@ -94,9 +93,9 @@ export class WorkspaceComponent implements OnInit {
 
   }
 
-  newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor) {
+  async newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor) {
 
-    this.workspaceService
+    await this.workspaceService
       .newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor);
 
     this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {

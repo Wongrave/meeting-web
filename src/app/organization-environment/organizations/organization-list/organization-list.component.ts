@@ -52,9 +52,9 @@ export class OrganizationListComponent implements OnInit {
   }
 
 
-  newOrganization(description: string, summary: string) {
+  async newOrganization(description: string, summary: string) {
 
-    this.organizationService
+    await this.organizationService
       .newOrganization(description, summary, true);
 
       this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {

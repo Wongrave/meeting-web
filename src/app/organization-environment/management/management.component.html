@@ -1,41 +1,86 @@
 <div class="container">
-    <ng-template #content let-modal>
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">Novo Criterio</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Nova Unidade de Negócio</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="newUnitLocal">Local</label>
+          <input id="newUnitLocal" class="form-control" name="newUnitLocal" [(value)]="newUnitLocal" #unitLocal>
+          <hr />
+          <label for="newUnitDescription">Descrição</label>
+          <input id="newUnitDescription" class="form-control" name="newUnitDescription" [(value)]="newUnitDescription" #unitDescription>
+          <hr />
+          <label for="newUnitSummary">Resumo</label>
+          <textarea class="form-control" id="newUnitSummary" rows="3" name="newUnitSummary" [(value)]="newUnitSummary" #unitSummary></textarea>
+          <hr />
         </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label for="description">Nome</label>
-                <input id="description" class="form-control" name="description">
-                <hr />
-                <label for="tag">Sigla</label>
-                <input id="tag" class="form-control" name="tag">
-                <hr />
-                <label for="summary">Resumo</label>
-                <textarea class="form-control" id="summary" rows="3" name="summary"></textarea>
-                <hr />
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" value="" id="selected">
-                  <label class="form-check-label" for="selected">
-                    Replicar Seção
-                  </label>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary"
+        (click)="newUnit(unitLocal.value, unitDescription.value, unitSummary.value)">Adicionar</button>
+    </div>
+  </ng-template>
+  <button class="btn btn-info mt-2 float-right" (click)="open(content)"> Nova Unidade de Negócio </button>
+  <br />
+  <br />
+  <br />
+  <br />
+  <span *ngFor="let unit of units">
+    <div class="row mt-3">
+      <div class="col-12 col-md-2 h2 factor-item d-flex align-items-center factor-tag">{{unit.local}}</div>
+      <div class="col-12 col-md-7 factor-item ">
+        {{unit.description}}<br />
+        <span class="text-muted">{{unit.summary}}</span>
+      </div>
+      <div class="col-6 col-md-2 d-flex align-items-center">
+        <button class="btn btn-outline-primary" data-toggle="collapse" attr.data-target="#newDepartment{{unit.id}}"> Novo
+          Departamento </button> </div>
+      <div class="col-6 col-md-1 text-center d-flex align-items-center">
+        <button class="btn btn-info btn-collapse float-left mr-3" data-toggle="collapse"
+          attr.data-target="#departments{{unit.id}}" [disabled]="unit.departments.length == 0" (click)="toggle()">
+          <fa [name]="visible? 'caret-up' : 'caret-down'"></fa>
+        </button>
+        <a class="mx-auto display-4 mt-2 ml-3" (click)="deleteUnit(unit.id)">
+          <h3 class="d-inline-block float-right hover-red">
+            <fa name="minus"></fa>
+          </h3>
+        </a>
+      </div>
+    </div>
+        <div class="row collapse" id="departments{{unit.id}}">
+            <div class="card col-12 col-md-3 mt-2" *ngFor="let department of unit.departments">
+                <div class="card-body">
+                    <div class="float-right">
+                      <button class="btn btn-outline-danger" (click)="deleteDepartment(department.id)">
+                        <fa name="times"></fa>
+                      </button>
+                    </div>
+                    <h4 class="card-title">{{department.description}}</h4>
+                    <p class="card-text">{{department.summary}}</p>
                 </div>
-              
             </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Adicionar</button>
-        </div>
-      </ng-template>
-    <button class="btn btn-info mt-2 float-right" (click)="open(content)"> Novo Criterio </button>
-    <br />
-    <br />
-    <br />
-    <br />
-    
-    
-    
+    </div>
+    <div class="card col-12 col-md-3 collapse mt-2" id="newDepartment{{unit.id}}">
+      <div class="card-body">
+        <p class="card-text"><input type="text" placeholder="Description" name="newDepartmentDescription"
+            id="newDepartmentDescription" [(value)]="newDepartmentDescription" #departmentDescription></p>
+        <p class="text-muted"><input type="text" placeholder="Summary" name="newDepartmentSummary" id="newDepartmentSummary"
+            [(value)]="newDepartmentSummary" #departmentSummary></p>
+        <br /><br />
+        <button type="button" class="btn btn-outline-primary ml-2 mr-1"
+          (click)="newDepartment(departmentDescription, departmentSummary, unit)">Adicionar</button>
+        <button type="button" class="btn btn-outline-danger ml-1 mr-1" data-toggle="collapse"
+          attr.data-target="#newDepartment{{unit.id}}"> Cancelar </button>
+      </div>
+    </div>
+
+  </span>
+
+
 </div>
