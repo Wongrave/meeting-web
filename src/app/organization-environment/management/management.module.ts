@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms'
+import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { ManagementComponent } from './management.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
     declarations: [
@@ -9,7 +10,9 @@ import { ManagementComponent } from './management.component';
     ],
     imports: [ 
         CommonModule, 
-        ReactiveFormsModule 
+        FormsModule,
+        ReactiveFormsModule,
+        AngularFontAwesomeModule,
     ],
     exports: [
         ManagementComponent

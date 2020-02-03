@@ -60,10 +60,10 @@ export class PropositionListComponent implements OnInit {
   }
 
 
-  newProposition(description: string, summary: string, date: Date, collection: string) {
+  async newProposition(description: string, summary: string, date: Date, collection: string) {
   
     
-    this.propositionService
+    await this.propositionService
       .newProposition(this.userId, this.organizationId, description, summary, date, collection);
 
      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
@@ -71,6 +71,15 @@ export class PropositionListComponent implements OnInit {
       this.router.navigate([decodeURI(this.location.path())])
    })
 
+  }
+
+  async deleteProposition(id: number) {
+      await this.propositionService
+        .deleteProposition(id)
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+          console.log(decodeURI(this.location.path()))
+          this.router.navigate([decodeURI(this.location.path())])
+      })
   }
 
   ngOnInit() {
