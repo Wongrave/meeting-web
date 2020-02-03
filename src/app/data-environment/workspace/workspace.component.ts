@@ -41,7 +41,6 @@ export class WorkspaceComponent implements OnInit {
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private location: Location,
-
     private userService: UserService,
     private propositionService: PropositionService,
     private workspaceService: WorkspaceService,

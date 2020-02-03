@@ -12,7 +12,7 @@
           <label for="newUnitLocal">Local</label>
           <input id="newUnitLocal" class="form-control" name="newUnitLocal" [(value)]="newUnitLocal" #unitLocal>
           <hr />
-          <label for="newUnitDescription">Descrição'</label>
+          <label for="newUnitDescription">Descrição</label>
           <input id="newUnitDescription" class="form-control" name="newUnitDescription" [(value)]="newUnitDescription" #unitDescription>
           <hr />
           <label for="newUnitSummary">Resumo</label>
@@ -23,70 +23,60 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-primary"
-        (click)="newFactor(factorTag.value, factorDescription.value, factorSummary.value, factorSelected.checked)">Adicionar</button>
+        (click)="newUnit(unitLocal.value, unitDescription.value, unitSummary.value)">Adicionar</button>
     </div>
   </ng-template>
-  <button class="btn btn-info mt-2 float-right" (click)="open(content)"> Novo Criterio </button>
+  <button class="btn btn-info mt-2 float-right" (click)="open(content)"> Nova Unidade de Negócio </button>
   <br />
   <br />
   <br />
   <br />
-  <span *ngFor="let factor of factors">
+  <span *ngFor="let unit of units">
     <div class="row mt-3">
-      <div class="col-12 col-md-2 h2 factor-item d-flex align-items-center factor-tag">{{factor.tag}}</div>
+      <div class="col-12 col-md-2 h2 factor-item d-flex align-items-center factor-tag">{{unit.local}}</div>
       <div class="col-12 col-md-7 factor-item ">
-        {{factor.description}}<br />
-        <span class="text-muted">{{factor.summary}}</span>
+        {{unit.description}}<br />
+        <span class="text-muted">{{unit.summary}}</span>
       </div>
       <div class="col-6 col-md-2 d-flex align-items-center">
-        <button class="btn btn-outline-primary" data-toggle="collapse" attr.data-target="#newSection{{factor.id}}"> Nova
-          Seção </button> </div>
+        <button class="btn btn-outline-primary" data-toggle="collapse" attr.data-target="#newDepartment{{unit.id}}"> Novo
+          Departamento </button> </div>
       <div class="col-6 col-md-1 text-center d-flex align-items-center">
         <button class="btn btn-info btn-collapse float-left mr-3" data-toggle="collapse"
-          attr.data-target="#sections{{factor.id}}" [disabled]="factor.sections.length == 0" (click)="toggle()">
+          attr.data-target="#departments{{unit.id}}" [disabled]="unit.departments.length == 0" (click)="toggle()">
           <fa [name]="visible? 'caret-up' : 'caret-down'"></fa>
         </button>
-        <a class="mx-auto display-4 mt-2 ml-3" (click)="deleteFactor(factor.id)">
-          <h3 class="d-inline-block float-right  hover-red">
+        <a class="mx-auto display-4 mt-2 ml-3" (click)="deleteUnit(unit.id)">
+          <h3 class="d-inline-block float-right hover-red">
             <fa name="minus"></fa>
           </h3>
         </a>
       </div>
     </div>
-        <div class="row collapse" id="sections{{factor.id}}">
-            <div class="card col-12 col-md-3 mt-2" *ngFor="let section of factor.sections">
+        <div class="row collapse" id="departments{{unit.id}}">
+            <div class="card col-12 col-md-3 mt-2" *ngFor="let department of unit.departments">
                 <div class="card-body">
                     <div class="float-right">
-                      <button class="btn btn-outline-danger" (click)="deleteSection(section.id)">
+                      <button class="btn btn-outline-danger" (click)="deleteDepartment(department.id)">
                         <fa name="times"></fa>
                       </button>
                     </div>
-                    <h4 class="card-title">{{section.tag}}</h4>
-                    <p class="card-text">{{section.description}}</p>
-                    <p class="text-muted">{{section.summary}}</p>
+                    <h4 class="card-title">{{department.description}}</h4>
+                    <p class="card-text">{{department.summary}}</p>
                 </div>
             </div>
     </div>
-    <div class="card col-12 col-md-3 collapse mt-2" id="newSection{{factor.id}}">
+    <div class="card col-12 col-md-3 collapse mt-2" id="newDepartment{{unit.id}}">
       <div class="card-body">
-        <p class="card-text"><input type="text" placeholder="Tag" name="newSectionTag" id="newSectionTag"
-            [(value)]="newSectionTag" #sectionTag></p>
-        <p class="card-text"><input type="text" placeholder="Description" name="newSectionDescription"
-            id="newSectionDescription" [(value)]="newSectionDescription" #sectionDescription></p>
-        <p class="text-muted"><input type="text" placeholder="Summary" name="newSectionSummary" id="newSectionSummary"
-            [(value)]="newSectionSummary" #sectionSummary></p>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="" id="newSectionSelected"
-            [(checked)]="newSectionSelected" #sectionSelected>
-          <label class="form-check-label" for="newSectionSelected">
-            Replicar
-          </label>
-        </div>
+        <p class="card-text"><input type="text" placeholder="Description" name="newDepartmentDescription"
+            id="newDepartmentDescription" [(value)]="newDepartmentDescription" #departmentDescription></p>
+        <p class="text-muted"><input type="text" placeholder="Summary" name="newDepartmentSummary" id="newDepartmentSummary"
+            [(value)]="newDepartmentSummary" #departmentSummary></p>
         <br /><br />
         <button type="button" class="btn btn-outline-primary ml-2 mr-1"
-          (click)="newSection(sectionTag.value, sectionDescription.value, sectionSummary.value, sectionSelected.checked, factor)">Adicionar</button>
+          (click)="newDepartment(departmentDescription, departmentSummary, unit)">Adicionar</button>
         <button type="button" class="btn btn-outline-danger ml-1 mr-1" data-toggle="collapse"
-          attr.data-target="#newSection{{factor.id}}"> Cancelar </button>
+          attr.data-target="#newDepartment{{unit.id}}"> Cancelar </button>
       </div>
     </div>
 
