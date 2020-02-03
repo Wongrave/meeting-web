@@ -62,8 +62,11 @@ export class PropositionService {
 
     newProposition( userId: number, organizationId: number, description: string, summary: string, date: Date, collection: string){
         console.log(organizationId + ' eh o id')
-        return this.http.post(API+'/new', { userId, organizationId, description, summary, date, collection }).subscribe();
+        return this.http.post(API+'/new', { userId, organizationId, description, summary, date, collection }).toPromise();
 
     }
-
+    
+    deleteProposition(id: number) {
+        return this.http.post(API+'/delete/'+id, {}).toPromise();
+    }
 }

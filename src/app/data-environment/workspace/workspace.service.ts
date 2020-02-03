@@ -23,11 +23,11 @@ export class WorkspaceService {
     }
 
     newFactor(tag: string, description: string, summary: string, selected: boolean, proposition: Proposition) {
-        return this.http.post(APIFACTOR + '/new', { tag, description, summary, selected, proposition }).subscribe();
+        return this.http.post(APIFACTOR + '/new', { tag, description, summary, selected, proposition }).toPromise();
     }
 
     newSection(tag: string, description: string, summary: string, selected: boolean, factor: Factor) {
-        return this.http.post(APISECTION + '/new', { tag, description, summary, selected, factor }).subscribe();
+        return this.http.post(APISECTION + '/new', { tag, description, summary, selected, factor }).toPromise();
     }
 
 
