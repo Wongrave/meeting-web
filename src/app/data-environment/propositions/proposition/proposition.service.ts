@@ -66,4 +66,9 @@ export class PropositionService {
 
     }
 
+    deleteProposition(id: number) {
+        return this.http.post(API+'/delete/'+id, {}).toPromise();
+  
+    }
+
 }
