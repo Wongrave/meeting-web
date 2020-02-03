@@ -65,8 +65,10 @@ export class PropositionService {
         return this.http.post(API+'/new', { userId, organizationId, description, summary, date, collection }).toPromise();
 
     }
+<<<<<<< HEAD
     
     deleteProposition(id: number) {
         return this.http.post(API+'/delete/'+id, {}).toPromise();
     }
 }
+

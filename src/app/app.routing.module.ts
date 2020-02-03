@@ -12,6 +12,7 @@ import { WorkspaceComponent } from './data-environment/workspace/workspace.compo
 import { AuthGuard } from './core/auth/auth.guard';
 import { ExpertComponent } from './expert-environment/expert.component';
 import { RefreshComponent } from './refresh/refresh.component';
+import { ManagementComponent } from './organization-environment/management/management.component';
 
 const routes: Routes = [
     { 
@@ -40,10 +41,6 @@ const routes: Routes = [
         component: OrganizationListComponent 
     },
     { 
-        path: 'users/84', 
-        component: PropositionListComponent 
-    }, 
-    { 
         path: 'result', 
         component: ResultComponent 
     },
@@ -54,6 +51,10 @@ const routes: Routes = [
     { 
         path: 'dashboard', 
         component: WorkspaceComponent 
+    },
+    { 
+        path: 'management', 
+        component: ManagementComponent 
     },
     { 
         path: 'evidences/fromUser/:username', 
