@@ -22,12 +22,12 @@ export class ManagementService {
     }
 
     newUnit(local: string, description: string, summary: string, organization: Organization) {
-        return this.http.post(APIBUSINESSUNIT + '/new', {local, description, summary, organization}).toPromise();
+        return this.http.post<BusinessUnit>(APIBUSINESSUNIT + '/new', {local, description, summary, organization}).toPromise();
     }
 
     deleteUnit(id: number) {
         return this.http.post(APIBUSINESSUNIT + '/delete' + id, {}).toPromise();
-    
+
     }
 
     newDepartment(description: string, summary: string, unit: BusinessUnit) {
