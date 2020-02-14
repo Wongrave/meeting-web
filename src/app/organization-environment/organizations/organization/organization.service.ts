@@ -71,7 +71,7 @@ export class OrganizationService {
 
     newOrganization(description: string, summary: string, active: true) {
 
-        return this.http.post(API + '/new', { description, summary, active }).toPromise();
+        return this.http.post<Organization>(API + '/new', { description, summary, active }).toPromise();
 
     }
 

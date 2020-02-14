@@ -8,6 +8,63 @@
         <th class="col-2"> &nbsp; </th>
       </tr>
     </thead>
+
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Nova Organização</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="newDescription">Nome</label>
+            <input id="newDescription" class="form-control" name="newDescription"
+              [(value)]="newDescription" #description>
+            <hr />
+            <label for="newSummary">Resumo</label>
+            <input class="form-control" id="newSummary" name="newSummary"
+              [(value)]="newSummary" #summary/>
+            <hr />
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Nova Unidade de Negócios</h4>
+            </div>
+            <label for="newUnitLocal">Local</label>
+            <input id="newUnitLocal" class="form-control" name="newUnitLocal"
+              [(value)]="newUnitLocal" #unitLocal>
+            <hr />
+            <label for="newUnitDescription">Nome</label>
+            <input id="newUnitDescription" class="form-control" name="newUnitDescription"
+              [(value)]="newUnitDescription" #unitDescription>
+            <hr />
+            <label for="newUnitSummary">Resumo</label>
+            <input id="newUnitSummary" class="form-control" name="newUnitSummary"
+              [(value)]="newUnitSummary" #unitSummary>
+            <hr />
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Novo Departamento</h4>
+            </div>
+            <label for="newDepartmentDescription">Nome</label>
+            <input id="newDepartmentDescription" class="form-control" name="newDepartmentDescription"
+              [(value)]="newDepartmentDescription" #departmentDescription>
+            <hr />
+            <label for="newDepartmentSummary">Resumo</label>
+            <input id="newDepartmentSummary" class="form-control" name="newDepartmentSummary"
+              [(value)]="newDepartmentSummary" #departmentSummary>
+            <hr />
+
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+        (click)="newOrganization(description.value, summary.value, unitLocal.value, unitDescription.value, unitSummary.value, departmentDescription.value, departmentSummary.value)" class="btn btn-outline-primary">Adicionar
+      </button>
+      </div>
+    </ng-template>
+
     <tr *ngFor="let organization of organizations" class="row">
       <td style="display:none;">{{ organization.id }}</td>
       <td class="col-5">{{ organization.description }}</td>
@@ -15,15 +72,14 @@
 
       <td class="col-2"><button (click)="selectOrganization(organization.id)" class="btn btn-outline-primary btn-select"> <fa name="caret-right"></fa> </button></td>
     </tr>
+
+
+
     <tr class="row">
 
           <td style="display:none;"></td>
 
-          <td class="col-5"><input type="text" name="newDescription" id="newDescription" [(value)]="newDescription" #description></td>
-          
-          <td class="col-5"><input type="text" name="summary" id="summary" [(value)]="newSummary" #summary></td>
-
-          <td class="col-2"><button (click)="newOrganization(description.value, summary.value)" class="btn btn-outline-primary btn-select"> <fa name="plus"></fa> </button></td>
+          <button class="btn btn-info mt-2 float-right" (click)="open(content)"> <fa name="plus"></fa> </button>
 
 
 
