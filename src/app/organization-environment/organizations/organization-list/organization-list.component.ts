@@ -7,7 +7,10 @@ import { OrganizationService } from '../organization/organization.service';
 import { formatDate, Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/core/user/user';
+import { ManagementService } from '../../management/management.service';
+import { BusinessUnit } from '../../management/business-unit/business-unit'
 
 @Component({
   selector: 'app-organization-list',
@@ -19,9 +22,17 @@ export class OrganizationListComponent implements OnInit {
 
   newDescription = "";
   newSummary = "";
+  newUnitLocal = "";
+  newUnitDescription = "";
+  newUnitSummary = "";
+  newDepartmentDescription = "";
+  newDepartmentSummary = "";
+  organization: Organization;
+  unit: BusinessUnit;
 
   newOrganizationForm: FormGroup;
 
+  closeResult: string;
   username: string;
   userId: number;
   organizationId: number;
@@ -31,7 +42,9 @@ export class OrganizationListComponent implements OnInit {
     private location: Location,
     private auth: AuthService,
     private organizationService: OrganizationService,
-    private userService: UserService 
+    private userService: UserService,
+    private modalService: NgbModal,
+    private managementService: ManagementService
     ){ }
 
 
@@ -51,16 +64,39 @@ export class OrganizationListComponent implements OnInit {
 
   }
 
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
-  async newOrganization(description: string, summary: string) {
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+
+  async newOrganization(description: string, summary: string, localUnit: string, descriptionUnit: string, summaryUnit: string, descriptionDepartment: string, summaryDepartment: string) {
 
     await this.organizationService
-      .newOrganization(description, summary, true);
+      .newOrganization(description, summary, true).then(organization => this.organization = organization)
 
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-    })
+      await this.managementService
+        .newUnit(localUnit, descriptionUnit, summaryUnit, this.organization).then(unit => this.unit = unit);
+
+      await this.managementService
+        .newDepartment(descriptionDepartment, summaryDepartment, this.unit).then(
+          object => console.log("adicionou")
+        );
+
+
 
 
   }
