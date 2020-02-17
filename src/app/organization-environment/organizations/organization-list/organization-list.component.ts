@@ -96,6 +96,8 @@ export class OrganizationListComponent implements OnInit {
           object => console.log("adicionou")
         );
 
+      this.modalService.dismissAll();
+
       this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
         console.log(decodeURI(this.location.path()))
         this.router.navigate([decodeURI(this.location.path())])
