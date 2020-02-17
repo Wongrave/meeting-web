@@ -28,7 +28,7 @@ export class OrganizationListComponent implements OnInit {
   newDepartmentDescription = "";
   newDepartmentSummary = "";
   organization: Organization;
-  unit: BusinessUnit;
+  businessUnit: BusinessUnit;
 
   newOrganizationForm: FormGroup;
 
@@ -89,13 +89,17 @@ export class OrganizationListComponent implements OnInit {
       .newOrganization(description, summary, true).then(organization => this.organization = organization)
 
       await this.managementService
-        .newUnit(localUnit, descriptionUnit, summaryUnit, this.organization).then(unit => this.unit = unit);
+        .newUnit(localUnit, descriptionUnit, summaryUnit, this.organization).then(businessUnit => this.businessUnit = businessUnit);
 
       await this.managementService
-        .newDepartment(descriptionDepartment, summaryDepartment, this.unit).then(
+        .newDepartment(descriptionDepartment, summaryDepartment, this.businessUnit).then(
           object => console.log("adicionou")
         );
 
+      this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      })
 
 
 

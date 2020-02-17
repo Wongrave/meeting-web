@@ -30,8 +30,8 @@ export class ManagementService {
 
     }
 
-    newDepartment(description: string, summary: string, unit: BusinessUnit) {
-        return this.http.post(APIDEPARTMENT + '/new', {description, summary, unit}).toPromise();
+    newDepartment(description: string, summary: string, businessUnit: BusinessUnit) {
+        return this.http.post(APIDEPARTMENT + '/new', {description, summary, businessUnit}).toPromise();
     }
 
     deleteDepartment(id: number) {
