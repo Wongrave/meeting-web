@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Factor } from '../data-environment/workspace/factor/factor';
-
-const APIFACTOR = 'http://177.70.27.122:8080/factors'
+import { Evidence } from './evidences/evidence';
+const APIFACTOR = 'http://177.70.27.122:8080/factors';
+const APIEVIDENCE = 'http://177.70.27.122:8080/evidences';
 
 @Injectable({ providedIn: 'root' })
 export class ExpertService {
 
-    private propositionSubject = new BehaviorSubject<Object>(null);
+    private evidenceSubject = new BehaviorSubject<Object>(null);
 
     constructor(private http: HttpClient) { }
 
@@ -16,5 +17,12 @@ export class ExpertService {
         return this.http
             .get<Factor[]>(APIFACTOR + '/fromProposition/' + proposition.toString());
     }
+
+    getFromProposition(proposition: number) {
+        return this.http
+            .get<Evidence[]>(APIEVIDENCE + '/login/' + proposition.toString());
+    }
+
+    newEvidence(proposition: number){}
 
 }

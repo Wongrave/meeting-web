@@ -6,6 +6,7 @@ import { PropositionService } from '../data-environment/propositions/proposition
 import { Proposition } from '../data-environment/propositions/proposition/proposition';
 import { Factor } from '../data-environment/workspace/factor/factor';
 import { ExpertService } from './expert.service';
+import { Evidence } from './evidences/evidence';
 
 @Component({
   selector: 'pd-evidences',
@@ -17,6 +18,8 @@ export class ExpertComponent implements OnInit {
     username: string;
     proposition: Proposition;
     factors: Factor[] = []
+    evidences: Evidence[] = []
+    currentEvidences: Evidence[] = [] 
     gce = Math.round(Math.random() * 100);
     gin = Math.round(Math.random() * 100);
 
@@ -28,12 +31,7 @@ export class ExpertComponent implements OnInit {
     private propositionService: PropositionService,
     private userService: UserService ){ }
 
-
-  
-
-  
-
-  ngOnInit() {
+  async ngOnInit() {
 
     this.username = this.userService.getUsername();
     this.propositionService.getProposition().subscribe(
@@ -43,12 +41,30 @@ export class ExpertComponent implements OnInit {
     this.expertService.listFromProposition(this.proposition.id).subscribe(
       factors => this.factors = factors
     )
-   
 
+    
+    await this.expertService.getFromProposition(this.proposition.id).toPromise().then(
+      evidences => this.evidences = evidences
+    )
 
-
+    this.gce = this.evidences[0].favorable
+    this.gin = this.evidences[0].desfavorable
 
 
   }
 
+  newEvidence() {
+
+  }
+
+  favorableFromFactor(factor: number) {
+    this.currentEvidences = this.evidences.filter(evidence => evidence.factor.id == factor)
+    return this.currentEvidences[0].favorable
+  }
+
+  unfavorableFromFactor(factor: number) {
+    this.currentEvidences = this.evidences.filter(evidence => evidence.factor.id == factor)
+    return this.currentEvidences[0].desfavorable
+  }
 }
+

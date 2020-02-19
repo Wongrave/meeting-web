@@ -8,9 +8,9 @@ import { formatDate, Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { User } from 'src/app/core/user/user';
 import { ManagementService } from '../../management/management.service';
 import { BusinessUnit } from '../../management/business-unit/business-unit'
+import { UserPd } from 'src/app/users/user/userpd';
 
 @Component({
   selector: 'app-organization-list',
@@ -27,8 +27,10 @@ export class OrganizationListComponent implements OnInit {
   newUnitSummary = "";
   newDepartmentDescription = "";
   newDepartmentSummary = "";
-  organization: Organization;
-  unit: BusinessUnit;
+  organization: Organization
+  unit: BusinessUnit
+  user: UserPd
+  users: UserPd[]
 
   newOrganizationForm: FormGroup;
 
@@ -85,16 +87,25 @@ export class OrganizationListComponent implements OnInit {
 
   async newOrganization(description: string, summary: string, localUnit: string, descriptionUnit: string, summaryUnit: string, descriptionDepartment: string, summaryDepartment: string) {
 
+    this.user = { id: this.userId, name: "", email: "", password: "", enabled: true, username: "", role: "", departments: null }
+    console.log(this.user.id)
+    this.users = [ ]
+    this.users.push(this.user)
+    console.log(this.users[0].id)
+
+
     await this.organizationService
       .newOrganization(description, summary, true).then(organization => this.organization = organization)
 
-      await this.managementService
-        .newUnit(localUnit, descriptionUnit, summaryUnit, this.organization).then(unit => this.unit = unit);
+    await this.managementService
+      .newUnit(localUnit, descriptionUnit, summaryUnit, this.organization).then(unit => this.unit = unit);
 
-      await this.managementService
-        .newDepartment(descriptionDepartment, summaryDepartment, this.unit).then(
-          object => console.log("adicionou")
-        );
+    
+
+    await this.managementService
+      .newDepartmentWithUser(descriptionDepartment, summaryDepartment, this.unit, this.users).then(
+        object => console.log("adicionou")
+      );
 
 
 
@@ -119,7 +130,8 @@ export class OrganizationListComponent implements OnInit {
     this.organizationService
       .listFromUser(this.userId)
       .subscribe(organizations => this.organizations = organizations, err => console.log(err.message));
-
+    
   }
+
 
 }
