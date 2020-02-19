@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BusinessUnit } from './business-unit/business-unit';
 import { Department } from './department/department'
 import { Organization } from '../organizations/organization/organization';
+import { UserPd } from 'src/app/users/user/userpd';
 
 const APIBUSINESSUNIT = 'http://177.70.27.122:8080/businessunits'
 const APIDEPARTMENT = 'http://177.70.27.122:8080/departments'
@@ -32,6 +33,13 @@ export class ManagementService {
 
     newDepartment(description: string, summary: string, businessUnit: BusinessUnit) {
         return this.http.post(APIDEPARTMENT + '/new', {description, summary, businessUnit}).toPromise();
+    }
+
+    newDepartmentWithUser(description: string, summary: string, businessUnit: BusinessUnit, usersTo: UserPd[]) {
+        console.log( {description, summary, businessUnit, usersTo})
+        var users = JSON.parse(JSON.stringify(usersTo))
+        console.log( {description, summary, businessUnit, users})
+        return this.http.post(APIDEPARTMENT + '/new', {description, summary, businessUnit, users }).toPromise();
     }
 
     deleteDepartment(id: number) {
