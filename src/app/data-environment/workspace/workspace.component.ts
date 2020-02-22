@@ -11,7 +11,8 @@ import { PropositionService } from '../propositions/proposition/proposition.serv
 import { Factor } from './factor/factor';
 import { WorkspaceService } from './workspace.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Section } from './section/section'
+import { Section } from './section/section';
+import { Profile } from './profile/profile'
 
 @Component({
   styleUrls: ['./workspace.component.css'],
@@ -29,8 +30,13 @@ export class WorkspaceComponent implements OnInit {
   newSectionDescription = "";
   newSectionSummary = "";
   newSectionSelected = false;
+  changeAdminProfile = false;
+  changeExpertProfile = false;
+  changeAnalystProfile = false;
   username: string;
-  factors: Factor[] = []
+  factors: Factor[] = [];
+  profiles: Profile[] = [];
+  users: User[] = [];
 
 
 
@@ -104,7 +110,7 @@ export class WorkspaceComponent implements OnInit {
     });
 
   }
-  
+
     async deleteSection(id: number) {
 
       await this.workspaceService
@@ -120,6 +126,30 @@ export class WorkspaceComponent implements OnInit {
     visible = false;
     toggle() {
       this.visible = !this.visible;
+    }
+
+    changeAdmin( id: number, checked: boolean ) {
+
+      this.workspaceService.changeAdmin( id, checked );
+
+    }
+
+    changeExpert( id: number, checked: boolean ) {
+
+      this.workspaceService.changeAdmin( id, checked );
+
+    }
+
+    changeAnalyst( id: number, checked: boolean ) {
+
+      this.workspaceService.changeAdmin( id, checked );
+
+    }
+
+    addProfile( propositionId:number, userId: number) {
+
+      this.workspaceService.addProfile( propositionId, userId )
+
     }
 
 
