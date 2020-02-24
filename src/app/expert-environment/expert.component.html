@@ -19,17 +19,17 @@
             <!-- <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td>
             <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td>  -->
             <td class="col-2 col-md-2">
-                <h3 class="d-inline-block">
+                <!--h3 class="d-inline-block">
                     <a (click)="weightChange('dec')">
                         <fa name="caret-down"></fa>
                     </a>
-                </h3>
-                {{ weight }}
-                <h3 class="d-inline-block">
+                </h3-->
+                <input #w type="number" min=0 max=10 style="width: 40px" (change)="saveWeight(w.value)" [value]="weight"/>
+                <!--h3 class="d-inline-block">
                     <a (click)="weightChange('inc')">
                         <fa name="caret-up"></fa>
                     </a>
-                </h3>
+                </h3-->
             </td>
             <td class="col-12 col-md-3">
                     <pd-expert-value [valor]="gce"></pd-expert-value>

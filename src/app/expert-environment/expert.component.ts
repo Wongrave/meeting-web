@@ -32,21 +32,8 @@ export class ExpertComponent implements OnInit {
     private propositionService: PropositionService,
     private userService: UserService ){ }
 
-  weightChange(event: string) {
-    if (this.weight >= 0 && this.weight <= 10) {
-        switch (event) {
-            case "inc":
-                if (this.weight != 10) {
-                    this.weight += 1;
-                }
-                break;
-            case "dec":
-                if (this.weight != 0) {
-                    this.weight -= 1;
-                }
-                break;
-        }
-    }
+  saveWeight(w: number) {
+      this.weight = w;
   }
   async ngOnInit() {
 
