@@ -19,6 +19,7 @@ export class ExpertComponent implements OnInit {
     proposition: Proposition;
     factors: Factor[] = []
     evidences: Evidence[] = []
+    weight = 0;
     currentEvidences: Evidence[] = [] 
     gce = Math.round(Math.random() * 100);
     gin = Math.round(Math.random() * 100);
@@ -31,6 +32,9 @@ export class ExpertComponent implements OnInit {
     private propositionService: PropositionService,
     private userService: UserService ){ }
 
+  saveWeight(w: number) {
+      this.weight = w;
+  }
   async ngOnInit() {
 
     this.username = this.userService.getUsername();
