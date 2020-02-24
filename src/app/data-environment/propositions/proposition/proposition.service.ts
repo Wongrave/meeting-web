@@ -24,7 +24,7 @@ export class PropositionService {
     selectProposition(id: number) {
 
         return this.http
-            .get(API + '/' + id, 
+            .get(API + '/' + id,
             { observe: 'body', responseType: 'text'} )
             .pipe(map(
                 res => {
@@ -32,7 +32,7 @@ export class PropositionService {
                     this.setProposition(prop.toString());
                 }
             ))
-            
+
 
     }
 
@@ -41,7 +41,7 @@ export class PropositionService {
     }
 
     setProposition(proposition){
-        
+
         window.localStorage.setItem(PROPKEY, proposition);
     }
 
@@ -65,9 +65,9 @@ export class PropositionService {
         return this.http.post(API+'/new', { userId, organizationId, description, summary, date, collection }).toPromise();
 
     }
-    
+
     deleteProposition(id: number) {
-        return this.http.post(API+'/delete/'+id, {}).toPromise();
+        return this.http.delete(API+'/delete/'+id, {}).toPromise();
     }
 }
 
