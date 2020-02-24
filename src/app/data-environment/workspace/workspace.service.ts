@@ -63,4 +63,8 @@ export class WorkspaceService {
       return this.http.get<UserPd[]>(APIPROFILE+'/suggestedUsers/'+id, {})
     }
 
+    getProfiles(propositionId: number){
+      return this.http.get<Profile[]>(APIPROFILE+'/'+propositionId, {})
+    }
+
 }

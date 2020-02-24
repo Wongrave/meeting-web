@@ -174,6 +174,11 @@ export class WorkspaceComponent implements OnInit {
       factors => this.factors = factors
     )
 
+    this.workspaceService.getProfiles(this.proposition.id).subscribe(
+      profiles => this.profiles = profiles
+    )
+    console.log(this.profiles)
+
   }
 
 }
