@@ -9,5 +9,5 @@ export interface Profile {
     analyst: boolean;
     status: boolean;
     owner: boolean;
-    userName: string;
+    name: string;
 }

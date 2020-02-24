@@ -6,6 +6,7 @@ import { Factor } from './factor/factor';
 import { Proposition } from '../propositions/proposition/proposition';
 import { Section } from './section/section';
 import { Profile } from './profile/profile';
+import { UserPd } from '../../users/user/userpd'
 
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
 const APISECTION = 'http://177.70.27.122:8080/sections'
@@ -54,8 +55,12 @@ export class WorkspaceService {
       return this.http.put(APIPROFILE+'/changeAnalyst/', { id, checked }).subscribe();
     }
 
-    addProfile( propositionId: number, userId: number ) {
-      return this.http.post(APIPROFILE+'/new', { propositionId, userId }).subscribe();
+    addProfile( propositionId: number, userId: number, name: string ) {
+      return this.http.post<Profile>(APIPROFILE+'/new', { propositionId, userId, name }).toPromise();
+    }
+
+    getSuggestedUsers(id: number) {
+      return this.http.get<UserPd[]>(APIPROFILE+'/suggestedUsers/'+id, {})
     }
 
 }

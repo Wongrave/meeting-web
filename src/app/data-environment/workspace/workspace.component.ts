@@ -10,6 +10,7 @@ import { Proposition } from '../propositions/proposition/proposition';
 import { PropositionService } from '../propositions/proposition/proposition.service';
 import { Factor } from './factor/factor';
 import { WorkspaceService } from './workspace.service';
+import { OrganizationService } from '../../organization-environment/organizations/organization/organization.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Section } from './section/section';
 import { Profile } from './profile/profile'
@@ -36,7 +37,8 @@ export class WorkspaceComponent implements OnInit {
   username: string;
   factors: Factor[] = [];
   profiles: Profile[] = [];
-  users: UserPd[] = [];
+  suggestedUsers: UserPd[] = [];
+
 
 
 
@@ -49,6 +51,7 @@ export class WorkspaceComponent implements OnInit {
     private location: Location,
     private userService: UserService,
     private propositionService: PropositionService,
+    private organizationService: OrganizationService,
     private workspaceService: WorkspaceService,
     private modalService: NgbModal) { }
 
@@ -146,14 +149,22 @@ export class WorkspaceComponent implements OnInit {
 
     }
 
-    addProfile( propositionId:number, userId: number) {
+    async addProfile(userId: number, name:string) {
 
-      this.workspaceService.addProfile( propositionId, userId )
+      await this.workspaceService.addProfile( this.proposition.id, userId, name);
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      });
 
     }
 
 
   ngOnInit(): void {
+    this.workspaceService.getSuggestedUsers(this.organizationService.getOrganizationId()).subscribe(
+      suggestedUsers => this.suggestedUsers = suggestedUsers
+    )
     this.username = this.userService.getUsername();
     this.propositionService.getProposition().subscribe(
       proposition => this.proposition = proposition
