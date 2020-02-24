@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 import { formatDate, Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
-import { User } from 'src/app/core/user/user';
+import { UserPd } from '../../users/user/userpd';
 import { Proposition } from '../propositions/proposition/proposition';
 import { PropositionService } from '../propositions/proposition/proposition.service';
 import { Factor } from './factor/factor';
@@ -36,7 +36,7 @@ export class WorkspaceComponent implements OnInit {
   username: string;
   factors: Factor[] = [];
   profiles: Profile[] = [];
-  users: User[] = [];
+  users: UserPd[] = [];
 
 
 

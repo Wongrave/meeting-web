@@ -55,8 +55,8 @@
           <tr>
             <td ><p class="card-text">{{ profile.userName }}</p></td>
             <td><input type="checkbox" id="changeAdminProfile" [checked]="profile.admin" (click)="changeAdmin(adminProfile.checked, profile.id)" #changeAdmin></td>
-            <td><input type="checkbox" id="changeExpertProfile" [checked]="profile.expert" (click)="expertProfile(expertProfile.checked, profile.id)" #changeExpert></td>
-            <td><input type="checkbox" id="changeAnalystProfile" [checked]="profile.analyst" (click)="analystProfile(analystProfile.checked, profile.id)" #changeAnalyst></td>
+            <td><input type="checkbox" id="changeExpertProfile" [checked]="profile.expert" (click)="changeExpert(expertProfile.checked, profile.id)" #changeExpert></td>
+            <td><input type="checkbox" id="changeAnalystProfile" [checked]="profile.analyst" (click)="changeAnalyst(analystProfile.checked, profile.id)" #changeAnalyst></td>
           </tr>
         </span>
       </table>
@@ -65,7 +65,7 @@
     <div class="col-6">
       <div class="row mt-3" *ngFor="let user of users">
         <h3 class="col-3 col-md-2 factor-item d-flex align-items-center">{{ user.name }}</h3>
-        <h4 class="col-3 col-md-1 factor-item d-flex align-items-center">{{ user.department }}</h4>
+        <h4 class="col-3 col-md-1 factor-item d-flex align-items-center">{{ user.departments }}</h4>
         <a class="mx-auto display-4 mt-2 ml-3" (click)="addProfile(proposition.id, user.id)">
           <h3 class="d-inline-block float-right  hover-red">
             <fa name="plus"></fa>
