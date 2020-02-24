@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { ExpertComponent } from './expert.component';
 import { ValueComponent } from './value/value.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import { ValueComponent } from './value/value.component';
     ],
     imports: [ 
         CommonModule, 
-        ReactiveFormsModule 
+        ReactiveFormsModule,
+        AngularFontAwesomeModule
     ],
     exports: [
         ExpertComponent
