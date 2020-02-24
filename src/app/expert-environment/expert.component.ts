@@ -1,11 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/core/auth/auth.service';
-import { formatDate } from '@angular/common';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
-import { User } from 'src/app/core/user/user';
 import { PropositionService } from '../data-environment/propositions/proposition/proposition.service';
 import { Proposition } from '../data-environment/propositions/proposition/proposition';
 import { Factor } from '../data-environment/workspace/factor/factor';
@@ -23,6 +19,7 @@ export class ExpertComponent implements OnInit {
     proposition: Proposition;
     factors: Factor[] = []
     evidences: Evidence[] = []
+    weight = 0;
     currentEvidences: Evidence[] = [] 
     gce = Math.round(Math.random() * 100);
     gin = Math.round(Math.random() * 100);
@@ -35,6 +32,9 @@ export class ExpertComponent implements OnInit {
     private propositionService: PropositionService,
     private userService: UserService ){ }
 
+  saveWeight(w: number) {
+      this.weight = w;
+  }
   async ngOnInit() {
 
     this.username = this.userService.getUsername();
@@ -45,6 +45,7 @@ export class ExpertComponent implements OnInit {
     this.expertService.listFromProposition(this.proposition.id).subscribe(
       factors => this.factors = factors
     )
+
     
     await this.expertService.getFromProposition(this.proposition.id).toPromise().then(
       evidences => this.evidences = evidences
@@ -52,6 +53,7 @@ export class ExpertComponent implements OnInit {
 
     this.gce = this.evidences[0].favorable
     this.gin = this.evidences[0].desfavorable
+
 
   }
 

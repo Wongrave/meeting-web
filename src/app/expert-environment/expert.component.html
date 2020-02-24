@@ -4,9 +4,10 @@
         <thead class="thead-dark">
             <tr class="row">
                 <th scope="col" class="col-4 col-md-2">Sigla</th>
-                <th scope="col" class="col-8 col-md-4">Criterio</th>
+                <th scope="col" class="col-8 col-md-2">Criterio</th>
                 <!-- <th scope="col" class="hidden-xs hidden-sm d-none d-lg-table-cell">Attractiveness</th>
                 <th scope="col" class="hidden-xs hidden-sm d-none d-lg-table-cell">Disharmony</th> -->
+                <th scope="col" class="col-2 col-md-2">Peso</th>
                 <th scope="col" class="hidden-xs hidden-sm d-none d-lg-table-cell col-md-3">Confiança</th>
                 <th scope="col" class="hidden-xs hidden-sm d-none d-lg-table-cell col-md-3">Desconfiança</th>
             </tr>
@@ -14,9 +15,22 @@
 
         <tr *ngFor="let factor of factors" class="row">
             <th scope="row" class="col-4 col-md-2">  {{factor.tag}} </th>
-            <td class="col-8 col-md-4"> {{factor.description}} </td>
+            <td class="col-8 col-md-2"> {{factor.description}} </td>
             <!-- <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td>
             <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td>  -->
+            <td class="col-2 col-md-2">
+                <!--h3 class="d-inline-block">
+                    <a (click)="weightChange('dec')">
+                        <fa name="caret-down"></fa>
+                    </a>
+                </h3-->
+                <input #w type="number" min=0 max=10 style="width: 40px" (change)="saveWeight(w.value)" [value]="weight"/>
+                <!--h3 class="d-inline-block">
+                    <a (click)="weightChange('inc')">
+                        <fa name="caret-up"></fa>
+                    </a>
+                </h3-->
+            </td>
             <td class="col-12 col-md-3">
                     <pd-expert-value [valor]="gce"></pd-expert-value>
                 </td>
@@ -49,5 +63,4 @@
 
         rangeSlider();
     </script> -->
-
 </div>
