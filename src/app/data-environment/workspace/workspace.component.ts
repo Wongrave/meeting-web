@@ -139,13 +139,13 @@ export class WorkspaceComponent implements OnInit {
 
     changeExpert( id: number, checked: boolean ) {
 
-      this.workspaceService.changeAdmin( id, checked );
+      this.workspaceService.changeExpert( id, checked );
 
     }
 
     changeAnalyst( id: number, checked: boolean ) {
 
-      this.workspaceService.changeAdmin( id, checked );
+      this.workspaceService.changeAnalyst( id, checked );
 
     }
 

@@ -101,7 +101,7 @@ export class PropositionListComponent implements OnInit {
     console.log(this.username)
 
     this.propositionService
-      .listFromUser(this.userId)
+      .listFromUser(this.userId, this.organizationService.getOrganizationId())
       .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
 
     // let proposition: Proposition;

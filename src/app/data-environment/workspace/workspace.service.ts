@@ -43,16 +43,16 @@ export class WorkspaceService {
 
     }
 
-    changeAdmin(id: number, checked: boolean) {
-      return this.http.put(APIPROFILE+'/changeAdmin/', { id, checked }).subscribe();
+    changeAdmin(id: number, admin: boolean) {
+      return this.http.put(APIPROFILE+'/changeAdmin/'+id, { id, admin }).subscribe();
     }
 
-    changeExpert(id: number, checked: boolean) {
-      return this.http.put(APIPROFILE+'/changeExpert/', { id, checked }).subscribe();
+    changeExpert(id: number, expert: boolean) {
+      return this.http.put(APIPROFILE+'/changeExpert/'+id, { id, expert }).subscribe();
     }
 
-    changeAnalyst(id: number, checked: boolean) {
-      return this.http.put(APIPROFILE+'/changeAnalyst/', { id, checked }).subscribe();
+    changeAnalyst(id: number, analyst: boolean) {
+      return this.http.put(APIPROFILE+'/changeAnalyst/'+id, { id, analyst }).subscribe();
     }
 
     addProfile( propositionId: number, userId: number, name: string ) {

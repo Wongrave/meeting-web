@@ -14,10 +14,10 @@ export class PropositionService {
 
     constructor(private http: HttpClient) { }
 
-    listFromUser(user: number) {
+    listFromUser(user: number, organizationId: number) {
 
         return this.http
-            .get<Proposition[]>(API + '/fromUser/' + user);
+            .get<Proposition[]>(API + '/fromUser/' + organizationId + '/' + user)
 
     }
 

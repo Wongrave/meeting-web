@@ -45,30 +45,27 @@
 
       <table>
         <tr>
-          <th class="col-6 col-md-2">Nome</th>
-          <th class="col-2 col-md-2">Facilitador</th>
-          <th class="col-2 col-md-2">Especialista</th>
-          <th class="col-2 col-md-2">Analista</th>
+          <th class="col-6 col-md-2 text-center">Nome</th>
+          <th class="col-2 col-md-2 text-center">Facilitador</th>
+          <th class="col-2 col-md-2 text-center">Especialista</th>
+          <th class="col-2 col-md-2 text-center">Analista</th>
         </tr>
-        <span *ngFor="let profile of profiles">
-          <tr>
+          <tr *ngFor="let profile of profiles">
             <td ><p class="card-text">{{ profile.name }}</p></td>
-            <td><input type="checkbox" id="changeAdminProfile" [checked]="profile.admin" (click)="changeAdmin(adminProfile.checked, profile.id)" #changeAdmin></td>
-            <td><input type="checkbox" id="changeExpertProfile" [checked]="profile.expert" (click)="changeExpert(expertProfile.checked, profile.id)" #changeExpert></td>
-            <td><input type="checkbox" id="changeAnalystProfile" [checked]="profile.analyst" (click)="changeAnalyst(analystProfile.checked, profile.id)" #changeAnalyst></td>
+            <td class="" ><input type="checkbox" id="changeAdminProfile" [checked]="profile.admin" (click)="changeAdmin(profile.id, changeAdminCheck.checked)" #changeAdminCheck></td>
+            <td class="" ><input type="checkbox" id="changeExpertProfile" [checked]="profile.expert" (click)="changeExpert(profile.id, changeExpertCheck.checked)" #changeExpertCheck></td>
+            <td class="" ><input type="checkbox" id="changeAnalystProfile" [checked]="profile.analyst" (click)="changeAnalyst(profile.id, changeAnalystCheck.checked)" #changeAnalystCheck></td>
           </tr>
-        </span>
       </table>
 
 
-      <div class="d-flex col-12 alert alert-dark" *ngFor="let suggestedUser of suggestedUsers" >
+      <div class="d-flex col-12 border-bottom border-info" *ngFor="let suggestedUser of suggestedUsers" >
 
-        <h5 class="d-flex col-6 mt-2  align-items-center text-truncate font-weight-bolder">{{suggestedUser.name}}</h5>
-        <h5 class="d-flex col-4 mt-2 align-items-center float-right text-truncate">{{suggestedUser.departments}}</h5>
-        <a class="mx-auto display-4 mt-2 ml-3" (click)="addProfile(suggestedUser.id, suggestedUser.name )">
-          <h3 class="d-flex col-md-2 float-right hover-red">
+        <h6 class="d-flex col-10 mt-2  align-items-center text-truncate"><span class="font-weight-bolder">{{suggestedUser.name}}</span> &nbsp; <span class="text-muted">{{suggestedUser.role}}</span></h6>
+        <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addProfile(suggestedUser.id, suggestedUser.name )">
+          <h5 class="float-right hover-green">
             <fa name="plus"></fa>
-          </h3>
+          </h5>
         </a>
       </div>
 
