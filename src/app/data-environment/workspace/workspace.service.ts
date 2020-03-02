@@ -8,6 +8,7 @@ import { Section } from './section/section';
 
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
 const APISECTION = 'http://177.70.27.122:8080/sections'
+const APIGROUP = 'http://177.70.27.122:8080/groups'
 
 
 @Injectable({ providedIn: 'root' })
@@ -38,5 +39,9 @@ export class WorkspaceService {
     deleteSection(id: number) {
       return this.http.post(APISECTION+'/delete/'+id, {}).toPromise();
 
+    }
+
+    newGroup(name: string) {
+      return this.http.post(APIGROUP + '/new', {name}).toPromise();
     }
 }

@@ -31,6 +31,7 @@ export class WorkspaceComponent implements OnInit {
   newSectionSelected = false;
   username: string;
   factors: Factor[] = []
+  newGroupName = "Grupo";
 
 
 
@@ -122,6 +123,15 @@ export class WorkspaceComponent implements OnInit {
       this.visible = !this.visible;
     }
 
+    async newGroup(){
+      await this.workspaceService
+      .newGroup(name);
+
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+      console.log(decodeURI(this.location.path()))
+      this.router.navigate([decodeURI(this.location.path())])
+    });
+    }
 
   ngOnInit(): void {
     this.username = this.userService.getUsername();
