@@ -10,6 +10,7 @@ import { UserPd } from '../../users/user/userpd'
 
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
 const APISECTION = 'http://177.70.27.122:8080/sections'
+const APIGROUP = 'http://177.70.27.122:8080/groups'
 const APIPROFILE = 'http://177.70.27.122:8080/profiles'
 
 
@@ -43,6 +44,10 @@ export class WorkspaceService {
 
     }
 
+    newGroup(name: string) {
+      return this.http.post(APIGROUP + '/new', {name}).toPromise();
+    }
+
     changeAdmin(id: number, admin: boolean) {
       return this.http.put(APIPROFILE+'/changeAdmin/'+id, { id, admin }).subscribe();
     }
@@ -66,5 +71,4 @@ export class WorkspaceService {
     getProfiles(propositionId: number){
       return this.http.get<Profile[]>(APIPROFILE+'/'+propositionId, {})
     }
-
 }

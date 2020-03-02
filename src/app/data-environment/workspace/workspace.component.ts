@@ -35,10 +35,11 @@ export class WorkspaceComponent implements OnInit {
   changeExpertProfile = false;
   changeAnalystProfile = false;
   username: string;
-  factors: Factor[] = [];
+
+  factors: Factor[] = []
+  newGroupName = "Grupo";
   profiles: Profile[] = [];
   suggestedUsers: UserPd[] = [];
-
 
 
 
@@ -129,6 +130,17 @@ export class WorkspaceComponent implements OnInit {
     visible = false;
     toggle() {
       this.visible = !this.visible;
+    }
+
+
+    async newGroup(){
+      await this.workspaceService
+      .newGroup(name);
+
+    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+      console.log(decodeURI(this.location.path()))
+      this.router.navigate([decodeURI(this.location.path())])
+    });
     }
 
     changeAdmin( id: number, checked: boolean ) {
