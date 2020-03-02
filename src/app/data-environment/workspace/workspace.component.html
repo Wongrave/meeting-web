@@ -57,12 +57,12 @@
                 <label for="{{profile.id * -1}}"></label>
             </td>
             <td class="custom-checkbox text-center" >
-                <input type="checkbox" id="{{profile.id * -2}}" [checked]="profile.expert" (click)="changeExpert(profile.id, changeExpertCheck.checked)" #changeExpertCheck>
-                <label for="{{profile.id * -2}}"></label>
+                <input type="checkbox" id="{{profile.id * -1.1}}" [checked]="profile.expert" (click)="changeExpert(profile.id, changeExpertCheck.checked)" #changeExpertCheck>
+                <label for="{{profile.id * -1.1}}"></label>
             </td>
             <td class="custom-checkbox text-center" >
-                <input type="checkbox" id="{{profile.id * -3}}" [checked]="profile.analyst" (click)="changeAnalyst(profile.id, changeAnalystCheck.checked)" #changeAnalystCheck>
-                <label for="{{profile.id * -3}}"></label>
+                <input type="checkbox" id="{{profile.id * -1.3}}" [checked]="profile.analyst" (click)="changeAnalyst(profile.id, changeAnalystCheck.checked)" #changeAnalystCheck>
+                <label for="{{profile.id * -1.3}}"></label>
             </td>
           </tr>
       </table>
