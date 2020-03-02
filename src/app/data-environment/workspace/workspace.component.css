@@ -13,6 +13,15 @@
     color: #FF6677;
   }
 
+  .hover-green {
+    color: #555;
+    transition: 0.3s;
+  }
+
+  .hover-green:hover {
+    color: rgb(31, 129, 93);
+  }
+
   .factor-item {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;

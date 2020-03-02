@@ -15,8 +15,11 @@ export class PropositionComponent implements OnInit {
     constructor(private propositionService: PropositionService) { }
 
     ngOnInit(): void {
-        this.propositionService
-            .listFromUser(0)
-            .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
+        
     }
+    // ngOnInit(): void {
+    //     this.propositionService
+    //         .listFromUser(0)
+    //         .subscribe(propositions => this.propositions = propositions, err => console.log(err.message));
+    // }
 }

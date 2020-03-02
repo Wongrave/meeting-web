@@ -100,13 +100,19 @@ export class OrganizationListComponent implements OnInit {
     await this.managementService
       .newUnit(localUnit, descriptionUnit, summaryUnit, this.organization).then(unit => this.unit = unit);
 
-    
+
 
     await this.managementService
       .newDepartmentWithUser(descriptionDepartment, summaryDepartment, this.unit, this.users).then(
         object => console.log("adicionou")
       );
 
+      this.modalService.dismissAll();
+
+      this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      })
 
 
 
@@ -130,7 +136,7 @@ export class OrganizationListComponent implements OnInit {
     this.organizationService
       .listFromUser(this.userId)
       .subscribe(organizations => this.organizations = organizations, err => console.log(err.message));
-    
+
   }
 
 

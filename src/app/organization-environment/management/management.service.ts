@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { BusinessUnit } from './business-unit/business-unit';
-import { Department } from './department/department'
+import { Department } from './department/department';
 import { Organization } from '../organizations/organization/organization';
 import { UserPd } from 'src/app/users/user/userpd';
 
@@ -27,7 +27,7 @@ export class ManagementService {
     }
 
     deleteUnit(id: number) {
-        return this.http.post(APIBUSINESSUNIT + '/delete' + id, {}).toPromise();
+        return this.http.delete(APIBUSINESSUNIT + '/delete' + id, {}).toPromise();
 
     }
 
@@ -43,6 +43,6 @@ export class ManagementService {
     }
 
     deleteDepartment(id: number) {
-        return this.http.post(APIDEPARTMENT + '/delete' + id, {}).toPromise();
+        return this.http.delete(APIDEPARTMENT + '/delete' + id, {}).toPromise();
     }
 }
