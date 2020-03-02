@@ -52,10 +52,19 @@
         </tr>
           <tr *ngFor="let profile of profiles">
             <td ><p class="card-text">{{ profile.name }}</p></td>
-            <td class=" " ><input type="checkbox" id="changeAdminProfile" [checked]="profile.admin" (click)="changeAdmin(profile.id, changeAdminCheck.checked)" #changeAdminCheck></td>
-            <td class=" " ><input type="checkbox" id="changeExpertProfile" [checked]="profile.expert" (click)="changeExpert(profile.id, changeExpertCheck.checked)" #changeExpertCheck></td>
-            <td class=" " ><input type="checkbox" id="changeAnalystProfile" [checked]="profile.analyst" (click)="changeAnalyst(profile.id, changeAnalystCheck.checked)" #changeAnalystCheck></td>
-            <a class="mx-auto display-4 mt-2 ml-3 " (click)="deleteProfile(profile.id)">
+            <td class="custom-checkbox text-center">
+                <input type="checkbox" id="{{profile.id * -1}}" [checked]="profile.admin" (click)="changeAdmin(profile.id, changeAdminCheck.checked)" #changeAdminCheck>
+                <label for="{{profile.id * -1}}"></label>
+            </td>
+            <td class="custom-checkbox text-center" >
+                <input type="checkbox" id="{{profile.id * -1.1}}" [checked]="profile.expert" (click)="changeExpert(profile.id, changeExpertCheck.checked)" #changeExpertCheck>
+                <label for="{{profile.id * -1.1}}"></label>
+            </td>
+            <td class="custom-checkbox text-center" >
+                <input type="checkbox" id="{{profile.id * -1.3}}" [checked]="profile.analyst" (click)="changeAnalyst(profile.id, changeAnalystCheck.checked)" #changeAnalystCheck>
+                <label for="{{profile.id * -1.3}}"></label>
+            </td>
+             <a class="mx-auto display-4 mt-2 ml-3 " (click)="deleteProfile(profile.id)">
               <h3 class="d-inline-block float-right hover-red">
                 <fa name="minus"></fa>
               </h3>
