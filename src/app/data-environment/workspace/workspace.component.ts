@@ -13,7 +13,8 @@ import { WorkspaceService } from './workspace.service';
 import { OrganizationService } from '../../organization-environment/organizations/organization/organization.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Section } from './section/section';
-import { Profile } from './profile/profile'
+import { Profile } from './profile/profile';
+import { Group } from './group/group';
 
 @Component({
   styleUrls: ['./workspace.component.css'],
@@ -37,6 +38,7 @@ export class WorkspaceComponent implements OnInit {
   username: string;
 
   factors: Factor[] = []
+  groups: Group[] = []
   newGroupName = "Grupo";
   profiles: Profile[] = [];
   suggestedUsers: UserPd[] = [];
@@ -135,12 +137,13 @@ export class WorkspaceComponent implements OnInit {
 
     async newGroup(){
       await this.workspaceService
-      .newGroup(name);
+      .newGroup(this.newGroupName, this.proposition.id)
 
-    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
-      console.log(decodeURI(this.location.path()))
-      this.router.navigate([decodeURI(this.location.path())])
-    });
+      this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      })
+    
     }
 
     changeAdmin( id: number, checked: boolean ) {
@@ -201,6 +204,10 @@ export class WorkspaceComponent implements OnInit {
       profiles => this.profiles = profiles
     )
     console.log(this.profiles)
+
+    this.workspaceService.getGroups(this.proposition.id).subscribe(
+      groups => this.groups = groups
+    )
 
   }
 
