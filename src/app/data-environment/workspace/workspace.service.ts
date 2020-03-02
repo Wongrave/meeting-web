@@ -65,8 +65,8 @@ export class WorkspaceService {
       return this.http.post<Profile>(APIPROFILE+'/new', { propositionId, userId, name }).toPromise();
     }
 
-    getSuggestedUsers(id: number) {
-      return this.http.get<UserPd[]>(APIPROFILE+'/suggestedUsers/'+id, {})
+    getSuggestedUsers(propositionId:number) {
+      return this.http.get<UserPd[]>(APIPROFILE+'/suggestedUsers/'+propositionId, {});
     }
 
     getProfiles(propositionId: number){
@@ -75,5 +75,10 @@ export class WorkspaceService {
 
     getGroups(propositionId: number) {
       return this.http.get<Group[]>(APIGROUP+'/from/'+propositionId, {})
+
+    }
+
+    deleteProfile(id:number) {
+      return this.http.delete(APIPROFILE+'/delete/'+id, {}).toPromise();
     }
 }
