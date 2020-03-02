@@ -172,9 +172,20 @@ export class WorkspaceComponent implements OnInit {
 
     }
 
+    async deleteProfile(id: number) {
+
+      await this.workspaceService.deleteProfile( id );
+
+      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
+        console.log(decodeURI(this.location.path()))
+        this.router.navigate([decodeURI(this.location.path())])
+      });
+
+    }
+
 
   ngOnInit(): void {
-    this.workspaceService.getSuggestedUsers(this.organizationService.getOrganizationId()).subscribe(
+    this.workspaceService.getSuggestedUsers( this.proposition.id).subscribe(
       suggestedUsers => this.suggestedUsers = suggestedUsers
     )
     this.username = this.userService.getUsername();
