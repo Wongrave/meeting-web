@@ -6,6 +6,7 @@ import { Factor } from './factor/factor';
 import { Proposition } from '../propositions/proposition/proposition';
 import { Section } from './section/section';
 import { Profile } from './profile/profile';
+import { Group } from './group/group';
 import { UserPd } from '../../users/user/userpd'
 
 const APIFACTOR = 'http://177.70.27.122:8080/factors'
@@ -44,8 +45,8 @@ export class WorkspaceService {
 
     }
 
-    newGroup(name: string) {
-      return this.http.post(APIGROUP + '/new', {name}).toPromise();
+    newGroup(description: string, propositionId: number) {
+      return this.http.post(APIGROUP + '/new', {description, propositionId}).toPromise();
     }
 
     changeAdmin(id: number, admin: boolean) {
@@ -69,6 +70,10 @@ export class WorkspaceService {
     }
 
     getProfiles(propositionId: number){
-      return this.http.get<Profile[]>(APIPROFILE+'/'+propositionId, {})
+      return this.http.get<Profile[]>(APIPROFILE+'/from/'+propositionId, {})
+    }
+
+    getGroups(propositionId: number) {
+      return this.http.get<Group[]>(APIGROUP+'/from/'+propositionId, {})
     }
 }
