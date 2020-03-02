@@ -69,6 +69,6 @@ export class WorkspaceService {
     }
 
     getProfiles(propositionId: number){
-      return this.http.get<Profile[]>(APIPROFILE+'/'+propositionId, {})
+      return this.http.get<Profile[]>(APIPROFILE+'/from/'+propositionId, {})
     }
 }
