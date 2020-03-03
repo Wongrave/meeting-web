@@ -9,6 +9,7 @@ import { PropositionService } from '../../propositions/proposition/proposition.s
 
 
 @Component({
+  styleUrls: ['./factor.component.css'],
   selector: 'pd-new-factor',
   templateUrl: './factor.component.html'
 })
