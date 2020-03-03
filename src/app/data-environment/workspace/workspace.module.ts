@@ -5,10 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceComponent } from './workspace.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { GroupComponent } from './group/group.component';
 
 @NgModule({
     declarations: [
-        WorkspaceComponent
+        WorkspaceComponent,
+        GroupComponent
     ],
     imports: [
       HttpClientModule,
@@ -19,7 +21,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
       AngularFontAwesomeModule,
     ],
     exports: [
-        WorkspaceComponent
+        WorkspaceComponent,
+        GroupComponent
     ]
   })
 export class WorkspaceModule{
