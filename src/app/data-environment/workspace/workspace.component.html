@@ -1,62 +1,12 @@
 <div class="container">
-  <pd-new-factor></pd-new-factor>
-  <div class="col-12 col-md-6 float-left mt-2 mb-2">
-
-      <table>
-        <tr>
-          <th class="col-6 col-md-2 text-center">Nome</th>
-          <th class="col-2 col-md-2 text-center">Facilitador</th>
-          <th class="col-2 col-md-2 text-center">Especialista</th>
-          <th class="col-2 col-md-2 text-center">Analista</th>
-        </tr>
-          <tr *ngFor="let profile of profiles">
-            <td ><p class="card-text">{{ profile.name }}</p></td>
-            <td class="custom-checkbox text-center">
-                <input type="checkbox" id="{{profile.id * -1}}" [checked]="profile.admin" (click)="changeAdmin(profile.id, changeAdminCheck.checked)" #changeAdminCheck>
-                <label for="{{profile.id * -1}}"></label>
-            </td>
-            <td class="custom-checkbox text-center" >
-                <input type="checkbox" id="{{profile.id * -1.1}}" [checked]="profile.expert" (click)="changeExpert(profile.id, changeExpertCheck.checked)" #changeExpertCheck>
-                <label for="{{profile.id * -1.1}}"></label>
-            </td>
-            <td class="custom-checkbox text-center" >
-                <input type="checkbox" id="{{profile.id * -1.3}}" [checked]="profile.analyst" (click)="changeAnalyst(profile.id, changeAnalystCheck.checked)" #changeAnalystCheck>
-                <label for="{{profile.id * -1.3}}"></label>
-            </td>
-            <td>
-             <a class="mx-auto display-4 mt-2 ml-3 " (click)="deleteProfile(profile.id)">
-              <h3 class="d-inline-block float-right hover-red">
-                <fa name="minus"></fa>
-              </h3>
-            </a>
-          </td>
-          </tr>
-      </table>
-
-
-      <div class="d-flex col-12 border-bottom border-info" *ngFor="let suggestedUser of suggestedUsers" >
-
-        <h6 class="d-flex col-10 mt-2  align-items-center text-truncate"><span class="font-weight-bolder">{{suggestedUser.name}}</span> &nbsp; <span class="text-muted">{{suggestedUser.role}}</span></h6>
-        <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addProfile(suggestedUser.id, suggestedUser.name )">
-          <h5 class="float-right hover-green">
-            <fa name="plus"></fa>
-          </h5>
-        </a>
-      </div>
-
-
+  <div class="col-12">
+    <pd-new-factor></pd-new-factor>
   </div>
-
+  <div class="col-12 col-md-6 float-left mt-2 mb-2">
+    <pd-profile></pd-profile>
+  </div>
   <div class="group col-12 col-md-6 float-left mt-2 mb-2">
-    <h3>Grupos</h3>
-    <div *ngFor="let group of groups" class="card w-100">
-      <div class="card-body">
-        <h4 class="card-title">{{group.description}}</h4>
-        <p class="card-text">{{group.summary}}</p>
-        <button class="btn btn-primary" >Editar</button>
-      </div>
-    </div>
-    <button type="button" class="btn-circle btn btn-outline-primary" (click)="newGroup()"><fa name="plus"></fa></button>
+    <pd-group></pd-group>
   </div>
 
 </div>

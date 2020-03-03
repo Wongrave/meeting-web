@@ -48,16 +48,14 @@
 .btn-outline-primary:focus{
     color: white
 }
+
 .factor {
     margin-top: 80px;
     margin-right: 60px;
 
 }
 
-  .btn-outline-primary:focus{
-    color: white
-  }
-  .group {
+.group {
     margin-top: 80px;
     text-align: center;
 }
