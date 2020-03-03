@@ -22,10 +22,6 @@ import { Group } from './group/group';
 export class WorkspaceComponent implements OnInit {
 
   proposition: Proposition;
-  newFactorTag = "";
-  newFactorDescription = "";
-  newFactorSummary = "";
-  newFactorSelected = false;
   newSectionTag = "";
   newSectionDescription = "";
   newSectionSummary = "";
@@ -69,33 +65,6 @@ export class WorkspaceComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
-  }
-
-  async newFactor(newFactorTag: string, newFactorDescription: string, newFactorSummary: string, newFactorSelected: boolean) {
-
-    await this.workspaceService
-      .newFactor(newFactorTag, newFactorDescription, newFactorSummary, newFactorSelected, this.proposition);
-
-    this.modalService.dismissAll();
-
-    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
-      console.log(decodeURI(this.location.path()))
-      this.router.navigate([decodeURI(this.location.path())])
-    });
-
-  }
-
-    async deleteFactor(id: number) {
-
-      await this.workspaceService
-        .deleteFactor(id)
-
-
-    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
-      console.log(decodeURI(this.location.path()))
-      this.router.navigate([decodeURI(this.location.path())])
-    });
-
   }
 
   async newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor) {
