@@ -6,10 +6,12 @@ import { WorkspaceComponent } from './workspace.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FactorModule } from './factor/factor.module';
+import { GroupComponent } from './group/group.component';
 
 @NgModule({
     declarations: [
-        WorkspaceComponent
+        WorkspaceComponent,
+        GroupComponent
     ],
     imports: [
       HttpClientModule,
@@ -21,7 +23,8 @@ import { FactorModule } from './factor/factor.module';
       FactorModule
     ],
     exports: [
-        WorkspaceComponent
+        WorkspaceComponent,
+        GroupComponent
     ]
   })
 export class WorkspaceModule{

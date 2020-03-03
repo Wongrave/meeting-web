@@ -111,15 +111,8 @@
   </div>
 
   <div class="group col-12 col-md-6 float-left mt-2 mb-2">
-    <h3>Grupos</h3>
-    <div *ngFor="let group of groups" class="card w-100">
-      <div class="card-body">
-        <h4 class="card-title">{{group.description}}</h4>
-        <p class="card-text">{{group.summary}}</p>
-        <button class="btn btn-primary" >Editar</button>
-      </div>
-    </div>
-    <button type="button" class="btn-circle btn btn-outline-primary" (click)="newGroup()"><fa name="plus"></fa></button>
+    <pd-group>
+    </pd-group>
   </div>
 
 </div>
