@@ -188,12 +188,14 @@ export class WorkspaceComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.workspaceService.getSuggestedUsers( this.proposition.id).subscribe(
-      suggestedUsers => this.suggestedUsers = suggestedUsers
-    )
+   
     this.username = this.userService.getUsername();
     this.propositionService.getProposition().subscribe(
       proposition => this.proposition = proposition
+    )
+
+    this.workspaceService.getSuggestedUsers( this.proposition.id).subscribe(
+      suggestedUsers => this.suggestedUsers = suggestedUsers
     )
 
     this.workspaceService.listFromProposition(this.proposition.id).subscribe(
