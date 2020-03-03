@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 import { formatDate, Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/user/user.service';
-import { UserPd } from '../../users/user/userpd';
 import { Proposition } from '../propositions/proposition/proposition';
 import { PropositionService } from '../propositions/proposition/proposition.service';
 import { Factor } from './factor/factor';
@@ -13,7 +12,6 @@ import { WorkspaceService } from './workspace.service';
 import { OrganizationService } from '../../organization-environment/organizations/organization/organization.service'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Section } from './section/section';
-import { Profile } from './profile/profile';
 import { Group } from './group/group';
 
 @Component({
@@ -32,16 +30,11 @@ export class WorkspaceComponent implements OnInit {
   newSectionDescription = "";
   newSectionSummary = "";
   newSectionSelected = false;
-  changeAdminProfile = false;
-  changeExpertProfile = false;
-  changeAnalystProfile = false;
   username: string;
 
   factors: Factor[] = []
   groups: Group[] = []
   newGroupName = "Grupo";
-  profiles: Profile[] = [];
-  suggestedUsers: UserPd[] = [];
 
 
 
@@ -143,69 +136,20 @@ export class WorkspaceComponent implements OnInit {
         console.log(decodeURI(this.location.path()))
         this.router.navigate([decodeURI(this.location.path())])
       })
-    
-    }
-
-    changeAdmin( id: number, checked: boolean ) {
-
-      this.workspaceService.changeAdmin( id, checked );
-
-    }
-
-    changeExpert( id: number, checked: boolean ) {
-
-      this.workspaceService.changeExpert( id, checked );
-
-    }
-
-    changeAnalyst( id: number, checked: boolean ) {
-
-      this.workspaceService.changeAnalyst( id, checked );
-
-    }
-
-    async addProfile(userId: number, name:string) {
-
-      await this.workspaceService.addProfile( this.proposition.id, userId, name);
-
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-      });
-
-    }
-
-    async deleteProfile(id: number) {
-
-      await this.workspaceService.deleteProfile( id );
-
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-      });
 
     }
 
 
   ngOnInit(): void {
-   
+
     this.username = this.userService.getUsername();
     this.propositionService.getProposition().subscribe(
       proposition => this.proposition = proposition
     )
 
-    this.workspaceService.getSuggestedUsers( this.proposition.id).subscribe(
-      suggestedUsers => this.suggestedUsers = suggestedUsers
-    )
-
     this.workspaceService.listFromProposition(this.proposition.id).subscribe(
       factors => this.factors = factors
     )
-
-    this.workspaceService.getProfiles(this.proposition.id).subscribe(
-      profiles => this.profiles = profiles
-    )
-    console.log(this.profiles)
 
     this.workspaceService.getGroups(this.proposition.id).subscribe(
       groups => this.groups = groups

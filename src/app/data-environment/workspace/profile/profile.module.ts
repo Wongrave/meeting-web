@@ -2,15 +2,13 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WorkspaceComponent } from './workspace.component';
-import { ProfileModule } from './profile/profile.module'
+import { ProfileComponent } from './profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { from } from 'rxjs';
 
 @NgModule({
     declarations: [
-        WorkspaceComponent
+        ProfileComponent
     ],
     imports: [
       HttpClientModule,
@@ -19,12 +17,11 @@ import { from } from 'rxjs';
       ReactiveFormsModule,
       NgbModule,
       AngularFontAwesomeModule,
-      ProfileModule
     ],
     exports: [
-        WorkspaceComponent
+        ProfileComponent
     ]
   })
-export class WorkspaceModule{
+export class ProfileModule{
 
 }
