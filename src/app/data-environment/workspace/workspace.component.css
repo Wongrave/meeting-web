@@ -113,7 +113,7 @@
         margin-top:-7px;
         left: 2px;
         color: #17A2B8;
-        xtransition: all .2s;
+        transition: all .2s;
     }
 
     .custom-checkbox > [type="checkbox"]:not(:checked) + label:after {
