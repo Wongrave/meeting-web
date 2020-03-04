@@ -91,11 +91,6 @@ export class WorkspaceComponent implements OnInit {
 
     }
 
-    visible = false;
-    toggle() {
-      this.visible = !this.visible;
-    }
-
 
     async newGroup(){
       await this.workspaceService

@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #004e4e;">
-    <div class="container">
+    <div class="containe-fluid">
       <!-- page-header -->
+      <div class="row">
+      <div class="col">
         <nav class="navbar-brand mb-0 h1">
           {{ name }}
         </nav>
@@ -10,46 +12,51 @@
           <span class="icon-bar middle-bar"></span>
           <span class="icon-bar bottom-bar"></span>
         </button>
-      <!-- navbar opções -->
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav mr-auto mt-12 mt-lg-12">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['propositions/fromUser/', username]">
-              Problema<span class="sr-only"> (atual)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['dashboard']">Ambiente</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['evidences/fromUser/', username]">Avaliar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['result']">Analisar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Relatório</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Outro
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" (click)="changeProposition()">Trocar Proposição</a>
-              <a class="dropdown-item" [routerLink]="['management']">Gerenciar</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Alguma outra coisa</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="disconnect()" >Desconectar</a>
-          </li>
-        </ul>
-
       </div>
+      <!-- navbar opções -->
+      <div class="col">
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mr-auto mt-12 mt-lg-12">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['propositions/fromUser/', username]">
+                Problema<span class="sr-only"> (atual)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['dashboard']">Ambiente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['evidences/fromUser/', username]">Avaliar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['result']">Analisar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Relatório</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Outro
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" (click)="changeProposition()">Trocar Proposição</a>
+                <a class="dropdown-item" [routerLink]="['management']">Gerenciar</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Alguma outra coisa</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="disconnect()" >Desconectar</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      <div class="col">
       <span class="navbar-text">
         {{ proposition?.description }}
       </span>
-
+      </div>
+    </div>
     </div>
   </nav>

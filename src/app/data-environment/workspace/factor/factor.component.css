@@ -25,3 +25,7 @@
     margin-top: 80px;
     margin-right: 60px;
 }
+
+.border-left-info {
+    border-left: 0.25rem solid #36b9cc !important;
+  }

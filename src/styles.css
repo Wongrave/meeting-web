@@ -1,3 +1,16 @@
+@font-face {
+  font-family: Spartan;
+  src: url(./assets/fonts/Spartan/static/Spartan-Regular.ttf) format("opentype");
+}
+@font-face {
+  font-family: Roboto;
+  src: url(./assets/fonts/Roboto/Roboto-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/fonts/Montserrat/Montserrat-Medium.ttf) format("truetype");
+}
+
 .btn-select {
     width: 40px;
     height: 40px;
@@ -58,4 +71,10 @@ input {
 td {
   margin: 0; 
   padding: 0;
+}
+
+
+
+* {
+  font-family: 'Montserrat';
 }

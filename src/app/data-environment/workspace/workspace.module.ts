@@ -28,6 +28,4 @@ import { GroupModule } from './group/group.module'
         WorkspaceComponent,
     ]
   })
-export class WorkspaceModule{
-
-}
+export class WorkspaceModule { }
