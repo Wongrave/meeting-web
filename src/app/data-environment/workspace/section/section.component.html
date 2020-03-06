@@ -1,62 +1,12 @@
-<div class="factor col-12 float-right">
-    <span *ngFor="let factor of factors">
-      <div class="row mt-3">
-        <div class="col-12 col-md-2 h2 factor-item d-flex align-items-center factor-tag">{{factor.tag}}</div>
-        <div class="col-12 col-md-7 factor-item ">
-          {{factor.description}}<br />
-          <span class="text-muted">{{factor.summary}}</span>
-        </div>
-        <div class="col-6 col-md-2 d-flex align-items-center">
-          <button class="btn btn-outline-primary" data-toggle="collapse" attr.data-target="#newSection{{factor.id}}"> Nova
-            Seção </button> </div>
-        <div class="col-6 col-md-1 text-center d-flex align-items-center">
-          <button class="btn btn-info btn-collapse float-left mr-3" data-toggle="collapse"
-            attr.data-target="#sections{{factor.id}}" [disabled]="factor.sections.length == 0" (click)="toggle()">
-            <fa [name]="visible? 'caret-up' : 'caret-down'"></fa>
-          </button>
-          <a class="mx-auto display-4 mt-2 ml-3" (click)="deleteFactor(factor.id)">
-            <h3 class="d-inline-block float-right  hover-red">
-              <fa name="minus"></fa>
-            </h3>
-          </a>
-        </div>
+<div class="card col-12 col-md-3 mt-2" *ngFor="let section of sections">
+  <div class="card-body">
+      <div class="float-right">
+        <button class="btn btn-outline-danger" (click)="deleteSection(section.id)">
+          <fa name="times"></fa>
+        </button>
       </div>
-          <div class="row collapse" id="sections{{factor.id}}">
-              <div class="card col-12 col-md-3 mt-2" *ngFor="let section of factor.sections">
-                  <div class="card-body">
-                      <div class="float-right">
-                        <button class="btn btn-outline-danger" (click)="deleteSection(section.id)">
-                          <fa name="times"></fa>
-                        </button>
-                      </div>
-                      <h4 class="card-title">{{section.tag}}</h4>
-                      <p class="card-text">{{section.description}}</p>
-                      <p class="text-muted">{{section.summary}}</p>
-                  </div>
-              </div>
-        </div>
-      <div class="card col-12 col-md-3 collapse mt-2" id="newSection{{factor.id}}">
-        <div class="card-body">
-          <p class="card-text"><input type="text" placeholder="Tag" name="newSectionTag" id="newSectionTag"
-              [(value)]="newSectionTag" #sectionTag></p>
-          <p class="card-text"><input type="text" placeholder="Description" name="newSectionDescription"
-              id="newSectionDescription" [(value)]="newSectionDescription" #sectionDescription></p>
-          <p class="text-muted"><input type="text" placeholder="Summary" name="newSectionSummary" id="newSectionSummary"
-              [(value)]="newSectionSummary" #sectionSummary></p>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="newSectionSelected"
-             [(checked)]="newSectionSelected" #sectionSelected>
-            <label class="form-check-label" for="newSectionSelected">
-              Replicar
-            </label>
-          </div>
-          <br /><br />
-          <button type="button" class="btn btn-outline-primary mr-1"
-            (click)="newSection(sectionTag.value, sectionDescription.value, sectionSummary.value, sectionSelected.checked, factor)">Adicionar</button>
-          <button type="button" class="btn btn-outline-danger" data-toggle="collapse"
-            attr.data-target="#newSection{{factor.id}}"> Cancelar </button>
-        </div>
-      </div>
-
-    </span>
+      <h4 class="card-title">{{section.tag}}</h4>
+      <p class="card-text">{{section.description}}</p>
+      <p class="text-muted">{{section.summary}}</p>
   </div>
+</div>

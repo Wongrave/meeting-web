@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Section } from './section';
 import { SectionService } from './section.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -27,6 +27,8 @@ export class SectionComponent implements OnInit {
     newSectionSelected = false;
 
     factors: Factor[] = [];
+
+    @Input() sections: Section[]
 
     constructor(private modalService: NgbModal,
     private router: Router,
