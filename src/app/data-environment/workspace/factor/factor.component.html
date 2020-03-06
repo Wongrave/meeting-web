@@ -34,11 +34,12 @@
       <button type="button" class="btn btn-outline-primary"
         (click)="newFactor(factorTag.value, factorDescription.value, factorSummary.value, factorSelected.checked)">Adicionar</button>
     </div>
-</ng-template>
-<button class="btn btn-info mt-2 float-right" (click)="open(content)"> Novo Criterio </button>
+  </ng-template>
+  <button class="btn btn-info float-right" (click)="open(content)"> Novo Criterio </button>
+  <h3 class="title mb-1">Critério</h3>
 <div class="factor col-12">
     <span *ngFor="let factor of factors">
-      <div class="row border-left-info shadow-sm py-2 my-2 px-2 rounded-right">
+      <div class="row border-left-info shadow-sm py-2 mb-3 px-2 rounded-right">
         <div class="col-12 col-md-2 h2 d-flex align-items-center">{{factor.tag}}</div>
         <div class="col-12 col-md-7">
           {{factor.description}}<br />

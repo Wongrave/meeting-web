@@ -129,3 +129,7 @@
   .custom-checkbox > [type="checkbox"]:disabled:checked + label:hover:before{
       border: 1px solid #E4E4E4 !important;
   }
+
+  .title {
+    text-align: center;
+  }

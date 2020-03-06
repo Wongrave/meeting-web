@@ -22,10 +22,14 @@
 
 
 .factor {
-    margin-top: 80px;
+    margin-top: 30px;
     margin-right: 60px;
 }
 
 .border-left-info {
     border-left: 0.25rem solid #36b9cc !important;
+  }
+
+  .title {
+    text-align: center;
   }

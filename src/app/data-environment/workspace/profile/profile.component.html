@@ -1,8 +1,7 @@
-<div class="col-12 float-left mt-2 mb-2">
-
+<h3 class="title">Perfil</h3>
   <table>
     <tr>
-      <th class="col-5 col-md-2 text-center">Nome</th>
+      <th class="col-4 col-md-2 text-center">Nome</th>
       <th class="col-2 col-md-1 text-center">Facilitador</th>
       <th class="col-2 col-md-1 text-center">Especialista</th>
       <th class="col-2 col-md-1 text-center">Analista</th>
@@ -34,7 +33,7 @@
       </tr>
   </table>
   <hr>
-  <div class="d-flex row border-bottom border-info w-100" *ngFor="let suggestedUser of suggestedUsers" >
+  <div class="d-flex row border-bottom border-info w-75 mx-auto" *ngFor="let suggestedUser of suggestedUsers" >
     <h6 class="col-10 mt-2 align-items-center text-truncate"><span class="font-weight-bolder">{{suggestedUser.name}}</span> &nbsp; <span class="text-muted">{{suggestedUser.role}}</span></h6>
     <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addProfile(suggestedUser.id, suggestedUser.name )">
       <h5 class="float-right hover-green">
@@ -43,4 +42,3 @@
     </a>
   </div>
 
-</div>
