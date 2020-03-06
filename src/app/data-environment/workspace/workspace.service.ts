@@ -24,14 +24,14 @@ export class WorkspaceService {
             .get<Factor[]>(APIFACTOR + '/fromProposition/' + proposition.toString());
     }
 
-    newSection(tag: string, description: string, summary: string, selected: boolean, factor: Factor) {
-        return this.http.post(APISECTION + '/new', { tag, description, summary, selected, factor }).toPromise();
-    }
-
-    deleteSection(id: number) {
-      return this.http.delete(APISECTION+'/delete/'+id, {}).toPromise();
-
-    }
+//    newSection(tag: string, description: string, summary: string, selected: boolean, factor: Factor) {
+//        return this.http.post(APISECTION + '/new', { tag, description, summary, selected, factor }).toPromise();
+//    }
+//
+//    deleteSection(id: number) {
+//      return this.http.delete(APISECTION+'/delete/'+id, {}).toPromise();
+//
+//    }
 
     newGroup(description: string, propositionId: number) {
       return this.http.post(APIGROUP + '/new', {description, propositionId}).toPromise();

@@ -22,10 +22,6 @@ import { Group } from './group/group';
 export class WorkspaceComponent implements OnInit {
 
   proposition: Proposition;
-  newSectionTag = "";
-  newSectionDescription = "";
-  newSectionSummary = "";
-  newSectionSelected = false;
   username: string;
 
   factors: Factor[] = []
@@ -67,28 +63,10 @@ export class WorkspaceComponent implements OnInit {
     }
   }
 
-  async newSection(newSectionTag: string, newSectionDescription: string, newSectionSummary: string, newSectionSelected: boolean, factor: Factor) {
 
-    await this.workspaceService
-      .newSection(newSectionTag, newSectionDescription, newSectionSummary, newSectionSelected, factor);
-
-    this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
-      console.log(decodeURI(this.location.path()))
-      this.router.navigate([decodeURI(this.location.path())])
-    });
-
-  }
-
-    async deleteSection(id: number) {
-
-      await this.workspaceService
-              .deleteSection(id)
-
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-      });
-
+    visible = false;
+    toggle() {
+      this.visible = !this.visible;
     }
 
 

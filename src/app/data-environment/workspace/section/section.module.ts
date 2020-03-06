@@ -3,13 +3,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { FactorComponent } from './factor.component';
+import { SectionComponent } from './section.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SectionModule } from '../section/section.module';
 
 @NgModule({
     declarations: [ 
-      FactorComponent 
+      SectionComponent 
     ],
     imports: [
       HttpClientModule,
@@ -18,12 +17,11 @@ import { SectionModule } from '../section/section.module';
       ReactiveFormsModule,
       AngularFontAwesomeModule,
       NgbModule,
-      SectionModule,
     ],
     exports: [
-        FactorComponent
+      SectionComponent
     ]
   })
-export class FactorModule{
+export class SectionModule {
 
 }
