@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
   changeExpertProfile = false
   changeAnalystProfile = false
   username: string
-
   profiles: Profile[] = []
   newProfile: Profile
   suggestedUsers: UserPd[] = []
@@ -47,6 +46,7 @@ export class ProfileComponent implements OnInit {
     }
 
     async addProfile(userId: number, name:string) {
+      
       await this.profileService.addProfile( this.proposition.id, userId, name).then(profile => this.profiles.push(profile)).finally(() => this.suggestedUsers = this.suggestedUsers.filter(user => user.id != userId))
     }
 

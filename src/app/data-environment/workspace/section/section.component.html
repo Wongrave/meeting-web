@@ -1,5 +1,7 @@
-<div class="card col-12 col-md-3 mt-2" *ngFor="let section of sections">
-  <div class="card-body">
+<div class="row collapse" id="sections{{factor.id}}">
+<div class="row">
+  <div class="card col-12 col-md-3 my-2 mx-auto" *ngFor="let section of sections">
+    <div class="card-body">
       <div class="float-right">
         <button class="btn btn-outline-danger" (click)="deleteSection(section.id)">
           <fa name="times"></fa>
@@ -8,5 +10,30 @@
       <h4 class="card-title">{{section.tag}}</h4>
       <p class="card-text">{{section.description}}</p>
       <p class="text-muted">{{section.summary}}</p>
+    </div>
   </div>
+  
+</div>
+</div>
+<div class="card col-12 col-md-3 collapse mt-2" id="newSection{{factor.id}}">
+<div class="card-body">
+  <p class="card-text"><input type="text" placeholder="Tag" name="newSectionTag" id="newSectionTag"
+      [(value)]="newSectionTag" #sectionTag></p>
+  <p class="card-text"><input type="text" placeholder="Description" name="newSectionDescription"
+      id="newSectionDescription" [(value)]="newSectionDescription" #sectionDescription></p>
+  <p class="text-muted"><input type="text" placeholder="Summary" name="newSectionSummary" id="newSectionSummary"
+      [(value)]="newSectionSummary" #sectionSummary></p>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" value="" id="newSectionSelected"
+     [(checked)]="newSectionSelected" #sectionSelected>
+    <label class="form-check-label" for="newSectionSelected">
+      Replicar
+    </label>
+  </div>
+  <br /><br />
+  <button type="button" class="btn btn-outline-primary ml-2 mr-1"
+    (click)="newSection(sectionTag.value, sectionDescription.value, sectionSummary.value, sectionSelected.checked, factor)">Adicionar</button>
+  <button type="button" class="btn btn-outline-danger ml-1 mr-1" data-toggle="collapse"
+    attr.data-target="#newSection{{factor.id}}"> Cancelar </button>
+</div>
 </div>

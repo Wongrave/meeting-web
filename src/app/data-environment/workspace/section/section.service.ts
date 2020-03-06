@@ -21,6 +21,9 @@ export class SectionService {
     }
 
     deleteSection(id: number) {
+
+      //ALTERAR MÉTODO NO SERVIDOR PARA ACEITAR METHOD DELETE
+
       return this.http.delete(APISECTION+'/delete/'+id, {}).toPromise();
 
     }

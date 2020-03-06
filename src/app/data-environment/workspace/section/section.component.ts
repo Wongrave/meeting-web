@@ -16,7 +16,8 @@ import { FactorService } from '../factor/factor.service';
 
 @Component({
     selector: 'pd-section',
-    templateUrl: './section.component.html'
+    templateUrl: './section.component.html',
+    styleUrls: [ './section.component.css', ]
 })
 export class SectionComponent implements OnInit {
     proposition: Proposition;
@@ -29,6 +30,7 @@ export class SectionComponent implements OnInit {
     factors: Factor[] = [];
 
     @Input() sections: Section[]
+    @Input() factor: Factor
 
     constructor(private modalService: NgbModal,
     private router: Router,
