@@ -10,6 +10,9 @@ import { GroupService } from './group.service';
 import { PropositionService } from '../../propositions/proposition/proposition.service';
 import { Proposition } from '../../propositions/proposition/proposition';
 import { Group } from './group';
+import { ProfileService } from '../profile/profile.service';
+import { Profile } from '../profile/profile';
+import { UserPd } from '../../../users/user/userpd';
 
 @Component({
   styleUrls: ['./group.component.css'],
@@ -20,19 +23,58 @@ export class GroupComponent implements OnInit {
 
   proposition: Proposition
   username: string
+  closeResult: string;
+  profile: Profile;
 
   groups: Group[] = []
   newGroupName = "Novo Grupo"
+  newGroupSummary = ""
 
-    constructor(
+  suggestedProfiles: Profile[] = []
+
+
+    constructor(private modalService: NgbModal,
       private router: Router,
       private location: Location,
       private propositionService: PropositionService,
-      private groupService: GroupService
+      private groupService: GroupService,
+      private profileService: ProfileService
     ) { }
+
+    open(content) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+      this.groupService.getSuggestedProfiles( this.profile.id).subscribe(
+        suggestedProfiles => this.suggestedProfiles = suggestedProfiles
+      )
+    }
+
+    async addToGroup(pId: number, gId: number) {
+      await this.groupService.addToGroup(pId, gId);
+        
+    }
+
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }
 
     async newGroup(){
         await this.groupService.newGroup(this.newGroupName, this.proposition.id).then(group => this.groups.push(group))
+        this.modalService.dismissAll();
+    }
+
+    visible = false;
+    toggle() {
+      this.visible = !this.visible;
     }
 
     ngOnInit(): void {
