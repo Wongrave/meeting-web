@@ -7,11 +7,12 @@ import { ProfileModule } from './profile/profile.module'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FactorModule } from './factor/factor.module';
-import { GroupModule } from './group/group.module'
+import { GroupModule } from './group/group.module';
+import { SectionComponent } from './section/section.component';
 
 @NgModule({
     declarations: [
-        WorkspaceComponent,
+        WorkspaceComponent
     ],
     imports: [
       HttpClientModule,
@@ -22,7 +23,7 @@ import { GroupModule } from './group/group.module'
       AngularFontAwesomeModule,
       ProfileModule,
       FactorModule,
-      GroupModule
+      GroupModule,
     ],
     exports: [
         WorkspaceComponent,
