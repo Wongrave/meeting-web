@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FactorService } from './factor.service';
 import { Factor } from './factor';
@@ -6,6 +6,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Proposition } from '../../propositions/proposition/proposition';
 import { formatDate, Location } from '@angular/common';
 import { PropositionService } from '../../propositions/proposition/proposition.service';
+import { Section } from '../section/section';
 
 
 @Component({
