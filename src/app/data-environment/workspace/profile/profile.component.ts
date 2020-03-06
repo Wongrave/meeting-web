@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   changeExpertProfile = false
   changeAnalystProfile = false
   username: string
+  buttonNewProfile: string = 'plus'
   profiles: Profile[] = []
   newProfile: Profile
   suggestedUsers: UserPd[] = []
