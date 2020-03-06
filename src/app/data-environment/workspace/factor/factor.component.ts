@@ -75,6 +75,11 @@ export class FactorComponent {
 
   }
 
+  visible = false;
+    toggle() {
+      this.visible = !this.visible;
+    }
+
   ngOnInit(): void {
 
     this.propositionService.getProposition().subscribe(

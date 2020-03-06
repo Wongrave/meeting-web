@@ -11,7 +11,7 @@ export class GroupService {
     constructor(private http: HttpClient) { }
 
     newGroup(description: string, propositionId: number) {
-      return this.http.post(API + '/new', {description, propositionId}).toPromise();
+      return this.http.post<Group>(API + '/new', {description, propositionId}).toPromise();
     }
 
     getGroups(propositionId: number) {

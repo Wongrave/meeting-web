@@ -29,6 +29,4 @@ import { SectionComponent } from './section/section.component';
         WorkspaceComponent,
     ]
   })
-export class WorkspaceModule{
-
-}
+export class WorkspaceModule { }

@@ -16,17 +16,15 @@ import { Profile } from '../profile/profile';
 })
 export class ProfileComponent implements OnInit {
 
-  proposition: Proposition;
-  changeAdminProfile = false;
-  changeExpertProfile = false;
-  changeAnalystProfile = false;
-  username: string;
+  proposition: Proposition
+  changeAdminProfile = false
+  changeExpertProfile = false
+  changeAnalystProfile = false
+  username: string
 
-  profiles: Profile[] = [];
-  suggestedUsers: UserPd[] = [];
-
-
-
+  profiles: Profile[] = []
+  newProfile: Profile
+  suggestedUsers: UserPd[] = []
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -37,43 +35,28 @@ export class ProfileComponent implements OnInit {
 
 
     changeAdmin( id: number, checked: boolean ) {
-
       this.profileService.changeAdmin( id, checked );
-
     }
 
     changeExpert( id: number, checked: boolean ) {
-
       this.profileService.changeExpert( id, checked );
-
     }
 
     changeAnalyst( id: number, checked: boolean ) {
-
       this.profileService.changeAnalyst( id, checked );
-
     }
 
     async addProfile(userId: number, name:string) {
-
-      await this.profileService.addProfile( this.proposition.id, userId, name);
-
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-      });
-
+      await this.profileService.addProfile( this.proposition.id, userId, name).then(profile => this.profiles.push(profile)).finally(() => this.suggestedUsers = this.suggestedUsers.filter(user => user.id != userId))
     }
 
     async deleteProfile(id: number) {
+      await this.profileService.deleteProfile(id).then(() => this.profiles = this.profiles.filter(profile => profile.id != id))
+    }
 
-      await this.profileService.deleteProfile( id );
-
-      this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-      });
-
+    public trackByProfileId(index, profile){
+      if(!profile) return null
+      return profile.id
     }
 
 
@@ -91,8 +74,6 @@ export class ProfileComponent implements OnInit {
     this.profileService.getProfiles(this.proposition.id).subscribe(
       profiles => this.profiles = profiles
     )
-    console.log(this.profiles)
-
   }
 
 }

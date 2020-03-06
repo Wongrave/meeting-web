@@ -32,13 +32,7 @@ export class GroupComponent implements OnInit {
     ) { }
 
     async newGroup(){
-        await this.groupService
-        .newGroup(this.newGroupName, this.proposition.id)
-
-        this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
-        console.log(decodeURI(this.location.path()))
-        this.router.navigate([decodeURI(this.location.path())])
-        })
+        await this.groupService.newGroup(this.newGroupName, this.proposition.id).then(group => this.groups.push(group))
     }
 
     ngOnInit(): void {
