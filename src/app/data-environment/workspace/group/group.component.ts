@@ -13,6 +13,7 @@ import { Group } from './group';
 import { ProfileService } from '../profile/profile.service';
 import { Profile } from '../profile/profile';
 import { UserPd } from '../../../users/user/userpd';
+import { Identifiers } from '@angular/compiler';
 
 @Component({
   styleUrls: ['./group.component.css'],
@@ -25,11 +26,11 @@ export class GroupComponent implements OnInit {
   username: string
   closeResult: string;
   profile: Profile;
-
+  group: Group
   groups: Group[] = []
   newGroupName = "Novo Grupo"
   newGroupSummary = ""
-
+  
   suggestedProfiles: Profile[] = []
 
 
@@ -41,15 +42,17 @@ export class GroupComponent implements OnInit {
       private profileService: ProfileService
     ) { }
 
-    open(content) {
+    open(content, group: Group) {
+      this.group = group
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
+        this.closeResult = 'Closed with: ${result}'
       }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.closeResult = 'Dismissed ${this.getDismissReason(reason)}'
       });
-      this.groupService.getSuggestedProfiles( this.profile.id).subscribe(
+      this.groupService.getSuggestedProfiles(this.proposition.id).subscribe(
         suggestedProfiles => this.suggestedProfiles = suggestedProfiles
       )
+      console.log(this.suggestedProfiles)
     }
 
     async addToGroup(pId: number, gId: number) {
@@ -76,6 +79,18 @@ export class GroupComponent implements OnInit {
     toggle() {
       this.visible = !this.visible;
     }
+
+     async editGroup(newGroupName: string, newGroupSummary: string, groupId: number){
+      console.log(newGroupName, newGroupSummary, groupId) 
+      await this.groupService.editGroup(newGroupName, newGroupSummary, this.proposition.id, groupId).then(group => this.groups.push(group))
+
+       this.modalService.dismissAll();
+
+       this.router.navigateByUrl('/refresh', { skipLocationChange: true }).then(() => {
+         console.log(decodeURI(this.location.path()))
+         this.router.navigate([decodeURI(this.location.path())])
+    })
+  }
 
     ngOnInit(): void {
    

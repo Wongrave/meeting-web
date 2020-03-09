@@ -5,6 +5,8 @@ import { Profile } from '../profile/profile';
 
 const API = 'http://177.70.27.122:8080/groups'
 
+const APIPROFILE = 'http://177.70.27.122:8080/profiles'
+
 
 @Injectable({ providedIn: 'root' })
 export class GroupService {
@@ -20,11 +22,15 @@ export class GroupService {
 
     }
 
-    getSuggestedProfiles(profileId: number) {
-      return this.http.get<Profile[]>(API + '/from/' + profileId, {})
+    getSuggestedProfiles(propositionId: number) {
+      return this.http.get<Profile[]>(APIPROFILE + '/from/' + propositionId, {})
     }
 
     addToGroup(profileId: number, groupId: number) {
       return this.http.post<Group>(API + '/new', {profileId, groupId}).toPromise();
+    }
+
+    editGroup(description: string, summary: string ,propositionId: number, groupId: number ) {
+      return this.http.put<Group>(API + '/' + groupId, {description, summary, propositionId}).toPromise();
     }
 }

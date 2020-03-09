@@ -5,10 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { GroupComponent } from './group.component';
+import { GroupModalComponent } from './group-modal.component';
 
 @NgModule({
     declarations: [
-        GroupComponent
+        GroupComponent,
+        GroupModalComponent
     ],
     imports: [
       HttpClientModule,
@@ -19,7 +21,8 @@ import { GroupComponent } from './group.component';
       AngularFontAwesomeModule,
     ],
     exports: [
-        GroupComponent
+        GroupComponent,
+        GroupModalComponent
     ]
   })
 export class GroupModule{
