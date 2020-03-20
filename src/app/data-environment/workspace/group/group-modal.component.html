@@ -1,0 +1,38 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edição do Grupo</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+            <label for="newGroupName">Nome</label>
+            <input id="newGroupName" class="form-control" name="newGroupName"
+            [(value)]="newGroupName" #groupName>
+            <hr />
+            <label for="newGroupSummary">Resumo</label>
+            <textarea class="form-control" id="newGroupSummary" rows="3" name="newGroupSummary"
+            [(value)]="newGroupSummary" #groupSummary></textarea>
+            <hr />
+            <div class="form-check">
+
+                <div class="d-flex row border-bottom border-info w-100 mx-auto" *ngFor="let suggestedProfile of suggestedProfiles" >
+                    <h6 class="col-10 mt-2 align-items-center"> {{ suggestedProfile.name }} </h6>
+                    <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addToGroup(profile.id, group.id )">
+                      <h5 class="float-right hover-green">
+                        <fa name="plus"></fa>
+                      </h5>
+                    </a>
+                  </div>
+            </div>
+            
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary"
+    (click)="editGroup(newGroupName.value, newGroupSummary.value, group.id)">Confirmar</button>
+</div>
+</ng-template>
