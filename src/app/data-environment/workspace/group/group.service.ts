@@ -27,7 +27,7 @@ export class GroupService {
     }
 
     addToGroup(profileId: number, groupId: number) {
-      return this.http.post<Group>(API + '/new', {profileId, groupId}).toPromise();
+      return this.http.post<Group>(APIPROFILE + '/addToGroup/'+groupId, {profileId}).toPromise();
     }
 
     editGroup(description: string, summary: string ,propositionId: number, groupId: number ) {

@@ -55,8 +55,8 @@ export class GroupComponent implements OnInit {
       console.log(this.suggestedProfiles)
     }
 
-    async addToGroup(pId: number, gId: number) {
-      await this.groupService.addToGroup(pId, gId);
+    async addToGroup(profileId: number, groupId: number) {
+      await this.groupService.addToGroup(profileId, groupId);
         
     }
 
