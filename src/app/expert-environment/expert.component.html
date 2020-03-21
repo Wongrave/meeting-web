@@ -13,35 +13,28 @@
             </tr>
         </thead>
 
-        <tr *ngFor="let factor of factors" class="row">
-            <th scope="row" class="col-4 col-md-2">  {{factor.tag}} </th>
-            <td class="col-8 col-md-2"> {{factor.description}} </td>
+        <tr *ngFor="let evidence of evidences" class="row">
+            <th scope="row" class="col-4 col-md-2">  {{evidence.factor.tag}} </th>
+            <td class="col-8 col-md-2"> {{evidence.factor.description}} </td>
             <!-- <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td>
             <td class="hidden-xs hidden-sm d-none d-lg-table-cell"> <input type="text"> </td>  -->
             <td class="col-2 col-md-2">
-                <!--h3 class="d-inline-block">
-                    <a (click)="weightChange('dec')">
-                        <fa name="caret-down"></fa>
-                    </a>
-                </h3-->
-                <input #w type="number" min=0 max=10 style="width: 40px" (change)="saveWeight(w.value)" [value]="weight"/>
-                <!--h3 class="d-inline-block">
-                    <a (click)="weightChange('inc')">
-                        <fa name="caret-up"></fa>
-                    </a>
-                </h3-->
+                <input #w type="number" min=0 max=10 style="width: 40px" (change)="saveWeight(evidence, evidence.weight)" [value]="evidence.weight"/>
             </td>
             <td class="col-12 col-md-3">
-                    <pd-expert-value [valor]="gce"></pd-expert-value>
-                </td>
-                <td class="col-12 col-md-3">
-
-                    <pd-expert-value [valor]="gin"></pd-expert-value>
-                </td>
+                <!--pd-expert-value [valor]="evidence.favorable"></pd-expert-value-->
+                <input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3" [value]="evidence.favorable" (input)="evidence.favorable = $event.target.value">
+                <span class="range-slider__value">{{ evidence.favorable }} </span>
+            </td>
+            <td class="col-12 col-md-3">
+                <!--pd-expert-value [valor]="evidence.unfavorable"></pd-expert-value-->
+                <input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3" [value]="evidence.unfavorable" (input)="evidence.unfavorable = $event.target.value">
+                <span class="range-slider__value">{{ evidence.unfavorable }} </span>
+            </td>
         </tr>
 
     </table>
-    <button class="btn btn-info mt-2 float-right" click="">Enviar</button>
+    <button class="btn btn-info mt-2 float-right" (click)="saveEvidences()">Enviar</button>
     <!-- <script>
         var rangeSlider = function(){
         var slider = $('.celula'),

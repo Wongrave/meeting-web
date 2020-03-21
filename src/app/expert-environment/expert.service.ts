@@ -18,11 +18,13 @@ export class ExpertService {
             .get<Factor[]>(APIFACTOR + '/fromProposition/' + proposition.toString());
     }
 
-    getFromProposition(proposition: number) {
+    getFromProposition(propositionId: number, userId: number) {
         return this.http
-            .get<Evidence[]>(APIEVIDENCE + '/login/' + proposition.toString());
+            .get<Evidence[]>(APIEVIDENCE + '/' + userId.toString() + '/' + propositionId.toString());
     }
 
-    newEvidence(proposition: number){}
-
+    saveEvidences(evidences: Evidence[]) {
+       return this.http
+            .post(APIEVIDENCE + '/new', evidences);
+    }
 }

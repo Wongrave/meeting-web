@@ -15,14 +15,29 @@ import { Evidence } from './evidences/evidence';
 })
 export class ExpertComponent implements OnInit {
 
+    selectedValue = 0;
+
+
+    @Input()
+    get valor() {
+        return this.selectedValue;
+    }
+  
+    @Output() valueChange = new EventEmitter();
+    set valor(val) {
+        this.selectedValue = val;
+        this.valueChange.emit(this.selectedValue);
+    }
+
     username: string;
     proposition: Proposition;
-    factors: Factor[] = []
-    evidences: Evidence[] = []
+    factors: Factor[] = [];
+    evidences: Evidence[] = [];
     weight = 0;
-    currentEvidences: Evidence[] = [] 
+    currentEvidences: Evidence[] = [];
     gce = Math.round(Math.random() * 100);
     gin = Math.round(Math.random() * 100);
+    userId: number;
 
 
   constructor(private route: ActivatedRoute,
@@ -32,12 +47,24 @@ export class ExpertComponent implements OnInit {
     private propositionService: PropositionService,
     private userService: UserService ){ }
 
-  saveWeight(w: number) {
-      this.weight = w;
+  saveWeight(evidence: Evidence, w: number) {
+      evidence.weight = w;
   }
+
+  saveEvidences() {
+      this.expertService
+        .saveEvidences(this.evidences);
+  }
+
   async ngOnInit() {
 
     this.username = this.userService.getUsername();
+    if(!!this.auth.username) {
+      this.userId = this.userService.getUserId();
+    } else {
+      this.userService.getUser().subscribe(user => this.userId = user.sub, err => console.log(err.message));
+    }
+
     this.propositionService.getProposition().subscribe(
       proposition => this.proposition = proposition
     )
@@ -47,12 +74,12 @@ export class ExpertComponent implements OnInit {
     )
 
     
-    await this.expertService.getFromProposition(this.proposition.id).toPromise().then(
+    await this.expertService.getFromProposition(this.proposition.id, this.userId).toPromise().then(
       evidences => this.evidences = evidences
     )
 
-    this.gce = this.evidences[0].favorable
-    this.gin = this.evidences[0].desfavorable
+//  this.gce = this.evidences[0].favorable
+//  this.gin = this.evidences[0].desfavorable
 
 
   }
