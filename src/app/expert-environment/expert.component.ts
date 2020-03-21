@@ -27,34 +27,40 @@ export class ExpertComponent implements OnInit {
     set valor(val) {
         this.selectedValue = val;
         this.valueChange.emit(this.selectedValue);
-    }
+      }
+      
+      username: string;
+      proposition: Proposition;
+      factors: Factor[] = [];
+      evidences: Array<Evidence> = [];
+      weight = 0;
+      currentEvidences: Evidence[] = [];
+      gce = Math.round(Math.random() * 100);
+      gin = Math.round(Math.random() * 100);
+      userId: number;
+      
+      
+      constructor(private route: ActivatedRoute,
+        private router: Router,
+        private expertService: ExpertService,
+        private auth: AuthService,
+        private propositionService: PropositionService,
+        private userService: UserService ){ }
+        
+        saveWeight(evidence: Evidence, w: number) {
+          evidence.weight = w;
+        }
+        
+        newEvidence() {
+        
+        }
 
-    username: string;
-    proposition: Proposition;
-    factors: Factor[] = [];
-    evidences: Evidence[] = [];
-    weight = 0;
-    currentEvidences: Evidence[] = [];
-    gce = Math.round(Math.random() * 100);
-    gin = Math.round(Math.random() * 100);
-    userId: number;
+        async saveEvidences() {
+          console.log(this.evidences)
+            await this.evidences.forEach(evidence => this.expertService.saveEvidence(evidence))
+          }
 
-
-  constructor(private route: ActivatedRoute,
-    private router: Router,
-    private expertService: ExpertService,
-    private auth: AuthService,
-    private propositionService: PropositionService,
-    private userService: UserService ){ }
-
-  saveWeight(evidence: Evidence, w: number) {
-      evidence.weight = w;
-  }
-
-  saveEvidences() {
-      this.expertService
-        .saveEvidences(this.evidences);
-  }
+          
 
   async ngOnInit() {
 
@@ -84,18 +90,15 @@ export class ExpertComponent implements OnInit {
 
   }
 
-  newEvidence() {
 
-  }
+  // favorableFromFactor(factor: number) {
+  //   this.currentEvidences = this.evidences.filter(evidence => evidence.factor.id == factor)
+  //   return this.currentEvidences[0].favorable
+  // }
 
-  favorableFromFactor(factor: number) {
-    this.currentEvidences = this.evidences.filter(evidence => evidence.factor.id == factor)
-    return this.currentEvidences[0].favorable
-  }
-
-  unfavorableFromFactor(factor: number) {
-    this.currentEvidences = this.evidences.filter(evidence => evidence.factor.id == factor)
-    return this.currentEvidences[0].desfavorable
-  }
+  // unfavorableFromFactor(factor: number) {
+  //   this.currentEvidences = this.evidences.filter(evidence => evidence.factor.id == factor)
+  //   return this.currentEvidences[0].desfavorable
+  // }
 }
 

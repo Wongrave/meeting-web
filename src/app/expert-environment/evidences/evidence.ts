@@ -7,11 +7,10 @@ export interface Evidence {
     propositionId: number;
     factor: Factor;
     section: Section;
-    userGroupRelationId: number;
     profileId: number;
     groupId: number;
     favorable: number;
-    desfavorable: number;
+    unfavorable: number;
     weight: number;
     confirmed: boolean;
 }
