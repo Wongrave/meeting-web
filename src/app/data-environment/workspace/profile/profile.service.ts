@@ -35,6 +35,10 @@ export class ProfileService {
       return this.http.get<UserPd[]>(APIPROFILE+'/suggestedUsers/'+propositionId, {});
     }
 
+    getSuggestedProfiles(propositionId:number) {
+      return this.http.get<Profile[]>(APIPROFILE+'/suggestedProfiles/'+propositionId, {});
+    }
+
     getProfiles(propositionId: number){
       return this.http.get<Profile[]>(APIPROFILE+'/from/'+propositionId, {})
 

@@ -16,11 +16,12 @@
             <textarea class="form-control" id="newGroupSummary" rows="3" name="newGroupSummary"
             [(value)]="newGroupSummary" #groupSummary></textarea>
             <hr />
+            
             <div class="form-check">
 
                 <div class="d-flex row border-bottom border-info w-100 mx-auto" *ngFor="let suggestedProfile of suggestedProfiles" >
                     <h6 class="col-10 mt-2 align-items-center"> {{ suggestedProfile.name }} </h6>
-                    <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addToGroup(profile.id, group.id )">
+                    <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addToGroup(profile, group.id )">
                       <h5 class="float-right hover-green">
                         <fa name="plus"></fa>
                       </h5>
@@ -43,7 +44,7 @@
     <div class="card-body">
         <h4 class="card-title">{{group.description}}</h4>
         <p class="card-text">{{group.summary}}</p>
-        <button class="btn btn-primary" (click)="open(content, group.id)">Editar</button>
+        <button class="btn btn-primary" (click)="open(content, group.id, group.description, group.summary)">Editar</button>
     </div>
     <ng-template #content let-modal>
       <div class="modal-header">
@@ -64,10 +65,19 @@
               [(value)]="newGroupSummary" #groupSummary></textarea>
               <hr />
               <div class="form-check">
-  
+              <div class="d-flex row border-bottom border-secundary w-100 mx-auto" *ngFor="let profile of profiles" >
+                  <h6 class="col-10 mt-2 align-items-center text-muted"> {{ profile.name }} </h6>
+                  <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="removeFromGroup(profile)">
+                    <h5 class="float-right hover-red">
+                      <fa name="minus"></fa>
+                    </h5>
+                  </a>
+                </div>
+
+              <hr />
                   <div class="d-flex row border-bottom border-info w-100 mx-auto" *ngFor="let suggestedProfile of suggestedProfiles" >
                       <h6 class="col-10 mt-2 align-items-center"> {{ suggestedProfile.name }} </h6>
-                      <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addToGroup(profile.id, group.id )">
+                      <a class="mx-auto display-4 mt-2 ml-3 col-2" (click)="addToGroup(suggestedProfile, group.id )">
                         <h5 class="float-right hover-green">
                           <fa name="plus"></fa>
                         </h5>

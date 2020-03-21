@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from 'src/app/core/auth/auth.service';
-import { formatDate, Location } from '@angular/common';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from 'src/app/core/user/user.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { GroupService } from './group.service';
 import { PropositionService } from '../../propositions/proposition/proposition.service';
@@ -12,8 +8,6 @@ import { Proposition } from '../../propositions/proposition/proposition';
 import { Group } from './group';
 import { ProfileService } from '../profile/profile.service';
 import { Profile } from '../profile/profile';
-import { UserPd } from '../../../users/user/userpd';
-import { Identifiers } from '@angular/compiler';
 
 @Component({
   styleUrls: ['./group.component.css'],
@@ -30,6 +24,7 @@ export class GroupComponent implements OnInit {
   groups: Group[] = []
   newGroupName = "Novo Grupo"
   newGroupSummary = ""
+  profiles: Profile[] = []
   
   suggestedProfiles: Profile[] = []
 
@@ -42,21 +37,41 @@ export class GroupComponent implements OnInit {
       private profileService: ProfileService
     ) { }
 
-    open(content, group: Group) {
-      this.group = group
+    async open(content, groupId: number, groupName: string, groupSummary: string) {
+      console.log(groupId)
+      
+      this.newGroupName = groupName
+      this.newGroupSummary = groupSummary
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = 'Closed with: ${result}'
       }, (reason) => {
         this.closeResult = 'Dismissed ${this.getDismissReason(reason)}'
       });
-      this.groupService.getSuggestedProfiles(this.proposition.id).subscribe(
-        suggestedProfiles => this.suggestedProfiles = suggestedProfiles
-      )
+      await this.groupService.getProfiles(groupId).toPromise()
+      .then(profiles => this.profiles = profiles)
+      await this.groupService.getSuggestedProfiles(this.proposition.id).toPromise()
+      .then(suggestedProfiles => this.suggestedProfiles = suggestedProfiles)
+      console.log(this.profiles)
       console.log(this.suggestedProfiles)
     }
 
-    async addToGroup(profileId: number, groupId: number) {
-      await this.groupService.addToGroup(profileId, groupId);
+    async removeFromGroup(profile: Profile){
+      console.log(this.profiles)
+      console.log(profile.id)
+
+      await this.groupService.removeFromGroup(profile.id)
+      .then(() => this.suggestedProfiles.push(profile))
+      .then(() => this.profiles = this.profiles.filter(newProfile => newProfile != profile))
+    }
+
+    async addToGroup(profile: Profile, groupId: number) {
+      console.log(profile.id, groupId)
+
+      await this.groupService.addToGroup(profile.id, groupId)
+      .then(() => this.profiles.push(profile))
+      .then(() => this.suggestedProfiles = this.suggestedProfiles.filter(newProfile => newProfile != profile))
+
+      console.log(this.profiles)
         
     }
 
