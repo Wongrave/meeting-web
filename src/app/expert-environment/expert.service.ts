@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Factor } from '../data-environment/workspace/factor/factor';
 import { Evidence } from './evidences/evidence';
 const APIFACTOR = 'http://177.70.27.122:8080/factors';
-const APIEVIDENCE = 'http://localhost:8080/evidences';
+const APIEVIDENCE = 'http://177.70.27.122:8080/evidences';
 
 @Injectable({ providedIn: 'root' })
 export class ExpertService {
